@@ -199,7 +199,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	err = mtd_init(MTD_OPT_UI_CLI|MTD_OPT_LOG_ERR);
+	err = mtd_init(MTD_OPT_LOG_ERR);
 	if (err && strcmp(argv[1], "init") != 0) {
 		if (err == MTD_ERR_MISSING_CONFIG)
 			fprintf(stderr, "Please run 'mtd-cli init\n");
