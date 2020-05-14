@@ -26,7 +26,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|oauth|sa [endpoint args ...]
+    mtd-cli init|oauth|config|sa [endpoint args ...]
 
 The first argument specifies the API to interface with, currently just three
 are supported
@@ -34,12 +34,14 @@ are supported
   * **init** is for doing an initial setup, creating appropriate oauth.json &
     config.json files.
 
-  * **oauth** is for doing doing a reauthorisation.
+  * **oauth** is for doing a reauthorisation.
+
+  * **config** is for regenerating the config.json file.
 
   * **sa** is for interacting with the Self-Assessment API.
 
 
-*init* and *oauth* don't take any arguments.
+*init*, *oauth* & *config* don't take any arguments.
 
 *sa* takes various arguments, the first of which is the endpoint of the API
 to connect to. These are

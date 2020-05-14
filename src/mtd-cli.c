@@ -8,7 +8,7 @@
 
 #include <jansson.h>
 
-#define APIS		"init oauth sa"
+#define APIS		"init oauth config sa"
 #define SA_ENDPOINTS \
 "list-employments get-employment list-obligations list-periods create-period\n"\
 "get-period update-period get-annual-summary update-annual-summary\n"\
@@ -148,6 +148,11 @@ static int do_sa(int argc, char *argv[])
 	return err;
 }
 
+static int do_config(void)
+{
+	return mtd_init_config();
+}
+
 static int do_oauth(void)
 {
 	return mtd_init_auth();
@@ -183,6 +188,8 @@ static int dispatcher(int argc, char *argv[])
 		err = do_init();
 	else if (IS_API("oauth"))
 		err = do_oauth();
+	else if (IS_API("config"))
+		err = do_config();
 	else if (IS_API("sa"))
 		err = do_sa(argc - 1, argv + 1);
 
