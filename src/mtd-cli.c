@@ -16,11 +16,13 @@
 
 #define MTD_CLI_SA	"mtd-cli sa "
 
-static const struct sa_endpoint_help {
+struct endpoint_help {
 	const char *ep;
 	const char *use;
 	const int nargs;
-} sa_endpoint_help_map[] = {
+};
+
+static const struct endpoint_help sa_endpoint_help[] = {
 	{ "list-employments", MTD_CLI_SA "list-employments", 0 },
 	{ "get-employment", MTD_CLI_SA "get-employment selfEmploymentId", 1 },
 	{ "list-obligations", MTD_CLI_SA "list-obligations selfEmploymentId",
@@ -58,30 +60,30 @@ static int print_api_help(void)
 	return -1;
 }
 
-static int check_sa_args(int argc, const char *endpoint)
+static int check_args(int argc, const char *endpoint,
+		      const struct endpoint_help *eh, size_t nelem,
+		      int (*print_help)(void))
 {
 	int ret = -1;
-	int i = 0;
-	int nr = sizeof(sa_endpoint_help_map) /
-		 sizeof(sa_endpoint_help_map[0]);
+	unsigned i = 0;
 	bool found = false;
 
 	if (!endpoint)
 		goto out_not_found;
 
-	for ( ; i < nr; i++) {
-		if (strcmp(sa_endpoint_help_map[i].ep, endpoint) == 0) {
-			if (sa_endpoint_help_map[i].nargs == argc)
+	for ( ; i < nelem; i++) {
+		if (strcmp(eh[i].ep, endpoint) == 0) {
+			if (eh[i].nargs == argc)
 				return 0;
 
 			found = true;
-			printf("Usage:\t%s\n", sa_endpoint_help_map[i].use);
+			printf("Usage:\t%s\n", eh[i].use);
 		}
 	}
 
 out_not_found:
 	if (!found)
-		print_sa_endpoints();
+		print_help();
 
 	return ret;
 }
@@ -103,9 +105,11 @@ static int do_sa(int argc, char *argv[])
 	const char *ep = argv[0];	/* endpoint */
 	char *buf = NULL;
 	json_t *rootbuf;
+	const struct endpoint_help *eh = sa_endpoint_help;
+	int nr = sizeof(sa_endpoint_help) / sizeof(sa_endpoint_help[0]);
 	int err;
 
-	err = check_sa_args(argc - 1, ep);
+	err = check_args(argc - 1, ep, eh, nr, print_sa_endpoints);
 	if (err)
 		return err;
 
