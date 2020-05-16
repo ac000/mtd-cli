@@ -5,16 +5,23 @@
 #include <linux/limits.h>
 
 #include <libmtdac/mtd-sa.h>
+#include <libmtdac/mtd-saac.h>
 
 #include <jansson.h>
 
-#define APIS		"init oauth config sa"
+#define MTD_CLI		"mtd-cli"
+
+#define APIS		"init oauth config sa saac"
 #define SA_ENDPOINTS \
 "list-employments get-employment list-obligations list-periods create-period\n"\
 "get-period update-period get-annual-summary update-annual-summary\n"\
 "submit-end-of-period-statement get-end-of-period-statement"
+#define SAAC_ENDPOINTS \
+"get-balance list-transactions get-transaction list-charges get-charge\n"\
+"list-payments get-payment"\
 
-#define MTD_CLI_SA	"mtd-cli sa "
+#define MTD_CLI_SA	MTD_CLI " sa "
+#define MTA_CLI_SAAC	MTD_CLI " saac "
 
 struct endpoint_help {
 	const char *ep;
@@ -46,9 +53,27 @@ static const struct endpoint_help sa_endpoint_help[] = {
 	   3 },
 };
 
+static const struct endpoint_help saac_endpoint_help[] = {
+	{ "get-balance", MTA_CLI_SAAC "get-balance", 0 },
+	{ "list-transactions", MTA_CLI_SAAC "list-transactions from to", 2 },
+	{ "get-transaction", MTA_CLI_SAAC "get-transaction transactionId", 1 },
+	{ "list-charges", MTA_CLI_SAAC "list-charges from to", 2 },
+	{ "get-charge", MTA_CLI_SAAC "get-charge transactionId", 1 },
+	{ "list-payments", MTA_CLI_SAAC "list-payments from to", 2 },
+	{ "get-payment", MTA_CLI_SAAC "get-payment paymentId", 1 },
+};
+
 static int print_sa_endpoints(void)
 {
 	printf("Available self-assessment endpoints :-\n\n%s\n", SA_ENDPOINTS);
+
+	return -1;
+}
+
+static int print_saac_endpoints(void)
+{
+	printf("Available self-assessment accounts endpoints :-\n\n%s\n",
+	       SAAC_ENDPOINTS);
 
 	return -1;
 }
@@ -152,6 +177,47 @@ static int do_sa(int argc, char *argv[])
 	return err;
 }
 
+static int do_saac(int argc, char *argv[])
+{
+	const char *ep = argv[0];	/* endpoint */
+	char *buf = NULL;
+	json_t *rootbuf;
+	const struct endpoint_help *eh = saac_endpoint_help;
+	int nr = sizeof(saac_endpoint_help) / sizeof(saac_endpoint_help[0]);
+	int err;
+
+	err = check_args(argc - 1, ep, eh, nr, print_saac_endpoints);
+	if (err)
+		return err;
+
+	if (IS_EP("get-balance"))
+		err = mtd_saac_get_balance(&buf);
+	else if (IS_EP("list-transactions"))
+		err = mtd_saac_list_transactions(argv[1], argv[2], &buf);
+	else if (IS_EP("get-transaction"))
+		err = mtd_saac_get_transaction(argv[1], &buf);
+	else if (IS_EP("list-charges"))
+		err = mtd_saac_list_charges(argv[1], argv[2], &buf);
+	else if (IS_EP("get-charge"))
+		err = mtd_saac_get_charge(argv[1], &buf);
+	else if (IS_EP("list-payments"))
+		err = mtd_saac_list_payments(argv[1], argv[2], &buf);
+	else if (IS_EP("get-payment"))
+		err = mtd_saac_get_payment(argv[1], &buf);
+
+	if (!buf)
+		return err;
+
+	rootbuf = json_loads(buf, 0, NULL);
+	json_dumpf(rootbuf, stdout, JSON_INDENT(4));
+	printf("\n");
+	json_decref(rootbuf);
+
+	free(buf);
+
+	return err;
+}
+
 static int do_config(void)
 {
 	return mtd_init_config();
@@ -196,6 +262,8 @@ static int dispatcher(int argc, char *argv[])
 		err = do_config();
 	else if (IS_API("sa"))
 		err = do_sa(argc - 1, argv + 1);
+	else if (IS_API("saac"))
+		err = do_saac(argc - 1, argv + 1);
 
 	return err;
 }
