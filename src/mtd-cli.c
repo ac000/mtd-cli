@@ -23,6 +23,15 @@
 #define MTD_CLI_SA	MTD_CLI " sa "
 #define MTA_CLI_SAAC	MTD_CLI " saac "
 
+static const struct api_ep {
+	const char *api;
+	int (*api_func)(int argc, char *argv[], char **buf);
+} api_ep_map[] = {
+	{ "sa", &do_sa },
+	{ "saac", &do_saac },
+	{ NULL, NULL }
+};
+
 struct endpoint_help {
 	const char *ep;
 	const char *use;
@@ -51,6 +60,7 @@ static const struct endpoint_help sa_endpoint_help[] = {
 	{ "get-end-of-period-statement",
 	   MTD_CLI_SA "get-end-of-period-statement selfEmploymentId start|- end|-",
 	   3 },
+	{ NULL, NULL, 0 }
 };
 
 static const struct endpoint_help saac_endpoint_help[] = {
@@ -61,6 +71,7 @@ static const struct endpoint_help saac_endpoint_help[] = {
 	{ "get-charge", MTA_CLI_SAAC "get-charge transactionId", 1 },
 	{ "list-payments", MTA_CLI_SAAC "list-payments from to", 2 },
 	{ "get-payment", MTA_CLI_SAAC "get-payment paymentId", 1 },
+	{ NULL, NULL, 0 }
 };
 
 static int print_sa_endpoints(void)
@@ -86,8 +97,7 @@ static int print_api_help(void)
 }
 
 static int check_args(int argc, const char *endpoint,
-		      const struct endpoint_help *eh, size_t nelem,
-		      int (*print_help)(void))
+		      const struct endpoint_help *eh, int (*print_help)(void))
 {
 	int ret = -1;
 	unsigned i = 0;
@@ -96,7 +106,7 @@ static int check_args(int argc, const char *endpoint,
 	if (!endpoint)
 		goto out_not_found;
 
-	for ( ; i < nelem; i++) {
+	for ( ; eh[i].ep != NULL; i++) {
 		if (strcmp(eh[i].ep, endpoint) == 0) {
 			if (eh[i].nargs == argc)
 				return 0;
@@ -124,86 +134,84 @@ static int get_end_of_period_statement(char *argv[], char **buf)
 	return mtd_sa_get_end_of_period_statement(argv[1], start, end, buf);
 }
 
-#define IS_EP(endpoint)		(strcmp(ep, endpoint) == 0)
-static int do_sa(int argc, char *argv[])
+#define IS_EP(endpoint)		(strcmp(argv[0], endpoint) == 0)
+static int do_sa(int argc, char *argv[], char **buf)
 {
-	const char *ep = argv[0];	/* endpoint */
-	char *buf = NULL;
-	json_t *rootbuf;
-	const struct endpoint_help *eh = sa_endpoint_help;
-	int nr = sizeof(sa_endpoint_help) / sizeof(sa_endpoint_help[0]);
 	int err;
 
-	err = check_args(argc - 1, ep, eh, nr, print_sa_endpoints);
+	err = check_args(argc, argv[0], sa_endpoint_help, print_sa_endpoints);
 	if (err)
 		return err;
 
 	if (IS_EP("list-employments"))
-		err = mtd_sa_list_employments(&buf);
+		return mtd_sa_list_employments(buf);
 	else if (IS_EP("get-employment"))
-		err = mtd_sa_get_employment(argv[1], &buf);
+		return mtd_sa_get_employment(argv[1], buf);
 	else if (IS_EP("list-obligations"))
-		err = mtd_sa_list_obligations(argv[1], &buf);
+		return mtd_sa_list_obligations(argv[1], buf);
 	else if (IS_EP("list-periods"))
-		err = mtd_sa_list_periods(argv[1], &buf);
+		return mtd_sa_list_periods(argv[1], buf);
 	else if (IS_EP("create-period"))
-		err = mtd_sa_create_period(argv[1], argv[2], &buf);
+		return mtd_sa_create_period(argv[1], argv[2], buf);
 	else if (IS_EP("get-period"))
-		err = mtd_sa_get_period(argv[1], argv[2], &buf);
+		return mtd_sa_get_period(argv[1], argv[2], buf);
 	else if (IS_EP("update-period"))
-		err = mtd_sa_update_period(argv[1], argv[2], argv[3], &buf);
+		return mtd_sa_update_period(argv[1], argv[2], argv[3], buf);
 	else if (IS_EP("get-annual-summary"))
-		err = mtd_sa_get_annual_summary(argv[1], argv[2], &buf);
+		return mtd_sa_get_annual_summary(argv[1], argv[2], buf);
 	else if (IS_EP("update-annual-summary"))
-		err = mtd_sa_update_annual_summary(argv[1], argv[2], argv[3],
-						   &buf);
+		return mtd_sa_update_annual_summary(argv[1], argv[2], argv[3],
+						    buf);
 	else if (IS_EP("submit-end-of-period-statement"))
-		err = mtd_sa_submit_end_of_period_statement(argv[1], argv[2],
-							    argv[3], argv[4],
-							    &buf);
+		return mtd_sa_submit_end_of_period_statement(argv[1], argv[2],
+							     argv[3], argv[4],
+							     buf);
 	else if (IS_EP("get-end-of-period-statement"))
-		err = get_end_of_period_statement(argv, &buf);
+		return get_end_of_period_statement(argv, buf);
 
-	if (!buf)
-		return err;
-
-	rootbuf = json_loads(buf, 0, NULL);
-	json_dumpf(rootbuf, stdout, JSON_INDENT(4));
-	printf("\n");
-	json_decref(rootbuf);
-
-	free(buf);
-
-	return err;
+	return -1;
 }
 
-static int do_saac(int argc, char *argv[])
+static int do_saac(int argc, char *argv[], char **buf)
 {
-	const char *ep = argv[0];	/* endpoint */
-	char *buf = NULL;
-	json_t *rootbuf;
-	const struct endpoint_help *eh = saac_endpoint_help;
-	int nr = sizeof(saac_endpoint_help) / sizeof(saac_endpoint_help[0]);
 	int err;
 
-	err = check_args(argc - 1, ep, eh, nr, print_saac_endpoints);
+	err = check_args(argc, argv[0], saac_endpoint_help,
+			 print_saac_endpoints);
 	if (err)
 		return err;
 
 	if (IS_EP("get-balance"))
-		err = mtd_saac_get_balance(&buf);
+		return mtd_saac_get_balance(buf);
 	else if (IS_EP("list-transactions"))
-		err = mtd_saac_list_transactions(argv[1], argv[2], &buf);
+		return mtd_saac_list_transactions(argv[1], argv[2], buf);
 	else if (IS_EP("get-transaction"))
-		err = mtd_saac_get_transaction(argv[1], &buf);
+		return mtd_saac_get_transaction(argv[1], buf);
 	else if (IS_EP("list-charges"))
-		err = mtd_saac_list_charges(argv[1], argv[2], &buf);
+		return mtd_saac_list_charges(argv[1], argv[2], buf);
 	else if (IS_EP("get-charge"))
-		err = mtd_saac_get_charge(argv[1], &buf);
+		return mtd_saac_get_charge(argv[1], buf);
 	else if (IS_EP("list-payments"))
-		err = mtd_saac_list_payments(argv[1], argv[2], &buf);
+		return mtd_saac_list_payments(argv[1], argv[2], buf);
 	else if (IS_EP("get-payment"))
-		err = mtd_saac_get_payment(argv[1], &buf);
+		return mtd_saac_get_payment(argv[1], buf);
+
+	return -1;
+}
+
+static int do_mtd_api(const char *ep, int argc, char *argv[])
+{
+	char *buf = NULL;
+	json_t *rootbuf;
+	int i = 0;
+	int err = -1;
+
+	for ( ; api_ep_map[i].api != NULL; i++) {
+		if (strcmp(api_ep_map[i].api, ep) != 0)
+			continue;
+
+		err = api_ep_map[i].api_func(argc, argv, &buf);
+	}
 
 	if (!buf)
 		return err;
@@ -248,10 +256,11 @@ static int do_init(void)
 	return err;
 }
 
-#define IS_API(api)		(strcmp(api, p) == 0)
+
+#define IS_API(api)		(strcmp(api, ep) == 0)
 static int dispatcher(int argc, char *argv[])
 {
-	const char *p = argv[0];
+	const char *ep = argv[0];
 	int err = -1;
 
 	if (IS_API("init"))
@@ -260,10 +269,8 @@ static int dispatcher(int argc, char *argv[])
 		err = do_oauth();
 	else if (IS_API("config"))
 		err = do_config();
-	else if (IS_API("sa"))
-		err = do_sa(argc - 1, argv + 1);
-	else if (IS_API("saac"))
-		err = do_saac(argc - 1, argv + 1);
+	else
+		err = do_mtd_api(ep, argc - 2, argv + 1);
 
 	return err;
 }
