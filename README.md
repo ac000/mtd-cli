@@ -26,7 +26,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|oauth|config|sa [endpoint args ...]
+    mtd-cli init|oauth|config|sa|saac [endpoint args ...]
 
 The first argument specifies the API to interface with, currently just three
 are supported
@@ -40,10 +40,12 @@ are supported
 
   * **sa** is for interacting with the Self-Assessment API.
 
+  * **saac** is for interacting with the Self-Assessment Accounts API.
+
 
 *init*, *oauth* & *config* don't take any arguments.
 
-*sa* takes various arguments, the first of which is the endpoint of the API
+**sa** takes various arguments, the first of which is the endpoint of the API
 to connect to. These are
 
     list-employments get-employment list-obligations list-periods create-period
@@ -89,6 +91,37 @@ The optional bit being the *start* & *end* dates. If you don't want to specify
 one or both of them use a '-' in place of one or both e.g
 
     $ mtd-cli sa get-end-of-period-statement XXXX1234567890 *start_date* -
+
+
+**saac** takes various arguments, the first of which is the endpoint of the API
+to connect to. These are
+
+    get-balance list-transactions get-transaction list-charges get-charge
+    list-payments get-payment
+
+The following shows each of the above and what arguments (if any) they take.
+
+    $ mtd-cli saac get-balance
+
+    $ mtd-cli saac list-transactions from to
+
+    $ mtd-cli saac get-transaction transactionId
+
+    $ mtd-cli saac list-charges from to
+
+    $ mtd-cli saac get-charge transactionId
+
+    $ mtd-cli saac list-payments from to
+
+    $ mtd-cli saac get-payment paymentId
+
+*from* & *to* are dates in the format *YYYY-MM-DD*
+
+*transactionId* is an 'id' as returned from
+'*mtd-cli saac list-transactions from to*'.
+
+*paymentId* is an 'id' as returned from '*mtd-cli saac list-payments from to*'.
+
 
 When running you will get a JSON response in both cases of error and success.
 E.g
