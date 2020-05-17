@@ -12,8 +12,7 @@
 #include <string.h>
 #include <linux/limits.h>
 
-#include <libmtdac/mtd-sa.h>
-#include <libmtdac/mtd-saac.h>
+#include <libmtdac/mtd.h>
 
 #include <jansson.h>
 
