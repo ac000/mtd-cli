@@ -26,10 +26,9 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|oauth|config|sa|saac [endpoint args ...]
+    mtd-cli init|oauth|config|sa|saac|ni [endpoint args ...]
 
-The first argument specifies the API to interface with, currently just three
-are supported
+The first argument specifies the API to interface with
 
   * **init** is for doing an initial setup, creating appropriate oauth.json &
     config.json files.
@@ -42,6 +41,7 @@ are supported
 
   * **saac** is for interacting with the Self-Assessment Accounts API.
 
+  * **ni** is for interacting with the national insurance API.
 
 *init*, *oauth* & *config* don't take any arguments.
 
@@ -121,6 +121,19 @@ The following shows each of the above and what arguments (if any) they take.
 '*mtd-cli saac list-transactions from to*'.
 
 *paymentId* is an 'id' as returned from '*mtd-cli saac list-payments from to*'.
+
+
+**ni** currently has a single endpoint
+
+    get-annual-summary
+
+which takes two arguments
+
+    $ mtd-cli ni get-annual-summary utr taxYear
+
+*utr* is the Unique Tax Reference.
+
+*taxYear* is the Tax year to get in the form; *YYYY-YY*
 
 
 When running you will get a JSON response in both cases of error and success.

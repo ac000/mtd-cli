@@ -19,8 +19,9 @@
 #include "mtd-cli.h"
 #include "mtd-cli-sa.h"
 #include "mtd-cli-saac.h"
+#include "mtd-cli-ni.h"
 
-#define APIS		"init oauth config sa saac"
+#define APIS		"init oauth config sa saac ni"
 
 static const struct api_ep {
 	const char *api;
@@ -28,6 +29,7 @@ static const struct api_ep {
 } api_ep_map[] = {
 	{ "sa", &do_sa },
 	{ "saac", &do_saac },
+	{ "ni", &do_ni },
 	{ NULL, NULL }
 };
 
