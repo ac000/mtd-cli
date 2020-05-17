@@ -12,27 +12,27 @@
 
 #include "mtd-cli.h"
 
-#define MTD_CLI_SAAC	MTD_CLI " saac "
+#define MTD_CLI_CMD	MTD_CLI " saac "
 
-#define SAAC_ENDPOINTS \
+#define ENDPOINTS \
 "get-balance list-transactions get-transaction list-charges get-charge\n"\
 "list-payments get-payment"\
 
-static const struct endpoint_help saac_endpoint_help[] = {
-	{ "get-balance", MTD_CLI_SAAC "get-balance", 0 },
-	{ "list-transactions", MTD_CLI_SAAC "list-transactions from to", 2 },
-	{ "get-transaction", MTD_CLI_SAAC "get-transaction transactionId", 1 },
-	{ "list-charges", MTD_CLI_SAAC "list-charges from to", 2 },
-	{ "get-charge", MTD_CLI_SAAC "get-charge transactionId", 1 },
-	{ "list-payments", MTD_CLI_SAAC "list-payments from to", 2 },
-	{ "get-payment", MTD_CLI_SAAC "get-payment paymentId", 1 },
+static const struct endpoint_help ep_help[] = {
+	{ "get-balance", MTD_CLI_CMD "get-balance", 0 },
+	{ "list-transactions", MTD_CLI_CMD "list-transactions from to", 2 },
+	{ "get-transaction", MTD_CLI_CMD "get-transaction transactionId", 1 },
+	{ "list-charges", MTD_CLI_CMD "list-charges from to", 2 },
+	{ "get-charge", MTD_CLI_CMD "get-charge transactionId", 1 },
+	{ "list-payments", MTD_CLI_CMD "list-payments from to", 2 },
+	{ "get-payment", MTD_CLI_CMD "get-payment paymentId", 1 },
 	{ NULL, NULL, 0 }
 };
 
-static int print_saac_endpoints(void)
+static int print_endpoints(void)
 {
 	printf("Available self-assessment accounts endpoints :-\n\n%s\n",
-	       SAAC_ENDPOINTS);
+	       ENDPOINTS);
 
 	return -1;
 }
@@ -41,8 +41,7 @@ int do_saac(int argc, char *argv[], char **buf)
 {
 	int err;
 
-	err = check_args(argc, argv[0], saac_endpoint_help,
-			 print_saac_endpoints);
+	err = check_args(argc, argv[0], ep_help, print_endpoints);
 	if (err)
 		return err;
 

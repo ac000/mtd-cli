@@ -12,43 +12,44 @@
 
 #include "mtd-cli.h"
 
-#define MTD_CLI_SA	MTD_CLI " sa "
+#define MTD_CLI_CMD	MTD_CLI " sa "
 
-#define SA_ENDPOINTS \
+#define ENDPOINTS \
 "list-employments get-employment list-obligations list-periods create-period\n"\
 "get-period update-period get-annual-summary update-annual-summary\n"\
 "submit-end-of-period-statement get-end-of-period-statement"
 
-static const struct endpoint_help sa_endpoint_help[] = {
-	{ "list-employments", MTD_CLI_SA "list-employments", 0 },
-	{ "get-employment", MTD_CLI_SA "get-employment selfEmploymentId", 1 },
-	{ "list-obligations", MTD_CLI_SA "list-obligations selfEmploymentId",
+static const struct endpoint_help ep_help[] = {
+	{ "list-employments", MTD_CLI_CMD "list-employments", 0 },
+	{ "get-employment", MTD_CLI_CMD "get-employment selfEmploymentId", 1 },
+	{ "list-obligations", MTD_CLI_CMD "list-obligations selfEmploymentId",
 	  1 },
-	{ "list-periods", MTD_CLI_SA "list-periods selfEmploymentId", 1 },
-	{ "create-period", MTD_CLI_SA "create-period <file> selfEmploymentId",
+	{ "list-periods", MTD_CLI_CMD "list-periods selfEmploymentId", 1 },
+	{ "create-period", MTD_CLI_CMD "create-period <file> selfEmploymentId",
 	  2 },
-	{ "get-period", MTD_CLI_SA "get-period selfEmploymentId periodId", 2 },
+	{ "get-period", MTD_CLI_CMD "get-period selfEmploymentId periodId",
+	 2 },
 	{ "update-period",
-	  MTD_CLI_SA "update-period <file> selfEmploymentId periodId", 3 },
+	  MTD_CLI_CMD "update-period <file> selfEmploymentId periodId", 3 },
 	{ "get-annual-summary",
-	  MTD_CLI_SA "get-annual-summary selfEmploymentId taxYear", 2 },
+	  MTD_CLI_CMD "get-annual-summary selfEmploymentId taxYear", 2 },
 	{ "update-annual-summary",
-	  MTD_CLI_SA "update-annual-summary <file> selfEmploymentId taxYear",
+	  MTD_CLI_CMD "update-annual-summary <file> selfEmploymentId taxYear",
 	  3 },
 	{ "submit-end-of-period-statement",
-	  MTD_CLI_SA
+	  MTD_CLI_CMD
 	   "submit-end-of-period-statement <file> selfEmploymentId start end",
 	  3 },
 	{ "get-end-of-period-statement",
-	  MTD_CLI_SA
+	  MTD_CLI_CMD
 	   "get-end-of-period-statement selfEmploymentId start|- end|-",
 	  3 },
 	{ NULL, NULL, 0 }
 };
 
-static int print_sa_endpoints(void)
+static int print_endpoints(void)
 {
-	printf("Available self-assessment endpoints :-\n\n%s\n", SA_ENDPOINTS);
+	printf("Available self-assessment endpoints :-\n\n%s\n", ENDPOINTS);
 
 	return -1;
 }
@@ -68,7 +69,7 @@ int do_sa(int argc, char *argv[], char **buf)
 {
 	int err;
 
-	err = check_args(argc, argv[0], sa_endpoint_help, print_sa_endpoints);
+	err = check_args(argc, argv[0], ep_help, print_endpoints);
 	if (err)
 		return err;
 
