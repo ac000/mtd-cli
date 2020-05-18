@@ -42,6 +42,10 @@ static const struct api_ep {
 	{ NULL, NULL }
 };
 
+enum error {
+	ERR_UNKNOWN_CMD = 1001,
+};
+
 static int print_api_help(void)
 {
 	printf("Available APIs :-\n\n%s\n", APIS);
@@ -108,7 +112,7 @@ static int do_mtd_api(const char *name, int argc, char *argv[])
 	char *buf = NULL;
 	json_t *rootbuf;
 	int i = 0;
-	int err = -1;
+	int err = ERR_UNKNOWN_CMD;
 
 	for ( ; api_ep_map[i].api != NULL; i++) {
 		const struct endpoint *ep = api_ep_map[i].endpoint->endpoints;
@@ -208,6 +212,9 @@ int main(int argc, char *argv[])
 	if (err) {
 	       if (err == MTD_ERR_NEEDS_AUTHORISATION)
 		       fprintf(stderr, "Please run 'mtd-cli oauth\n");
+	       else if (err == ERR_UNKNOWN_CMD)
+		       print_api_help();
+
 	       ret = EXIT_FAILURE;
 	}
 
