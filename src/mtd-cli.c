@@ -40,7 +40,7 @@ static int print_api_help(void)
 	return -1;
 }
 
-int check_args(int argc, const char *endpoint, const struct endpoint_help *eh,
+int check_args(int argc, const char *endpoint, const struct endpoint *ep,
 	       int (*print_help)(void))
 {
 	int ret = -1;
@@ -50,13 +50,13 @@ int check_args(int argc, const char *endpoint, const struct endpoint_help *eh,
 	if (!endpoint)
 		goto out_not_found;
 
-	for ( ; eh[i].ep != NULL; i++) {
-		if (strcmp(eh[i].ep, endpoint) == 0) {
-			if (eh[i].nargs == argc)
+	for ( ; ep[i].name != NULL; i++) {
+		if (strcmp(ep[i].name, endpoint) == 0) {
+			if (ep[i].nargs == argc)
 				return 0;
 
 			found = true;
-			printf("Usage:\t%s\n", eh[i].use);
+			printf("Usage:\t%s\n", ep[i].use);
 		}
 	}
 
@@ -65,6 +65,33 @@ out_not_found:
 		print_help();
 
 	return ret;
+}
+
+int do_api_func(const struct endpoint *ep, char *argv[], char **buf)
+{
+	int i = 0;
+
+	for ( ; ep[i].name != NULL; i++) {
+		if (strcmp(ep[i].name, argv[0]) != 0)
+			continue;
+
+		switch (ep[i].nargs) {
+		case 0:
+			return ep[i].api_func.func_0(buf);
+		case 1:
+			return ep[i].api_func.func_1(argv[1], buf);
+		case 2:
+			return ep[i].api_func.func_2(argv[1], argv[2], buf);
+		case 3:
+			return ep[i].api_func.func_3(argv[1], argv[2], argv[3],
+						     buf);
+		case 4:
+			return ep[i].api_func.func_4(argv[1], argv[2], argv[3],
+						     argv[4], buf);
+		}
+	}
+
+	return -1;
 }
 
 static int do_mtd_api(const char *ep, int argc, char *argv[])

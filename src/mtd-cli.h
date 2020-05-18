@@ -9,24 +9,30 @@
 #ifndef _MTD_CLI_H_
 #define _MTD_CLI_H_
 
-#include <string.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #define MTD_CLI			"mtd-cli"
 
-#define IS_EP(endpoint)		(strcmp(argv[0], endpoint) == 0)
-
-struct endpoint_help {
-	const char *ep;
-	const char *use;
+struct endpoint {
+	const char *name;
+	union {
+		int (*func_0)(char **buf);
+		int (*func_1)(const char *a1, char **buf);
+		int (*func_2)(const char *a1, const char *a2, char **buf);
+		int (*func_3)(const char *a1, const char *a2, const char *a3,
+			      char **buf);
+		int (*func_4)(const char *a1, const char *a2, const char *a3,
+			      const char *a4, char **buf);
+	} api_func;
 	const int nargs;
+	const char *use;
 };
 
 extern int check_args(int argc, const char *endpoint,
-		      const struct endpoint_help *eh, int (*print_help)(void));
+		      const struct endpoint *ep, int (*print_help)(void));
+extern int do_api_func(const struct endpoint *ep, char *argv[], char **buf);
 
 #ifdef __cplusplus
 } /* extern "C" */

@@ -18,15 +18,62 @@
 "get-balance list-transactions get-transaction list-charges get-charge\n"\
 "list-payments get-payment"\
 
-static const struct endpoint_help ep_help[] = {
-	{ "get-balance", MTD_CLI_CMD "get-balance", 0 },
-	{ "list-transactions", MTD_CLI_CMD "list-transactions from to", 2 },
-	{ "get-transaction", MTD_CLI_CMD "get-transaction transactionId", 1 },
-	{ "list-charges", MTD_CLI_CMD "list-charges from to", 2 },
-	{ "get-charge", MTD_CLI_CMD "get-charge transactionId", 1 },
-	{ "list-payments", MTD_CLI_CMD "list-payments from to", 2 },
-	{ "get-payment", MTD_CLI_CMD "get-payment paymentId", 1 },
-	{ NULL, NULL, 0 }
+static const struct endpoint endpoints[] = {
+	{
+		.name = "get-balance",
+		.api_func = {
+			.func_0 = &mtd_saac_get_balance
+		},
+		.nargs = 0,
+		.use = MTD_CLI_CMD "get-balance"
+	},
+	{
+		.name = "list-transactions",
+		.api_func = {
+			.func_2 = &mtd_saac_list_transactions
+		},
+		.nargs = 2,
+		.use = MTD_CLI_CMD "list-transactions from to"
+	},
+	{
+		.name = "get-transaction",
+		.api_func = {
+			.func_1 = &mtd_saac_get_transaction
+		},
+		.nargs = 1,
+		.use = MTD_CLI_CMD "get-transaction transactionId"
+	},
+	{
+		.name = "list-charges",
+		.api_func = {
+			.func_2 = &mtd_saac_list_charges
+		},
+		.nargs = 2,
+		.use = MTD_CLI_CMD "list-charges from to"
+	},
+	{
+		.name = "get-charge",
+		.api_func = {
+			.func_1 = &mtd_saac_get_charge
+		},
+		.nargs = 1,
+		.use = MTD_CLI_CMD "get-charge transactionId" },
+	{
+		.name = "list-payments",
+		.api_func = {
+			.func_2 = &mtd_saac_list_payments
+		},
+		.nargs = 2,
+		.use = MTD_CLI_CMD "list-payments from to" },
+	{
+		.name = "get-payment",
+		.api_func = {
+			.func_1 = &mtd_saac_get_payment
+		},
+		.nargs = 1,
+		.use = MTD_CLI_CMD "get-payment paymentId"
+	},
+	{ NULL, { NULL }, 0, NULL }
 };
 
 static int print_endpoints(void)
@@ -41,24 +88,9 @@ int do_saac(int argc, char *argv[], char **buf)
 {
 	int err;
 
-	err = check_args(argc, argv[0], ep_help, print_endpoints);
+	err = check_args(argc, argv[0], endpoints, print_endpoints);
 	if (err)
 		return err;
 
-	if (IS_EP("get-balance"))
-		return mtd_saac_get_balance(buf);
-	else if (IS_EP("list-transactions"))
-		return mtd_saac_list_transactions(argv[1], argv[2], buf);
-	else if (IS_EP("get-transaction"))
-		return mtd_saac_get_transaction(argv[1], buf);
-	else if (IS_EP("list-charges"))
-		return mtd_saac_list_charges(argv[1], argv[2], buf);
-	else if (IS_EP("get-charge"))
-		return mtd_saac_get_charge(argv[1], buf);
-	else if (IS_EP("list-payments"))
-		return mtd_saac_list_payments(argv[1], argv[2], buf);
-	else if (IS_EP("get-payment"))
-		return mtd_saac_get_payment(argv[1], buf);
-
-	return -1;
+	return do_api_func(endpoints, argv, buf);
 }
