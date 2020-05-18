@@ -19,6 +19,13 @@
 "get-period update-period get-annual-summary update-annual-summary\n"\
 "submit-end-of-period-statement get-end-of-period-statement"
 
+static int print_endpoints(void)
+{
+	printf("Available self-assessment endpoints :-\n\n%s\n", ENDPOINTS);
+
+	return -1;
+}
+
 static int get_end_of_period_statement(const char *seid, const char *start,
 				       const char *end, char **buf)
 {
@@ -123,20 +130,7 @@ static const struct endpoint endpoints[] = {
 	{ NULL, { NULL }, 0, NULL }
 };
 
-static int print_endpoints(void)
-{
-	printf("Available self-assessment endpoints :-\n\n%s\n", ENDPOINTS);
-
-	return -1;
-}
-
-int do_sa(int argc, char *argv[], char **buf)
-{
-	int err;
-
-	err = check_args(argc, argv[0], endpoints, print_endpoints);
-	if (err)
-		return err;
-
-	return do_api_func(endpoints, argv, buf);
-}
+const struct _endpoint sa_endpoint = {
+	.endpoints = endpoints,
+	.print_help = &print_endpoints
+};

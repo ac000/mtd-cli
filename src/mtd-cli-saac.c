@@ -18,6 +18,14 @@
 "get-balance list-transactions get-transaction list-charges get-charge\n"\
 "list-payments get-payment"\
 
+static int print_endpoints(void)
+{
+	printf("Available self-assessment accounts endpoints :-\n\n%s\n",
+	       ENDPOINTS);
+
+	return -1;
+}
+
 static const struct endpoint endpoints[] = {
 	{
 		.name = "get-balance",
@@ -76,21 +84,7 @@ static const struct endpoint endpoints[] = {
 	{ NULL, { NULL }, 0, NULL }
 };
 
-static int print_endpoints(void)
-{
-	printf("Available self-assessment accounts endpoints :-\n\n%s\n",
-	       ENDPOINTS);
-
-	return -1;
-}
-
-int do_saac(int argc, char *argv[], char **buf)
-{
-	int err;
-
-	err = check_args(argc, argv[0], endpoints, print_endpoints);
-	if (err)
-		return err;
-
-	return do_api_func(endpoints, argv, buf);
-}
+const struct _endpoint saac_endpoint = {
+	.endpoints = endpoints,
+	.print_help = &print_endpoints
+};

@@ -15,6 +15,11 @@ extern "C" {
 
 #define MTD_CLI			"mtd-cli"
 
+struct _endpoint {
+	const struct endpoint *endpoints;
+	int (*print_help)(void);
+};
+
 struct endpoint {
 	const char *name;
 	union {
@@ -30,8 +35,6 @@ struct endpoint {
 	const char *use;
 };
 
-extern int check_args(int argc, const char *endpoint,
-		      const struct endpoint *ep, int (*print_help)(void));
 extern int do_api_func(const struct endpoint *ep, char *argv[], char **buf);
 
 #ifdef __cplusplus

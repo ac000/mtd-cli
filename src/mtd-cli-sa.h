@@ -13,7 +13,7 @@
 extern "C" {
 #endif
 
-extern int do_sa(int argc, char *argv[], char **buf);
+extern const struct _endpoint sa_endpoint;
 
 #ifdef __cplusplus
 } /* extern "C" */

@@ -25,11 +25,20 @@
 
 static const struct api_ep {
 	const char *api;
-	int (*api_func)(int argc, char *argv[], char **buf);
+	const struct _endpoint *endpoint;
 } api_ep_map[] = {
-	{ "sa", &do_sa },
-	{ "saac", &do_saac },
-	{ "ni", &do_ni },
+	{
+		.api = "sa",
+		.endpoint = &sa_endpoint
+	},
+	{
+		.api = "saac",
+		.endpoint = &saac_endpoint
+	},
+	{
+		.api = "ni",
+		.endpoint = &ni_endpoint
+	},
 	{ NULL, NULL }
 };
 
@@ -40,18 +49,18 @@ static int print_api_help(void)
 	return -1;
 }
 
-int check_args(int argc, const char *endpoint, const struct endpoint *ep,
+int check_args(int argc, const char *name, const struct endpoint *ep,
 	       int (*print_help)(void))
 {
 	int ret = -1;
 	unsigned i = 0;
 	bool found = false;
 
-	if (!endpoint)
+	if (!name)
 		goto out_not_found;
 
 	for ( ; ep[i].name != NULL; i++) {
-		if (strcmp(ep[i].name, endpoint) == 0) {
+		if (strcmp(ep[i].name, name) == 0) {
 			if (ep[i].nargs == argc)
 				return 0;
 
@@ -94,7 +103,7 @@ int do_api_func(const struct endpoint *ep, char *argv[], char **buf)
 	return -1;
 }
 
-static int do_mtd_api(const char *ep, int argc, char *argv[])
+static int do_mtd_api(const char *name, int argc, char *argv[])
 {
 	char *buf = NULL;
 	json_t *rootbuf;
@@ -102,10 +111,18 @@ static int do_mtd_api(const char *ep, int argc, char *argv[])
 	int err = -1;
 
 	for ( ; api_ep_map[i].api != NULL; i++) {
-		if (strcmp(api_ep_map[i].api, ep) != 0)
+		const struct endpoint *ep = api_ep_map[i].endpoint->endpoints;
+
+		if (strcmp(api_ep_map[i].api, name) != 0)
 			continue;
 
-		err = api_ep_map[i].api_func(argc, argv, &buf);
+		err = check_args(argc, argv[0], ep,
+				 api_ep_map[i].endpoint->print_help);
+		if (err)
+			return err;
+		err = do_api_func(ep, argv, &buf);
+
+		break;
 	}
 
 	if (!buf)

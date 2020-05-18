@@ -16,6 +16,13 @@
 
 #define ENDPOINTS	"get-annual-summary"
 
+static int print_endpoints(void)
+{
+	printf("Available national insurance endpoints :-\n\n%s\n", ENDPOINTS);
+
+	return -1;
+}
+
 static const struct endpoint endpoints[] = {
 	{
 		.name = "get-annual-summary",
@@ -28,20 +35,7 @@ static const struct endpoint endpoints[] = {
 	{ NULL, { NULL }, 0, NULL}
 };
 
-static int print_endpoints(void)
-{
-	printf("Available national insurance endpoints :-\n\n%s\n", ENDPOINTS);
-
-	return -1;
-}
-
-int do_ni(int argc, char *argv[], char **buf)
-{
-	int err;
-
-	err = check_args(argc, argv[0], endpoints, print_endpoints);
-	if (err)
-		return err;
-
-	return do_api_func(endpoints, argv, buf);
-}
+const struct _endpoint ni_endpoint = {
+	.endpoints = endpoints,
+	.print_help = &print_endpoints
+};
