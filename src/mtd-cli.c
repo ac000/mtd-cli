@@ -52,28 +52,28 @@ static int print_api_help(void)
 int check_args(int argc, const char *name, const struct endpoint *ep,
 	       int (*print_help)(void))
 {
-	int ret = -1;
-	unsigned i = 0;
-	bool found = false;
+	int i = 0;
 
 	if (!name)
-		goto out_not_found;
+		goto out_help;
 
 	for ( ; ep[i].name != NULL; i++) {
-		if (strcmp(ep[i].name, name) == 0) {
-			if (ep[i].nargs == argc)
-				return 0;
+		if (strcmp(ep[i].name, name) != 0)
+			continue;
 
-			found = true;
-			printf("Usage:\t%s\n", ep[i].use);
-		}
+		if (ep[i].nargs == argc)
+			return 0;
+
+		printf("Usage:\t%s\n", ep[i].use);
+
+
+		return -1;
 	}
 
-out_not_found:
-	if (!found)
-		print_help();
+out_help:
+	print_help();
 
-	return ret;
+	return -1;
 }
 
 int do_api_func(const struct endpoint *ep, char *argv[], char **buf)
