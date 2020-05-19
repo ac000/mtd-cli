@@ -17,11 +17,11 @@
 
 #define ENDPOINTS \
 "get-balance list-transactions get-transaction list-charges get-charge\n"\
-"list-payments get-payment"\
+"list-payments get-payment"
 
 static int print_endpoints(void)
 {
-	printf("Available" API_NAME " endpoints :-\n\n%s\n", ENDPOINTS);
+	printf("Available " API_NAME " endpoints :-\n\n%s\n", ENDPOINTS);
 
 	return -1;
 }
