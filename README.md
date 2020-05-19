@@ -41,7 +41,7 @@ The first argument specifies the API to interface with
 
   * **saac** is for interacting with the Self-Assessment Accounts API.
 
-  * **ni** is for interacting with the national insurance API.
+  * **ni** is for interacting with the National Insurance API.
 
 *init*, *oauth* & *config* don't take any arguments.
 
