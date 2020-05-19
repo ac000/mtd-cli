@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: GPL-2.0 */
 
 /*
- * mtd-cli-ni.c - make Tax Digital - National Insurance
+ * mtd-cli-ni.c - Make Tax Digital - National Insurance
  *
  * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
  */

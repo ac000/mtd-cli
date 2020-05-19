@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: GPL-2.0 */
 
 /*
- * mtd-cli-saac.c - make Tax Digital - Self-Assessment Accounts
+ * mtd-cli-saac.c - Make Tax Digital - Self-Assessment Accounts
  *
  * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
  */
