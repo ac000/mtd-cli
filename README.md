@@ -43,6 +43,8 @@ The first argument specifies the API to interface with
 
   * **ni** is for interacting with the National Insurance API.
 
+  * **test-cu** is for interacting with the Create Test User API.
+
 *init*, *oauth* & *config* don't take any arguments.
 
 **sa** takes various arguments, the first of which is the endpoint of the API
@@ -134,6 +136,23 @@ which takes two arguments
 *utr* is the Unique Tax Reference.
 
 *taxYear* is the Tax year to get in the form; *YYYY-YY*
+
+
+**test-cu** has the following commands
+
+    create-individual create-organisation create-agent list-service
+
+with the following usage
+
+    $ mtd-cli test-cu create-individual <file>
+
+    $ mtd-cli test-cu create-organisation <file>
+
+    $ mtd-cli test-cu create-agent <file>
+
+    $ mtd-cli test-cu list-service
+
+*<file>* is a JSON file containing a list of service names
 
 
 When running you will get a JSON response in both cases of error and success.
