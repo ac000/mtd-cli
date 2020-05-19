@@ -13,12 +13,13 @@
 #include "mtd-cli.h"
 
 #define MTD_CLI_CMD	MTD_CLI " ni "
+#define API_NAME	"National Insurance"
 
 #define ENDPOINTS	"get-annual-summary"
 
 static int print_endpoints(void)
 {
-	printf("Available national insurance endpoints :-\n\n%s\n", ENDPOINTS);
+	printf("Available " API_NAME " endpoints :-\n\n%s\n", ENDPOINTS);
 
 	return -1;
 }

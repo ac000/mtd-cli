@@ -13,6 +13,7 @@
 #include "mtd-cli.h"
 
 #define MTD_CLI_CMD	MTD_CLI " saac "
+#define API_NAME	"Self-Assessment Accounts"
 
 #define ENDPOINTS \
 "get-balance list-transactions get-transaction list-charges get-charge\n"\
@@ -20,8 +21,7 @@
 
 static int print_endpoints(void)
 {
-	printf("Available self-assessment accounts endpoints :-\n\n%s\n",
-	       ENDPOINTS);
+	printf("Available" API_NAME " endpoints :-\n\n%s\n", ENDPOINTS);
 
 	return -1;
 }
