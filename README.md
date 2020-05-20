@@ -247,6 +247,25 @@ $ ./mtd-cli sa list-periods xxx
 }
 ```
 
+## Environment variables
+
+Currently there are two environment variables that can bet set to control
+behaviour
+
+#### **MTD_CLI_OPT_LOG_LEVEL**
+
+This can be used to override the default log level (MTD_OPT_LOG_ERR.
+
+Currently recognised values are; *debug* & *info*
+
+#### **MTD_CLI_OPT_SND_FPH_HDRS**
+
+This can be used to enable the sending of 'Fraud Prevention Headers', set it
+to
+
+*true* or *1*
+
+
 ## License
 
 This is licensed under the GNU General Public License (GPL) version 2

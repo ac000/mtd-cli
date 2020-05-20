@@ -210,13 +210,24 @@ int main(int argc, char *argv[])
 {
 	int err;
 	int ret = EXIT_SUCCESS;
+	int opt_snd_fph_hdrs = 0;
+	int opt_log_level = MTD_OPT_LOG_ERR;
+	char *snd_fph_hdrs = getenv("MTD_CLI_OPT_SND_FPH_HDRS");
+	char *log_level = getenv("MTD_CLI_OPT_LOG_LEVEL");
 
 	if (argc == 1) {
 		print_api_help();
 		exit(EXIT_FAILURE);
 	}
 
-	err = mtd_init(MTD_OPT_LOG_ERR);
+	if (snd_fph_hdrs && (*snd_fph_hdrs == 't' || *snd_fph_hdrs == '1'))
+		opt_snd_fph_hdrs = MTD_OPT_SND_ANTI_FRAUD_HDRS;
+	if (log_level && *log_level == 'd')
+		opt_log_level = MTD_OPT_LOG_DEBUG;
+	else if (log_level && *log_level == 'i')
+		opt_log_level = MTD_OPT_LOG_INFO;
+
+	err = mtd_init(opt_log_level|opt_snd_fph_hdrs);
 	if (err && strcmp(argv[1], "init") != 0) {
 		if (err == MTD_ERR_MISSING_CONFIG)
 			fprintf(stderr, "Please run 'mtd-cli init\n");
