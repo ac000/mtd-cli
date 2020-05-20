@@ -30,10 +30,11 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_0 = &mtd_test_fph_validate
 		},
-		.nargs = 0,
+		.func = FUNC_0,
+		.nr_req_args = 0,
 		.use = MTD_CLI_CMD "validate"
 	},
-	{ NULL, { NULL }, 0, NULL}
+	{ NULL, { NULL }, 0, 0, NULL}
 };
 
 const struct _endpoint test_fph_endpoint = {

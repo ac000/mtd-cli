@@ -30,10 +30,11 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_2 = &mtd_ni_get_annual_summary
 		},
-		.nargs = 2,
+		.func = FUNC_2,
+		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "get-annual-summary utr taxYear"
 	},
-	{ NULL, { NULL }, 0, NULL}
+	{ NULL, { NULL }, 0, 0, NULL}
 };
 
 const struct _endpoint ni_endpoint = {

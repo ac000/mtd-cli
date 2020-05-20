@@ -24,6 +24,8 @@
 #include "mtd-cli-test-cu.h"
 #include "mtd-cli-test-fph.h"
 
+#define MAX_ARGV	7
+
 #define APIS		"init oauth config sa saac ic ni test-cu test-fph"
 
 static const struct api_ep {
@@ -80,7 +82,7 @@ int check_args(int argc, const char *name, const struct endpoint *ep,
 		if (strcmp(ep[i].name, name) != 0)
 			continue;
 
-		if (ep[i].nargs == argc)
+		if (ep[i].nr_req_args == argc)
 			return 0;
 
 		printf("Usage: %s\n", ep[i].use);
@@ -94,27 +96,31 @@ out_help:
 	return -1;
 }
 
-int do_api_func(const struct endpoint *ep, char *argv[], char **buf)
+int do_api_func(const struct endpoint *ep, int argc, char *argv[], char **buf)
 {
-	int i = 0;
+	int i;
+	const char *args[MAX_ARGV] = { NULL };
 
-	for ( ; ep[i].name != NULL; i++) {
+	for (i = 0; i < argc && i < MAX_ARGV; i++)
+		args[i] = argv[i + 1];
+
+	for (i = 0; ep[i].name != NULL; i++) {
 		if (strcmp(ep[i].name, argv[0]) != 0)
 			continue;
 
-		switch (ep[i].nargs) {
-		case 0:
+		switch (ep[i].func) {
+		case FUNC_0:
 			return ep[i].api_func.func_0(buf);
-		case 1:
-			return ep[i].api_func.func_1(argv[1], buf);
-		case 2:
-			return ep[i].api_func.func_2(argv[1], argv[2], buf);
-		case 3:
-			return ep[i].api_func.func_3(argv[1], argv[2], argv[3],
+		case FUNC_1:
+			return ep[i].api_func.func_1(args[0], buf);
+		case FUNC_2:
+			return ep[i].api_func.func_2(args[0], args[1], buf);
+		case FUNC_3:
+			return ep[i].api_func.func_3(args[0], args[1], args[2],
 						     buf);
-		case 4:
-			return ep[i].api_func.func_4(argv[1], argv[2], argv[3],
-						     argv[4], buf);
+		case FUNC_4:
+			return ep[i].api_func.func_4(args[0], args[1], args[2],
+						     args[3], buf);
 		}
 	}
 
@@ -138,7 +144,7 @@ static int do_mtd_api(const char *name, int argc, char *argv[])
 				 api_ep_map[i].endpoint->print_help);
 		if (err)
 			return err;
-		err = do_api_func(ep, argv, &buf);
+		err = do_api_func(ep, argc, argv, &buf);
 
 		break;
 	}

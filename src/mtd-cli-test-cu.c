@@ -31,7 +31,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_test_cu_create_individual
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "create-individual <file>"
 	},
 	{
@@ -39,7 +40,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_test_cu_create_organisation
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "create-organisation <file>"
 	},
 	{
@@ -47,7 +49,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_test_cu_create_agent
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "create-agent <file?"
 	},
 	{
@@ -55,10 +58,11 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_0 = &mtd_test_cu_list_services
 		},
-		.nargs = 0,
+		.func = FUNC_0,
+		.nr_req_args = 0,
 		.use = MTD_CLI_CMD "list-services"
 	},
-	{ NULL, { NULL }, 0, NULL }
+	{ NULL, { NULL }, 0, 0, NULL }
 };
 
 const struct _endpoint test_cu_endpoint = {

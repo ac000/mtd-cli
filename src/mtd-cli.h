@@ -15,6 +15,14 @@ extern "C" {
 
 #define MTD_CLI			"mtd-cli"
 
+enum nr_func_args {
+	FUNC_0 = 0,
+	FUNC_1,
+	FUNC_2,
+	FUNC_3,
+	FUNC_4,
+};
+
 struct _endpoint {
 	const struct endpoint *endpoints;
 	int (*print_help)(void);
@@ -22,7 +30,7 @@ struct _endpoint {
 
 struct endpoint {
 	const char *name;
-	union {
+	const union {
 		int (*func_0)(char **buf);
 		int (*func_1)(const char *a1, char **buf);
 		int (*func_2)(const char *a1, const char *a2, char **buf);
@@ -31,7 +39,8 @@ struct endpoint {
 		int (*func_4)(const char *a1, const char *a2, const char *a3,
 			      const char *a4, char **buf);
 	} api_func;
-	const int nargs;
+	const enum nr_func_args func;
+	const int nr_req_args;
 	const char *use;
 };
 

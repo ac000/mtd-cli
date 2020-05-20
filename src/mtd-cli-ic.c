@@ -33,7 +33,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_0 = &mtd_ic_list_calculations
 		},
-		.nargs = 0,
+		.func = FUNC_0,
+		.nr_req_args = 0,
 		.use = MTD_CLI_CMD "list-calculations"
 	},
 	{
@@ -41,7 +42,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_ic_trigger_calculation
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "trigger-calculation <file>"
 	},
 	{
@@ -49,7 +51,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_ic_get_calculation_meta
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "get-calculation-metadata calculationId"
 	},
 	{
@@ -57,7 +60,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_ic_get_income_tax_nics_calc
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "get-income-tax-nics-calc calculationId"
 	},
 	{
@@ -65,7 +69,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_ic_get_taxable_income
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "create-period calculationId"
 	},
 	{
@@ -73,7 +78,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_ic_get_allowances_deductions_reliefs
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "get-allowances-deductions-reliefs calculationId"
 	},
 	{
@@ -81,7 +87,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_ic_get_end_of_year_est
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "get-end-of-year-estimate calculationId"
 	},
 	{
@@ -89,10 +96,11 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_ic_get_messages
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "get-messages calculationId"
 	},
-	{ NULL, { NULL }, 0, NULL }
+	{ NULL, { NULL }, 0, 0, NULL }
 };
 
 const struct _endpoint ic_endpoint = {

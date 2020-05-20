@@ -45,7 +45,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_0 = &mtd_sa_list_employments
 		},
-		.nargs = 0,
+		.func = FUNC_0,
+		.nr_req_args = 0,
 		.use = MTD_CLI_CMD "list-employments"
 	},
 	{
@@ -53,7 +54,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_sa_get_employment
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "get-employment selfEmploymentId"
 	},
 	{
@@ -61,7 +63,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_sa_list_obligations
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "list-obligations selfEmploymentId"
 	},
 	{
@@ -69,7 +72,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_sa_list_periods
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "list-periods selfEmploymentId"
 	},
 	{
@@ -77,7 +81,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_2 = &mtd_sa_create_period
 		},
-		.nargs = 2,
+		.func = FUNC_2,
+		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "create-period <file> selfEmploymentId"
 	},
 	{
@@ -85,7 +90,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_2 = &mtd_sa_get_period
 		},
-		.nargs = 2,
+		.func = FUNC_2,
+		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "get-period selfEmploymentId periodId"
 	},
 	{
@@ -93,7 +99,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_3 = &mtd_sa_update_period
 		},
-		.nargs = 3,
+		.func = FUNC_3,
+		.nr_req_args = 3,
 		.use = MTD_CLI_CMD "update-period <file> selfEmploymentId periodId"
 	},
 	{
@@ -101,7 +108,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_2 = &mtd_sa_get_annual_summary
 		},
-		.nargs = 2,
+		.func = FUNC_2,
+		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "get-annual-summary selfEmploymentId taxYear"
 	},
 	{
@@ -109,7 +117,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_3 = &mtd_sa_update_annual_summary
 		},
-		.nargs = 3,
+		.func = FUNC_3,
+		.nr_req_args = 3,
 		.use = MTD_CLI_CMD "update-annual-summary <file> selfEmploymentId taxYear"
 	},
 	{
@@ -117,7 +126,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_4 = &mtd_sa_submit_end_of_period_statement
 		},
-		.nargs = 4,
+		.func = FUNC_4,
+		.nr_req_args = 4,
 		.use = MTD_CLI_CMD "submit-end-of-period-statement <file> selfEmploymentId start end"
 	},
 	{
@@ -125,10 +135,11 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_3 = &get_end_of_period_statement
 		},
-		.nargs = 3,
+		.func = FUNC_3,
+		.nr_req_args = 3,
 		.use = MTD_CLI_CMD "get-end-of-period-statement selfEmploymentId start|- end|-"
 	},
-	{ NULL, { NULL }, 0, NULL }
+	{ NULL, { NULL }, 0, 0, NULL }
 };
 
 const struct _endpoint sa_endpoint = {

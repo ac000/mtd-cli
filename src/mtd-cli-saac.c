@@ -32,7 +32,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_0 = &mtd_saac_get_balance
 		},
-		.nargs = 0,
+		.func = FUNC_0,
+		.nr_req_args = 0,
 		.use = MTD_CLI_CMD "get-balance"
 	},
 	{
@@ -40,7 +41,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_2 = &mtd_saac_list_transactions
 		},
-		.nargs = 2,
+		.func = FUNC_2,
+		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "list-transactions from to"
 	},
 	{
@@ -48,7 +50,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_saac_get_transaction
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "get-transaction transactionId"
 	},
 	{
@@ -56,7 +59,8 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_2 = &mtd_saac_list_charges
 		},
-		.nargs = 2,
+		.func = FUNC_2,
+		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "list-charges from to"
 	},
 	{
@@ -64,24 +68,27 @@ static const struct endpoint endpoints[] = {
 		.api_func = {
 			.func_1 = &mtd_saac_get_charge
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "get-charge transactionId" },
 	{
 		.name = "list-payments",
 		.api_func = {
 			.func_2 = &mtd_saac_list_payments
 		},
-		.nargs = 2,
+		.func = FUNC_2,
+		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "list-payments from to" },
 	{
 		.name = "get-payment",
 		.api_func = {
 			.func_1 = &mtd_saac_get_payment
 		},
-		.nargs = 1,
+		.func = FUNC_1,
+		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "get-payment paymentId"
 	},
-	{ NULL, { NULL }, 0, NULL }
+	{ NULL, { NULL }, 0, 0, NULL }
 };
 
 const struct _endpoint saac_endpoint = {
