@@ -83,7 +83,7 @@ The following shows each of the above and what arguments (if any) they take.
 
 *periodId* is an 'id' as returned from '*mtd-cli sa list-periods ...*'.
 
-*<file>* is a file containing JSON in the appropriate format for the endpoint
+*\<file\>* is a file containing JSON in the appropriate format for the endpoint
 being used.
 
 *get-end-of-period-statement* is a slight oddball as this endpoint is the
@@ -152,7 +152,7 @@ with the following usage
 
     $ mtd-cli test-cu list-service
 
-*<file>* is a JSON file containing a list of service names
+*\<file\>* is a JSON file containing a list of service names
 
 
 When running you will get a JSON response in both cases of error and success.
