@@ -35,8 +35,6 @@ struct endpoint {
 	const char *use;
 };
 
-extern int do_api_func(const struct endpoint *ep, char *argv[], char **buf);
-
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
