@@ -206,6 +206,7 @@ $ ./mtd-cli sa list-periods XXXX1234567890
     "status_code": 200,
     "status_str": "OK",
     "url": "https://test-api.service.hmrc.gov.uk/self-assessment/ni/XX123456/self-employments/XXXX1234567890/periods",
+    "method": "GET",
     "result": [
         {
             "id": "2020-04-06_2020-07-04",
@@ -230,6 +231,7 @@ $ ./mtd-cli sa list-periods xxx
     "status_code": 404,
     "status_str": "Not Found",
     "url": "https://test-api.service.hmrc.gov.uk/self-assessment/ni/XX123456/self-employments/xxx/periods",
+    "method": "GET",
     "result": null
 }
 ```
