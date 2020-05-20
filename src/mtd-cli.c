@@ -83,8 +83,7 @@ int check_args(int argc, const char *name, const struct endpoint *ep,
 		if (ep[i].nargs == argc)
 			return 0;
 
-		printf("Usage:\t%s\n", ep[i].use);
-
+		printf("Usage: %s\n", ep[i].use);
 
 		return -1;
 	}
