@@ -26,7 +26,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|oauth|config|sa|saac|ni [endpoint args ...]
+    mtd-cli init|oauth|config|sa|saac|ic|ni [endpoint args ...]
 
 The first argument specifies the API to interface with
 
@@ -40,6 +40,8 @@ The first argument specifies the API to interface with
   * **sa** is for interacting with the Self-Assessment API.
 
   * **saac** is for interacting with the Self-Assessment Accounts API.
+
+  * **ic** is for interacting with the Individual Calculations API.
 
   * **ni** is for interacting with the National Insurance API.
 
@@ -123,6 +125,44 @@ The following shows each of the above and what arguments (if any) they take.
 '*mtd-cli saac list-transactions from to*'.
 
 *paymentId* is an 'id' as returned from '*mtd-cli saac list-payments from to*'.
+
+
+**ic** supports the following commands
+
+    list-calculations trigger-calculation get-calculation-metadata
+    get-income-tax-nics-calc get-taxable-income
+    get-allowances-deductions-reliefs get-end-of-year-estimate get-messages
+
+with the following usage
+
+    $ mtd-cli ic list-calculations
+
+    $ mtd-cli ic trigger-calculation <file>
+
+    $ mtd-cli ic get-calculation-metadata calculationId
+
+    $ mtd-cli ic get-income-tax-nics-calc calculationId
+
+    $ mtd-cli ic get-taxable-income calculationId
+
+    $ mtd-cli ic get-allowances-deductions-reliefs calculationId
+
+    $ mtd-cli ic get-end-of-year-estimate calculationId
+
+    $ mtd-cli ic get-messages calculationId
+
+*\<file\>* is a JSON file that looks like
+
+```JSON
+{
+    "taxYear": "2017-18"
+}
+```
+
+that is sent to the server.
+
+*calculationId* is an *'id'* as returned by the
+'*mtd-cli ic list-calculations*' command.
 
 
 **ni** currently has a single endpoint

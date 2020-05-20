@@ -19,10 +19,11 @@
 #include "mtd-cli.h"
 #include "mtd-cli-sa.h"
 #include "mtd-cli-saac.h"
+#include "mtd-cli-ic.h"
 #include "mtd-cli-ni.h"
 #include "mtd-cli-test-cu.h"
 
-#define APIS		"init oauth config sa saac ni test-cu"
+#define APIS		"init oauth config sa saac ic ni test-cu"
 
 static const struct api_ep {
 	const char *api;
@@ -35,6 +36,10 @@ static const struct api_ep {
 	{
 		.api = "saac",
 		.endpoint = &saac_endpoint
+	},
+	{
+		.api = "ic",
+		.endpoint = &ic_endpoint
 	},
 	{
 		.api = "ni",
