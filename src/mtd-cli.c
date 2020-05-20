@@ -22,8 +22,9 @@
 #include "mtd-cli-ic.h"
 #include "mtd-cli-ni.h"
 #include "mtd-cli-test-cu.h"
+#include "mtd-cli-test-fph.h"
 
-#define APIS		"init oauth config sa saac ic ni test-cu"
+#define APIS		"init oauth config sa saac ic ni test-cu test-fph"
 
 static const struct api_ep {
 	const char *api;
@@ -48,6 +49,10 @@ static const struct api_ep {
 	{
 		.api = "test-cu",
 		.endpoint = &test_cu_endpoint
+	},
+	{
+		.api = "test-fph",
+		.endpoint = &test_fph_endpoint
 	},
 	{ NULL, NULL }
 };
@@ -211,7 +216,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	err = mtd_init(MTD_OPT_LOG_ERR);
+	err = mtd_init(MTD_OPT_LOG_ERR|MTD_OPT_SND_ANTI_FRAUD_HDRS);
 	if (err && strcmp(argv[1], "init") != 0) {
 		if (err == MTD_ERR_MISSING_CONFIG)
 			fprintf(stderr, "Please run 'mtd-cli init\n");

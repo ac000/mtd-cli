@@ -47,6 +47,8 @@ The first argument specifies the API to interface with
 
   * **test-cu** is for interacting with the Create Test User API.
 
+  * **test-fph** if for interacting with the Test Fraud Prevention Headers API.
+
 *init*, *oauth* & *config* don't take any arguments.
 
 **sa** takes various arguments, the first of which is the endpoint of the API
@@ -193,6 +195,15 @@ with the following usage
     $ mtd-cli test-cu list-service
 
 *\<file\>* is a JSON file containing a list of service names
+
+
+**test-fph** currently has a single endpoint
+
+    validate
+
+which takes no arguments
+
+    $ mtd-cli test-fph validate
 
 
 When running you will get a JSON response in both cases of error and success.
