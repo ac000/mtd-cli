@@ -75,10 +75,11 @@ static int print_api_help(void)
 	return -1;
 }
 
-int check_args(int argc, const char *name, const struct endpoint *ep,
+int check_args(int argc, char *argv[], const struct endpoint *ep,
 	       int (*print_help)(void))
 {
 	int i = 0;
+	const char *name = argv[0];
 
 	if (!name)
 		goto out_help;
@@ -87,7 +88,7 @@ int check_args(int argc, const char *name, const struct endpoint *ep,
 		if (strcmp(ep[i].name, name) != 0)
 			continue;
 
-		if (argc >= ep[i].nr_req_args)
+		if (argc >= ep[i].nr_req_args && *argv[argc] != '?')
 			return 0;
 
 		printf("Usage: %s\n", ep[i].use);
@@ -145,7 +146,7 @@ static int do_mtd_api(const char *name, int argc, char *argv[])
 		if (strcmp(api_ep_map[i].api, name) != 0)
 			continue;
 
-		err = check_args(argc, argv[0], ep,
+		err = check_args(argc, argv, ep,
 				 api_ep_map[i].endpoint->print_help);
 		if (err)
 			return err;
