@@ -80,7 +80,7 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa submit-end-of-period-statement <file> selfEmploymentId start end
 
-    $ mtd-cli sa get-end-of-period-statement selfEmploymentId start|- end|-
+    $ mtd-cli sa get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]
 
 
 *selfEmploymentId* is an 'id' as returned from '*mtd-cli sa list-employments*'.
@@ -90,13 +90,11 @@ The following shows each of the above and what arguments (if any) they take.
 *\<file\>* is a file containing JSON in the appropriate format for the endpoint
 being used.
 
-*get-end-of-period-statement* is a slight oddball as this endpoint is the
-only one that takes an optional query string.
+*get-end-of-period-statement* takes an optional query string.
 
-The optional bit being the *start* & *end* dates. If you don't want to specify
-one or both of them use a '-' in place of one or both e.g
+Both the *from* & *to* parts are optional
 
-    $ mtd-cli sa get-end-of-period-statement XXXX1234567890 *start_date* -
+    $ mtd-cli sa get-end-of-period-statement XXXX1234567890 from=2020-01-01,to=2020-05-01
 
 
 **saac** takes various arguments, the first of which is the endpoint of the API
@@ -109,19 +107,17 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli saac get-balance
 
-    $ mtd-cli saac list-transactions from to
+    $ mtd-cli saac list-transactions from=YYYY-MM-DD,to=YYYY-MM-DD
 
     $ mtd-cli saac get-transaction transactionId
 
-    $ mtd-cli saac list-charges from to
+    $ mtd-cli saac list-charges from=YYYY-MM-DD,to=YYYY-MM-DD
 
     $ mtd-cli saac get-charge transactionId
 
-    $ mtd-cli saac list-payments from to
+    $ mtd-cli saac list-payments from=YYYY-MM-DD,to=YYYY-MM-DD
 
     $ mtd-cli saac get-payment paymentId
-
-*from* & *to* are dates in the format *YYYY-MM-DD*
 
 *transactionId* is an 'id' as returned from
 '*mtd-cli saac list-transactions from to*'.

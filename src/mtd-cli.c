@@ -82,7 +82,7 @@ int check_args(int argc, const char *name, const struct endpoint *ep,
 		if (strcmp(ep[i].name, name) != 0)
 			continue;
 
-		if (ep[i].nr_req_args == argc)
+		if (argc >= ep[i].nr_req_args)
 			return 0;
 
 		printf("Usage: %s\n", ep[i].use);

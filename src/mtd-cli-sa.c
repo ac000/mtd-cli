@@ -11,6 +11,7 @@
 #include <libmtdac/mtd-sa.h>
 
 #include "mtd-cli.h"
+#include "utils.h"
 
 #define MTD_CLI_CMD	MTD_CLI " sa "
 #define API_NAME	"Self-Assessment"
@@ -27,16 +28,15 @@ static int print_endpoints(void)
 	return -1;
 }
 
-static int get_end_of_period_statement(const char *seid, const char *start,
-				       const char *end, char **buf)
+static int get_end_of_period_statement(const char *seid,
+				       const char *query_string, char **buf)
 {
-	const char *s;
-	const char *e;
+	char qs[64] = "\0";
 
-	s = *start == '-' ? NULL : start;
-	e = *end == '-' ? NULL : end;
+	if (query_string)
+		gen_query_string(query_string, qs, sizeof(qs));
 
-	return mtd_sa_get_end_of_period_statement(seid, s, e, buf);
+	return mtd_sa_get_end_of_period_statement(seid, qs, buf);
 }
 
 static const struct endpoint endpoints[] = {
@@ -133,11 +133,11 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "get-end-of-period-statement",
 		.api_func = {
-			.func_3 = &get_end_of_period_statement
+			.func_2 = &get_end_of_period_statement
 		},
-		.func = FUNC_3,
-		.nr_req_args = 3,
-		.use = MTD_CLI_CMD "get-end-of-period-statement selfEmploymentId start|- end|-"
+		.func = FUNC_2,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
 	},
 	{ NULL, { NULL }, 0, 0, NULL }
 };

@@ -39,11 +39,11 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "list-transactions",
 		.api_func = {
-			.func_2 = &mtd_saac_list_transactions
+			.func_1 = &mtd_saac_list_transactions
 		},
-		.func = FUNC_2,
-		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "list-transactions from to"
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "list-transactions from=YYYY-MM-DD,to=YYYY-MM-DD"
 	},
 	{
 		.name = "get-transaction",
@@ -57,11 +57,11 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "list-charges",
 		.api_func = {
-			.func_2 = &mtd_saac_list_charges
+			.func_1 = &mtd_saac_list_charges
 		},
-		.func = FUNC_2,
-		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "list-charges from to"
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "list-charges from=YYYY-MM-DD,to=YYYY-MM-DD"
 	},
 	{
 		.name = "get-charge",
@@ -74,11 +74,11 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "list-payments",
 		.api_func = {
-			.func_2 = &mtd_saac_list_payments
+			.func_1 = &mtd_saac_list_payments
 		},
-		.func = FUNC_2,
-		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "list-payments from to" },
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "list-payments from=YYYY-MM-DD,to=YYYY-MM-DD" },
 	{
 		.name = "get-payment",
 		.api_func = {
