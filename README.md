@@ -26,7 +26,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|oauth|config|sa|saac|ic|ni [endpoint args ...]
+    mtd-cli init|oauth|config|sa|saac|ic|il|ni [endpoint args ...]
 
 The first argument specifies the API to interface with
 
@@ -42,6 +42,8 @@ The first argument specifies the API to interface with
   * **saac** is for interacting with the Self-Assessment Accounts API.
 
   * **ic** is for interacting with the Individual Calculations API.
+
+  * **il** is for interacting with the Individual Loses API.
 
   * **ni** is for interacting with the National Insurance API.
 
@@ -161,6 +163,101 @@ that is sent to the server.
 
 *calculationId* is an *'id'* as returned by the
 '*mtd-cli ic list-calculations*' command.
+
+
+**il** supports the following commands
+
+    bf-list-loses bf-create-loss bf-get-loss bf-delete-loss bf-update-loss-amnt
+    lc-list-loses lc-create-loss lc-get-loss lc-delete-loss lc-update-loss-type
+    lc-update-loss-order
+
+with the following usage
+
+    $ mtd-cli il "bf-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]
+
+    $ mtd-cli il bf-create-loss <file>
+
+*\<file\>* is a JSON file that looks like
+
+```JSON
+{
+    "typeOfLoss": "self-employment-class4",
+    "selfEmploymentId": "XGIS00000001319",
+    "lossAmount": 12345.67,
+    "taxYear": "2018-19"
+}
+```
+
+    $ mtd-cli il bf-get-loss lossId
+
+    $ mtd-cli il bf-delete-loss lossId
+
+    $ mtd-cli il bf-update-loss-amnt <file> lossId
+
+*\<file\>* is a JSON file that looks like
+
+```JSON
+{
+    "lossAmount": 12345.67
+}
+```
+
+    $ mtd-cli il lc-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]
+
+    $ mtd-cli il lc-create-loss <file>
+
+*\<file\>* is a JSON file that looks like
+
+```JSON
+{
+    "typeOfLoss":"self-employment",
+    "selfEmploymentId": "XGIS00000001319",
+    "typeOfClaim": "carry-forward",
+    "taxYear": "2019-20"
+}
+```
+
+    $ mtd-cli il lc-get-loss claimId
+
+    $ mtd-cli il lc-delete-loss claimId
+
+    $ mtd-cli il lc-update-loss-type <file> claimId
+
+*\<file\>* is a JSON file that looks like
+
+```JSON
+{
+    "typeOfClaim": "carry-forward"
+}
+```
+
+    $ mtd-cli il lc-update-loss-order <file>
+
+*\<file\>* is a JSON file that looks like
+
+```JSON
+{
+    "claimType": "carry-sideways",
+    "listOfLossClaims": [
+        {
+            "id": "1234567890ABCDE",
+            "sequence": 2
+        },
+        {
+            "id": "1234567890ABDE0",
+            "sequence": 3
+        },
+        {
+            "id": "1234567890ABEF1",
+            "sequence": 1
+        }
+    ]
+}
+```
+
+*lossId* is an 'id' as returned by the '*mtd-cli il bf-list-loses*' command
+
+*claimId* is an 'id' as returned by the '*mtd-cli il lc-list-loses*' command
 
 
 **ni** currently has a single endpoint
