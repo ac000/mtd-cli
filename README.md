@@ -56,33 +56,36 @@ The first argument specifies the API to interface with
 **sa** takes various arguments, the first of which is the endpoint of the API
 to connect to. These are
 
-    list-employments get-employment list-obligations list-periods create-period
-    get-period update-period get-annual-summary update-annual-summary
-    submit-end-of-period-statement get-end-of-period-statement
+    Self-Employment
+
+    se-list-employments se-get-employment se-list-obligations se-list-periods
+    se-create-period se-get-period se-update-period se-get-annual-summary
+    se-update-annual-summary se-submit-end-of-period-statement
+    se-get-end-of-period-statement
 
 The following shows each of the above and what arguments (if any) they take.
 
-    $ mtd-cli sa list-employments
+    $ mtd-cli sa se-list-employments
 
-    $ mtd-cli sa get-employment selfEmploymentId
+    $ mtd-cli sa se-get-employment selfEmploymentId
 
-    $ mtd-cli sa list-obligations selfEmploymentId
+    $ mtd-cli sa se-list-obligations selfEmploymentId
 
-    $ mtd-cli sa list-periods selfEmploymentId
+    $ mtd-cli sa se-list-periods selfEmploymentId
 
-    $ mtd-cli sa create-period <file> selfEmploymentId
+    $ mtd-cli sa se-create-period <file> selfEmploymentId
 
-    $ mtd-cli sa get-period selfEmploymentId periodId
+    $ mtd-cli sa se-get-period selfEmploymentId periodId
 
-    $ mtd-cli sa update-period <file> selfEmploymentId periodId
+    $ mtd-cli sa se-update-period <file> selfEmploymentId periodId
 
-    $ mtd-cli sa get-annual-summary selfEmploymentId taxYear
+    $ mtd-cli sa se-get-annual-summary selfEmploymentId taxYear
 
-    $ mtd-cli sa update-annual-summary <file> selfEmploymentId taxYear
+    $ mtd-cli sa se-update-annual-summary <file> selfEmploymentId taxYear
 
-    $ mtd-cli sa submit-end-of-period-statement <file> selfEmploymentId start end
+    $ mtd-cli sa se-submit-end-of-period-statement <file> selfEmploymentId start end
 
-    $ mtd-cli sa get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]
+    $ mtd-cli sa se-get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]
 
 
 *selfEmploymentId* is an 'id' as returned from '*mtd-cli sa list-employments*'.
