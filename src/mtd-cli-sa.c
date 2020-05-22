@@ -21,7 +21,10 @@
 "se-list-employments se-get-employment se-list-obligations se-list-periods\n"\
 "se-create-period se-get-period se-update-period se-get-annual-summary\n"\
 "se-update-annual-summary se-submit-end-of-period-statement\n"\
-"se-get-end-of-period-statement"
+"se-get-end-of-period-statement\n\n"\
+"Savings Accounts\n\n"\
+"sa-list-accounts sa-create-account sa-get-account sa-get-annual-summary\n"\
+"sa-update-annual-summary"
 
 static int print_endpoints(void)
 {
@@ -141,6 +144,52 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_2,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "se-get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
+	},
+	/* Savings Accounts */
+	{
+		.name = "sa-list-accounts",
+		.api_func = {
+			.func_0 = &mtd_sa_sa_list_accounts
+		},
+		.func = FUNC_0,
+		.nr_req_args = 0,
+		.use = MTD_CLI_CMD "sa-list-accounts"
+	},
+	{
+		.name = "sa-create-account",
+		.api_func = {
+			.func_1 = &mtd_sa_sa_create_account
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "sa-create-account <file>"
+	},
+	{
+		.name = "sa-get-account",
+		.api_func = {
+			.func_1 = &mtd_sa_sa_get_account
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "sa-get-account savingsAccountId"
+	},
+	{
+		.name = "sa-get-annual-summary",
+		.api_func = {
+			.func_2 = &mtd_sa_sa_get_annual_summary
+		},
+		.func = FUNC_2,
+		.nr_req_args = 2,
+		.use = MTD_CLI_CMD "sa-get-annual-summary savingsAccountId taxYear"
+	},
+	{
+		.name = "sa-update-annual-summary",
+		.api_func = {
+			.func_3 = &mtd_sa_sa_update_annual_summary
+		},
+		.func = FUNC_3,
+		.nr_req_args = 3,
+		.use = MTD_CLI_CMD "sa-update-annual-summary <file> savingsAccountId taxYear"
 	},
 	{ NULL, { NULL }, 0, 0, NULL }
 };

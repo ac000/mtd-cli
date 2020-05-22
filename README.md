@@ -63,6 +63,11 @@ to connect to. These are
     se-update-annual-summary se-submit-end-of-period-statement
     se-get-end-of-period-statement
 
+    Savings Accounts
+
+    sa-list-accounts sa-create-account sa-get-account sa-get-annual-summary
+    sa-update-annual-summary
+
 The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa se-list-employments
@@ -87,8 +92,17 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa se-get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]
 
+    $ mtd-cli sa sa-list-accounts
 
-*selfEmploymentId* is an 'id' as returned from '*mtd-cli sa list-employments*'.
+    $ mtd-cli sa sa-create-account <file>
+
+    $ mtd-cli sa sa-get-account savingsAccountId
+
+    $ mtd-cli sa sa-get-annual-summary savingsAccountId taxYear
+
+    $ mtd-cli sa sa-update-annual-summary <file> savingsAccountId taxYear
+
+*selfEmploymentId* is an 'id' as returned from '*mtd-cli sa se-list-employments*'.
 
 *periodId* is an 'id' as returned from '*mtd-cli sa list-periods ...*'.
 
@@ -100,6 +114,10 @@ being used.
 Both the *from* & *to* parts are optional
 
     $ mtd-cli sa get-end-of-period-statement XXXX1234567890 from=2020-01-01,to=2020-05-01
+
+*savingsAccountId* is an 'id' as returned from '*mtd-cli sa sa-list-accounts*'.
+
+*taxYear* is in the form *YYYY-YY*
 
 
 **saac** takes various arguments, the first of which is the endpoint of the API
@@ -170,7 +188,12 @@ that is sent to the server.
 
 **il** supports the following commands
 
+    Brought Forward Loses
+
     bf-list-loses bf-create-loss bf-get-loss bf-delete-loss bf-update-loss-amnt
+
+    Loss Claims
+
     lc-list-loses lc-create-loss lc-get-loss lc-delete-loss lc-update-loss-type
     lc-update-loss-order
 
