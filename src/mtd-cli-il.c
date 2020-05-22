@@ -16,7 +16,9 @@
 #define API_NAME	"Individual Loses"
 
 #define ENDPOINTS \
-"bf-list-loses bf-create-loss bf-get-loss bf-delete-loss bf-update-loss-amnt\n"\
+"Brought Forward Losses\n\n"\
+"bf-list-loses bf-create-loss bf-get-loss bf-delete-loss bf-update-loss-amnt\n\n"\
+"Loss Claims\n\n"\
 "lc-list-loses lc-create-loss lc-get-loss lc-delete-loss lc-update-loss-type\n"\
 "lc-update-loss-order"
 
@@ -28,6 +30,7 @@ static int print_endpoints(void)
 }
 
 static const struct endpoint endpoints[] = {
+	/* Brought Forward Loses */
 	{
 		.name = "bf-list-loses",
 		.api_func = {
@@ -71,7 +74,9 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "bf-update-loss-amnt <file> lossId" },
+		.use = MTD_CLI_CMD "bf-update-loss-amnt <file> lossaId"
+	},
+	/* Loass Claims */
 	{
 		.name = "lc-list-loses",
 		.api_func = {
@@ -79,7 +84,8 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "lc-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]" },
+		.use = MTD_CLI_CMD "lc-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]"
+	},
 	{
 		.name = "lc-create-loss",
 		.api_func = {
