@@ -326,44 +326,77 @@ which takes no arguments
 
 
 When running you will get a JSON response in both cases of error and success.
-E.g
+The response(s) will be wrapped in an array to cater for multiple responses
+being returned in the case of re-directs occurring. E.g
 
 ```
 $ ./mtd-cli sa list-periods XXXX1234567890
 ```
 ```JSON
-{
-    "status_code": 200,
-    "status_str": "OK",
-    "url": "https://test-api.service.hmrc.gov.uk/self-assessment/ni/XX123456/self-employments/XXXX1234567890/periods",
-    "method": "GET",
-    "result": [
-        {
-            "id": "2020-04-06_2020-07-04",
-            "from": "2020-04-06",
-            "to": "2020-07-04"
-        },
-        {
-            "id": "2020-07-05_2020-10-05",
-            "from": "2020-07-05",
-            "to": "2020-10-05"
-        }
-    ]
-}
+[
+    {
+        "status_code": 200,
+        "status_str": "OK",
+        "url": "https://test-api.service.hmrc.gov.uk/self-assessment/ni/XX123456/self-employments/XXXX1234567890/periods",
+        "method": "GET",
+        "result": [
+            {
+                "id": "2020-04-06_2020-07-04",
+                "from": "2020-04-06",
+                "to": "2020-07-04"
+            },
+            {
+                "id": "2020-07-05_2020-10-05",
+                "from": "2020-07-05",
+                "to": "2020-10-05"
+            }
+        ]
+    }
+]
 ```
+
+in the case of multiple responses
+
+```
+$ ./mtd-cli sa cr-intent-to-crystallise 2018-19
+```
+```JSON
+[
+    {
+        "status_code": 303,
+        "status_str": "See Other",
+        "url": "https://test-api.service.hmrc.gov.uk/self-assessment/ni/XX1234567/2018-19/intent-to-crystallise",
+        "method": "POST",
+        "result": null
+    },
+    {
+        "status_code": 200,
+        "status_str": "OK",
+        "url": "https://test-api.service.hmrc.gov.uk/self-assessment/ni/XX1234567/calculations/c2c82d00-c407-4f98-ab7d-c8319c522e6b",
+        "method": "GET",
+        "result": {
+            ...
+        }
+    }
+]
+````
+
 or in case of error
+
 
 ```
 $ ./mtd-cli sa list-periods xxx
 ```
 ```JSON
-{
-    "status_code": 404,
-    "status_str": "Not Found",
-    "url": "https://test-api.service.hmrc.gov.uk/self-assessment/ni/XX123456/self-employments/xxx/periods",
-    "method": "GET",
-    "result": null
-}
+[
+    {
+        "status_code": 404,
+        "status_str": "Not Found",
+        "url": "https://test-api.service.hmrc.gov.uk/self-assessment/ni/XX123456/self-employments/xxx/periods",
+        "method": "GET",
+        "result": null
+    }
+]
 ```
 
 ## Environment variables
