@@ -100,6 +100,10 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa se-get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]
 
+    $ mtd-cli sa di-get-annual-summary taxYear
+
+    $ mtd-cli sa di-update-annual-summary <file> taxYear
+
     $ mtd-cli sa sa-list-accounts
 
     $ mtd-cli sa sa-create-account <file>

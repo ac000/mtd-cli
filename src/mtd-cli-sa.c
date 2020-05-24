@@ -22,6 +22,8 @@
 "se-create-period se-get-period se-update-period se-get-annual-summary\n"\
 "se-update-annual-summary se-submit-end-of-period-statement\n"\
 "se-get-end-of-period-statement\n\n"\
+"Dividends Income\n\n"\
+"di-get-annual-summary di-update-annual-summary\n\n"\
 "Savings Accounts\n\n"\
 "sa-list-accounts sa-create-account sa-get-account sa-get-annual-summary\n"\
 "sa-update-annual-summary\n\n"\
@@ -148,6 +150,25 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_2,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "se-get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
+	},
+	/* Dividends Income */
+	{
+		.name = "di-get-annual-summary",
+		.api_func = {
+			.func_1 = &mtd_sa_di_get_annual_summary
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "di-get-annual-summary taxYear"
+	},
+	{
+		.name = "di-update-annual-summary",
+		.api_func = {
+			.func_2 = &mtd_sa_di_update_annual_summary
+		},
+		.func = FUNC_2,
+		.nr_req_args = 2,
+		.use = MTD_CLI_CMD "di-get-annual-summary <file> taxYear"
 	},
 	/* Savings Accounts */
 	{
