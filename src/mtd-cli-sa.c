@@ -25,6 +25,8 @@
 "Savings Accounts\n\n"\
 "sa-list-accounts sa-create-account sa-get-account sa-get-annual-summary\n"\
 "sa-update-annual-summary\n\n"\
+"Charitable Giving\n\n"\
+"cg-get-charitable-giving cg-update-charitable-giving\n\n"\
 "Crystallisation\n\n"\
 "cr-intent-to-crystallise cr-crystallise cr-list-obligations"
 
@@ -192,6 +194,25 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_3,
 		.nr_req_args = 3,
 		.use = MTD_CLI_CMD "sa-update-annual-summary <file> savingsAccountId taxYear"
+	},
+	/* Charitable Giving */
+	{
+		.name = "cg-get-charitable-giving",
+		.api_func = {
+			.func_1 = &mtd_sa_cg_get_charitable_giving
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "cg-get-charitable-giving taxYear"
+	},
+	{
+		.name = "cg-update-charitable-giving",
+		.api_func = {
+			.func_2 = &mtd_sa_cg_update_charitable_giving
+		},
+		.func = FUNC_2,
+		.nr_req_args = 2,
+		.use = MTD_CLI_CMD "cg-get-charitable-giving <file> taxYear"
 	},
 	/* Crystallisation */
 	{

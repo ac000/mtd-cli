@@ -68,6 +68,10 @@ to connect to. These are
     sa-list-accounts sa-create-account sa-get-account sa-get-annual-summary
     sa-update-annual-summary
 
+    Charitable Giving
+
+    cg-get-charitable-giving cg-update-charitable-giving
+
     Crystallisation
 
     cr-intent-to-crystallise cr-crystallise cr-list-obligations
@@ -105,6 +109,10 @@ The following shows each of the above and what arguments (if any) they take.
     $ mtd-cli sa sa-get-annual-summary savingsAccountId taxYear
 
     $ mtd-cli sa sa-update-annual-summary <file> savingsAccountId taxYear
+
+    $ mtd-cli sa cg-get-charitable-giving taxYear
+
+    $ mtd-cli sa cg-update-charitable-giving taxYear
 
     $ mtd-cli sa cr-intent-to-crystallise taxYear
 
