@@ -68,6 +68,10 @@ to connect to. These are
     sa-list-accounts sa-create-account sa-get-account sa-get-annual-summary
     sa-update-annual-summary
 
+    Crystallisation
+
+    cr-intent-to-crystallise cr-crystallise cr-list-obligations
+
 The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa se-list-employments
@@ -101,6 +105,12 @@ The following shows each of the above and what arguments (if any) they take.
     $ mtd-cli sa sa-get-annual-summary savingsAccountId taxYear
 
     $ mtd-cli sa sa-update-annual-summary <file> savingsAccountId taxYear
+
+    $ mtd-cli sa cr-intent-to-crystallise taxYear
+
+    $ mtd-cli sa cr-crystallise taxYear
+
+    $ mtd-cli sa cr-list-obligations
 
 *selfEmploymentId* is an 'id' as returned from '*mtd-cli sa se-list-employments*'.
 

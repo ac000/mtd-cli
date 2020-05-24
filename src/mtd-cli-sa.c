@@ -24,7 +24,9 @@
 "se-get-end-of-period-statement\n\n"\
 "Savings Accounts\n\n"\
 "sa-list-accounts sa-create-account sa-get-account sa-get-annual-summary\n"\
-"sa-update-annual-summary"
+"sa-update-annual-summary\n\n"\
+"Crystallisation\n\n"\
+"cr-intent-to-crystallise cr-crystallise cr-list-obligations"
 
 static int print_endpoints(void)
 {
@@ -190,6 +192,34 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_3,
 		.nr_req_args = 3,
 		.use = MTD_CLI_CMD "sa-update-annual-summary <file> savingsAccountId taxYear"
+	},
+	/* Crystallisation */
+	{
+		.name = "cr-intent-to-crystallise",
+		.api_func = {
+			.func_1 = &mtd_sa_cr_intent_to_crystallise
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "cr-intent-to-crystallise taxYear"
+	},
+	{
+		.name = "cr-crystallise",
+		.api_func = {
+			.func_1 = &mtd_sa_cr_crystallise
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "cr-crystallise taxYear"
+	},
+	{
+		.name = "cr-list-obligations",
+		.api_func = {
+			.func_0 = &mtd_sa_cr_list_obligations
+		},
+		.func = FUNC_0,
+		.nr_req_args = 0,
+		.use = MTD_CLI_CMD "cr-list-obligations"
 	},
 	{ NULL, { NULL }, 0, 0, NULL }
 };
