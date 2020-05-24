@@ -199,7 +199,7 @@ that is sent to the server.
 
 with the following usage
 
-    $ mtd-cli il "bf-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]
+    $ mtd-cli il bf-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]
 
     $ mtd-cli il bf-create-loss <file>
 
