@@ -29,6 +29,8 @@
 "sa-update-annual-summary\n\n"\
 "Charitable Giving\n\n"\
 "cg-get-charitable-giving cg-update-charitable-giving\n\n"\
+"Tax Calculations\n\n"\
+"tc-calculate tc-get-calculation tc-get-validation-msgs\n\n"\
 "Crystallisation\n\n"\
 "cr-intent-to-crystallise cr-crystallise cr-list-obligations"
 
@@ -234,6 +236,34 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_2,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "cg-get-charitable-giving <file> taxYear"
+	},
+	/* Tax Calculations - EOL Jul 2020 */
+	{
+		.name = "tc-calculate",
+		.api_func = {
+			.func_1 = &mtd_sa_tc_calculate
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "tc-calculate <file>"
+	},
+	{
+		.name = "tc-get-calculation",
+		.api_func = {
+			.func_1 =  &mtd_sa_tc_get_calculation
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "tc-get-calculation calculationId"
+	},
+	{
+		.name = "tc-get-validation-msgs",
+		.api_func = {
+			.func_1 = &mtd_sa_tc_get_validation_msgs
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "tc-get-validation-msgs calculationId"
 	},
 	/* Crystallisation */
 	{
