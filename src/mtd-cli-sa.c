@@ -11,7 +11,6 @@
 #include <libmtdac/mtd-sa.h>
 
 #include "mtd-cli.h"
-#include "utils.h"
 
 #define MTD_CLI_CMD	MTD_CLI " sa "
 #define API_NAME	"Self-Assessment"
@@ -39,26 +38,6 @@ static int print_endpoints(void)
 	printf("Available " API_NAME " endpoints :-\n\n%s\n", ENDPOINTS);
 
 	return -1;
-}
-
-static int sa_cr_list_obligations(const char *query_string, char **buf)
-{
-	char qs[64];
-
-	gen_query_string(query_string, qs, sizeof(qs));
-
-	return mtd_sa_cr_list_obligations(qs, buf);
-}
-
-static int se_get_end_of_period_statement(const char *seid,
-					  const char *query_string, char **buf)
-{
-	char qs[64] = "\0";
-
-	if (query_string)
-		gen_query_string(query_string, qs, sizeof(qs));
-
-	return mtd_sa_se_get_end_of_period_statement(seid, qs, buf);
 }
 
 static const struct endpoint endpoints[] = {
@@ -165,7 +144,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-get-end-of-period-statement",
 		.api_func = {
-			.func_2 = &se_get_end_of_period_statement
+			.func_2 = &mtd_sa_se_get_end_of_period_statement
 		},
 		.func = FUNC_2,
 		.nr_req_args = 1,
@@ -305,7 +284,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "cr-list-obligations",
 		.api_func = {
-			.func_1 = &sa_cr_list_obligations
+			.func_1 = &mtd_sa_cr_list_obligations
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
