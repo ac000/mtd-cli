@@ -58,10 +58,10 @@ to connect to. These are
 
     Self-Employment
 
-    se-list-employments se-get-employment se-list-obligations se-list-periods
-    se-create-period se-get-period se-update-period se-get-annual-summary
-    se-update-annual-summary se-submit-end-of-period-statement
-    se-get-end-of-period-statement
+    se-list-employments se-create-employment se-get-employment
+    se-list-obligations se-list-periods se-create-period se-get-period
+    se-update-period se-get-annual-summary se-update-annual-summary
+    se-submit-end-of-period-statement se-get-end-of-period-statement
 
     Savings Accounts
 
@@ -79,6 +79,8 @@ to connect to. These are
 The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa se-list-employments
+
+    $ mtd-cli sa se-create-employment <file>
 
     $ mtd-cli sa se-get-employment selfEmploymentId
 

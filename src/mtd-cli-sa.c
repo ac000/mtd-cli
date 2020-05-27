@@ -18,10 +18,10 @@
 
 #define ENDPOINTS \
 "Self-Employment\n\n"\
-"se-list-employments se-get-employment se-list-obligations se-list-periods\n"\
-"se-create-period se-get-period se-update-period se-get-annual-summary\n"\
-"se-update-annual-summary se-submit-end-of-period-statement\n"\
-"se-get-end-of-period-statement\n\n"\
+"se-list-employments se-create-employment se-get-employment\n"\
+"se-list-obligations se-list-periods se-create-period se-get-period\n"\
+"se-update-period se-get-annual-summary se-update-annual-summary\n"\
+"se-submit-end-of-period-statement se-get-end-of-period-statement\n\n"\
 "Dividends Income\n\n"\
 "di-get-annual-summary di-update-annual-summary\n\n"\
 "Savings Accounts\n\n"\
@@ -62,6 +62,15 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_0,
 		.nr_req_args = 0,
 		.use = MTD_CLI_CMD "se-list-employments"
+	},
+	{
+		.name = "se-create-employment",
+		.api_func = {
+			.func_1 = &mtd_sa_se_create_employment
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "se-create-employment <file>"
 	},
 	{
 		.name = "se-get-employment",
