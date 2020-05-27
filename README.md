@@ -130,7 +130,7 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa cr-crystallise taxYear
 
-    $ mtd-cli sa cr-list-obligations
+    $ mtd-cli sa cr-list-obligations from=YYYY-MM-DD,to=YYYY-MM-DD
 
 *selfEmploymentId* is an 'id' as returned from '*mtd-cli sa se-list-employments*'.
 

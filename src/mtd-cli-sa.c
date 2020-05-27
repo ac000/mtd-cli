@@ -41,6 +41,15 @@ static int print_endpoints(void)
 	return -1;
 }
 
+static int sa_cr_list_obligations(const char *query_string, char **buf)
+{
+	char qs[64];
+
+	gen_query_string(query_string, qs, sizeof(qs));
+
+	return mtd_sa_cr_list_obligations(qs, buf);
+}
+
 static int se_get_end_of_period_statement(const char *seid,
 					  const char *query_string, char **buf)
 {
@@ -296,11 +305,11 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "cr-list-obligations",
 		.api_func = {
-			.func_0 = &mtd_sa_cr_list_obligations
+			.func_1 = &sa_cr_list_obligations
 		},
-		.func = FUNC_0,
-		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "cr-list-obligations"
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "cr-list-obligations from=YYYY-MM-DD,to=YYYY-MM-DD"
 	},
 	{ NULL, { NULL }, 0, 0, NULL }
 };
