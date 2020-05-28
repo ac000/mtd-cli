@@ -30,7 +30,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "get-balance",
 		.api_func = {
-			.func_0 = &mtd_saac_get_balance
+			.func_0 = mtd_saac_get_balance
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
@@ -39,7 +39,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "list-transactions",
 		.api_func = {
-			.func_1 = &mtd_saac_list_transactions
+			.func_1 = mtd_saac_list_transactions
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -48,7 +48,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "get-transaction",
 		.api_func = {
-			.func_1 = &mtd_saac_get_transaction
+			.func_1 = mtd_saac_get_transaction
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -57,7 +57,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "list-charges",
 		.api_func = {
-			.func_1 = &mtd_saac_list_charges
+			.func_1 = mtd_saac_list_charges
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -66,7 +66,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "get-charge",
 		.api_func = {
-			.func_1 = &mtd_saac_get_charge
+			.func_1 = mtd_saac_get_charge
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -74,7 +74,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "list-payments",
 		.api_func = {
-			.func_1 = &mtd_saac_list_payments
+			.func_1 = mtd_saac_list_payments
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -82,7 +82,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "get-payment",
 		.api_func = {
-			.func_1 = &mtd_saac_get_payment
+			.func_1 = mtd_saac_get_payment
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -93,5 +93,5 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint saac_endpoint = {
 	.endpoints = endpoints,
-	.print_help = &print_endpoints
+	.print_help = print_endpoints
 };

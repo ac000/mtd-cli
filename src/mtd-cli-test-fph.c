@@ -28,7 +28,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "validate",
 		.api_func = {
-			.func_0 = &mtd_test_fph_validate
+			.func_0 = mtd_test_fph_validate
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
@@ -39,5 +39,5 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint test_fph_endpoint = {
 	.endpoints = endpoints,
-	.print_help = &print_endpoints
+	.print_help = print_endpoints
 };

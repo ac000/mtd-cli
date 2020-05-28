@@ -45,7 +45,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-list-employments",
 		.api_func = {
-			.func_0 = &mtd_sa_se_list_employments
+			.func_0 = mtd_sa_se_list_employments
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
@@ -54,7 +54,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-create-employment",
 		.api_func = {
-			.func_1 = &mtd_sa_se_create_employment
+			.func_1 = mtd_sa_se_create_employment
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -63,7 +63,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-get-employment",
 		.api_func = {
-			.func_1 = &mtd_sa_se_get_employment
+			.func_1 = mtd_sa_se_get_employment
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -72,7 +72,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-list-obligations",
 		.api_func = {
-			.func_1 = &mtd_sa_se_list_obligations
+			.func_1 = mtd_sa_se_list_obligations
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -81,7 +81,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-list-periods",
 		.api_func = {
-			.func_1 = &mtd_sa_se_list_periods
+			.func_1 = mtd_sa_se_list_periods
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -90,7 +90,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-create-period",
 		.api_func = {
-			.func_2 = &mtd_sa_se_create_period
+			.func_2 = mtd_sa_se_create_period
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
@@ -99,7 +99,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-get-period",
 		.api_func = {
-			.func_2 = &mtd_sa_se_get_period
+			.func_2 = mtd_sa_se_get_period
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
@@ -108,7 +108,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-update-period",
 		.api_func = {
-			.func_3 = &mtd_sa_se_update_period
+			.func_3 = mtd_sa_se_update_period
 		},
 		.func = FUNC_3,
 		.nr_req_args = 3,
@@ -117,7 +117,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-get-annual-summary",
 		.api_func = {
-			.func_2 = &mtd_sa_se_get_annual_summary
+			.func_2 = mtd_sa_se_get_annual_summary
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
@@ -126,7 +126,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-update-annual-summary",
 		.api_func = {
-			.func_3 = &mtd_sa_se_update_annual_summary
+			.func_3 = mtd_sa_se_update_annual_summary
 		},
 		.func = FUNC_3,
 		.nr_req_args = 3,
@@ -135,7 +135,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-submit-end-of-period-statement",
 		.api_func = {
-			.func_4 = &mtd_sa_se_submit_end_of_period_statement
+			.func_4 = mtd_sa_se_submit_end_of_period_statement
 		},
 		.func = FUNC_4,
 		.nr_req_args = 4,
@@ -144,7 +144,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-get-end-of-period-statement",
 		.api_func = {
-			.func_2 = &mtd_sa_se_get_end_of_period_statement
+			.func_2 = mtd_sa_se_get_end_of_period_statement
 		},
 		.func = FUNC_2,
 		.nr_req_args = 1,
@@ -154,7 +154,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "di-get-annual-summary",
 		.api_func = {
-			.func_1 = &mtd_sa_di_get_annual_summary
+			.func_1 = mtd_sa_di_get_annual_summary
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -163,7 +163,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "di-update-annual-summary",
 		.api_func = {
-			.func_2 = &mtd_sa_di_update_annual_summary
+			.func_2 = mtd_sa_di_update_annual_summary
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
@@ -173,7 +173,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "sa-list-accounts",
 		.api_func = {
-			.func_0 = &mtd_sa_sa_list_accounts
+			.func_0 = mtd_sa_sa_list_accounts
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
@@ -182,7 +182,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "sa-create-account",
 		.api_func = {
-			.func_1 = &mtd_sa_sa_create_account
+			.func_1 = mtd_sa_sa_create_account
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -191,7 +191,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "sa-get-account",
 		.api_func = {
-			.func_1 = &mtd_sa_sa_get_account
+			.func_1 = mtd_sa_sa_get_account
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -200,7 +200,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "sa-get-annual-summary",
 		.api_func = {
-			.func_2 = &mtd_sa_sa_get_annual_summary
+			.func_2 = mtd_sa_sa_get_annual_summary
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
@@ -209,7 +209,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "sa-update-annual-summary",
 		.api_func = {
-			.func_3 = &mtd_sa_sa_update_annual_summary
+			.func_3 = mtd_sa_sa_update_annual_summary
 		},
 		.func = FUNC_3,
 		.nr_req_args = 3,
@@ -219,7 +219,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "cg-get-charitable-giving",
 		.api_func = {
-			.func_1 = &mtd_sa_cg_get_charitable_giving
+			.func_1 = mtd_sa_cg_get_charitable_giving
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -228,7 +228,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "cg-update-charitable-giving",
 		.api_func = {
-			.func_2 = &mtd_sa_cg_update_charitable_giving
+			.func_2 = mtd_sa_cg_update_charitable_giving
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
@@ -238,7 +238,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "tc-calculate",
 		.api_func = {
-			.func_1 = &mtd_sa_tc_calculate
+			.func_1 = mtd_sa_tc_calculate
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -256,7 +256,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "tc-get-validation-msgs",
 		.api_func = {
-			.func_1 = &mtd_sa_tc_get_validation_msgs
+			.func_1 = mtd_sa_tc_get_validation_msgs
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -266,7 +266,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "cr-intent-to-crystallise",
 		.api_func = {
-			.func_1 = &mtd_sa_cr_intent_to_crystallise
+			.func_1 = mtd_sa_cr_intent_to_crystallise
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -275,7 +275,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "cr-crystallise",
 		.api_func = {
-			.func_1 = &mtd_sa_cr_crystallise
+			.func_1 = mtd_sa_cr_crystallise
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -284,7 +284,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "cr-list-obligations",
 		.api_func = {
-			.func_1 = &mtd_sa_cr_list_obligations
+			.func_1 = mtd_sa_cr_list_obligations
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -295,5 +295,5 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint sa_endpoint = {
 	.endpoints = endpoints,
-	.print_help = &print_endpoints
+	.print_help = print_endpoints
 };

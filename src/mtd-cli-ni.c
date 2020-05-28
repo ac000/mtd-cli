@@ -28,7 +28,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "get-annual-summary",
 		.api_func = {
-			.func_2 = &mtd_ni_get_annual_summary
+			.func_2 = mtd_ni_get_annual_summary
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
@@ -39,5 +39,5 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint ni_endpoint = {
 	.endpoints = endpoints,
-	.print_help = &print_endpoints
+	.print_help = print_endpoints
 };

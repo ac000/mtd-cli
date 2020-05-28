@@ -29,7 +29,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "create-individual",
 		.api_func = {
-			.func_1 = &mtd_test_cu_create_individual
+			.func_1 = mtd_test_cu_create_individual
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -38,7 +38,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "create-organisation",
 		.api_func = {
-			.func_1 = &mtd_test_cu_create_organisation
+			.func_1 = mtd_test_cu_create_organisation
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -47,7 +47,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "create-agent",
 		.api_func = {
-			.func_1 = &mtd_test_cu_create_agent
+			.func_1 = mtd_test_cu_create_agent
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -56,7 +56,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "list-services",
 		.api_func = {
-			.func_0 = &mtd_test_cu_list_services
+			.func_0 = mtd_test_cu_list_services
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
@@ -67,5 +67,5 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint test_cu_endpoint = {
 	.endpoints = endpoints,
-	.print_help = &print_endpoints
+	.print_help = print_endpoints
 };

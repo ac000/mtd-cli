@@ -34,7 +34,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "bf-list-loses",
 		.api_func = {
-			.func_1 = &mtd_il_bf_list_loses
+			.func_1 = mtd_il_bf_list_loses
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
@@ -43,7 +43,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "bf-create-loss",
 		.api_func = {
-			.func_1 = &mtd_il_bf_create_loss
+			.func_1 = mtd_il_bf_create_loss
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -52,7 +52,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "bf-get-loss",
 		.api_func = {
-			.func_1 = &mtd_il_bf_get_loss
+			.func_1 = mtd_il_bf_get_loss
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -61,7 +61,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "bf-delete-loss",
 		.api_func = {
-			.func_1 = &mtd_il_bf_delete_loss
+			.func_1 = mtd_il_bf_delete_loss
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -70,7 +70,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "bf-update-loss-amnt",
 		.api_func = {
-			.func_2 = &mtd_il_bf_update_loss_amnt
+			.func_2 = mtd_il_bf_update_loss_amnt
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
@@ -80,7 +80,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "lc-list-loses",
 		.api_func = {
-			.func_1 = &mtd_il_lc_list_loses
+			.func_1 = mtd_il_lc_list_loses
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
@@ -89,7 +89,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "lc-create-loss",
 		.api_func = {
-			.func_1 = &mtd_il_lc_create_loss
+			.func_1 = mtd_il_lc_create_loss
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -98,7 +98,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "lc-get-loss",
 		.api_func = {
-			.func_1 = &mtd_il_lc_get_loss
+			.func_1 = mtd_il_lc_get_loss
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -107,7 +107,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "lc-delete-loss",
 		.api_func = {
-			.func_1 = &mtd_il_lc_delete_loss
+			.func_1 = mtd_il_lc_delete_loss
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -116,7 +116,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "lc-update-loss-type",
 		.api_func = {
-			.func_2 = &mtd_il_lc_update_loss_type
+			.func_2 = mtd_il_lc_update_loss_type
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
@@ -125,7 +125,7 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "lc-update-loss-order",
 		.api_func = {
-			.func_1 = &mtd_il_lc_update_loss_order
+			.func_1 = mtd_il_lc_update_loss_order
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
@@ -136,5 +136,5 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint il_endpoint = {
 	.endpoints = endpoints,
-	.print_help = &print_endpoints
+	.print_help = print_endpoints
 };
