@@ -207,7 +207,7 @@ static int do_init(void)
 	printf("\nInitialisation complete. Re-run command if something looks "
 	       "wrong.\n");
 
-	return err;
+	return 0;
 }
 
 
