@@ -107,14 +107,14 @@ int do_api_func(const struct endpoint *ep, int argc, char *argv[], char **buf)
 {
 	int i;
 	const char *args[MAX_ARGV] = { NULL };
+	char *ptr;
+	char qs[129];
 
 	for (i = 0; i < argc && i < MAX_ARGV; i++) {
-		char *ptr = argv[i + 1];
+		ptr = argv[i + 1];
 
 		/* format the query string if provided */
 		if (strchr(ptr, '=')) {
-			char qs[129];
-
 			gen_query_string(ptr, qs, sizeof(qs));
 			ptr = qs;
 		}
