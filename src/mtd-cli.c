@@ -23,12 +23,14 @@
 #include "mtd-cli-ic.h"
 #include "mtd-cli-il.h"
 #include "mtd-cli-ni.h"
+#include "mtd-cli-biss.h"
 #include "mtd-cli-test-cu.h"
 #include "mtd-cli-test-fph.h"
 
 #define MAX_ARGV	7
 
-#define APIS		"init oauth config sa saac ic il ni test-cu test-fph"
+#define APIS		"init oauth config sa saac ic il ni biss "\
+			"test-cu test-fph"
 
 static const struct api_ep {
 	const char *api;
@@ -53,6 +55,10 @@ static const struct api_ep {
 	{
 		.api = "ni",
 		.endpoint = &ni_endpoint
+	},
+	{
+		.api = "biss",
+		.endpoint = &biss_endpoint
 	},
 	{
 		.api = "test-cu",

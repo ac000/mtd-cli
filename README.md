@@ -47,6 +47,8 @@ The first argument specifies the API to interface with
 
   * **ni** is for interacting with the National Insurance API.
 
+  * **biss** is for interacting with the Business Income Source Summary API
+
   * **test-cu** is for interacting with the Create Test User API.
 
   * **test-fph** if for interacting with the Test Fraud Prevention Headers API.
@@ -371,6 +373,13 @@ which takes two arguments
 *utr* is the Unique Tax Reference.
 
 *taxYear* is the Tax year to get in the form; *YYYY-YY*
+
+
+**biss** has the following endpoints
+
+    $ mtd-cli biss get-self-employment selfEmploymentId=[,taxYear=YYYY-YY]
+
+    $ mtd-cli biss get-property typeOfBusiness={uk-property-non-fhl,uk-property-fhl}[,taxYear=YYYY-YY]
 
 
 **test-cu** has the following commands
