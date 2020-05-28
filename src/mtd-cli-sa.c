@@ -21,6 +21,14 @@
 "se-list-obligations se-list-periods se-create-period se-get-period\n"\
 "se-update-period se-get-annual-summary se-update-annual-summary\n"\
 "se-submit-end-of-period-statement se-get-end-of-period-statement\n\n"\
+"UK Property Business\n\n"\
+"pb-get-property pb-create-property pb-list-obligations\n"\
+"pb-list-non-fhl-periods pb-create-non-fhl-period pb-get-non-fhl-period\n"\
+"pb-update-non-fhl-period pb-get-non-fhl-annual-summary\n"\
+"pb-update-non-fhl-annual-summary pb-list-fhl-periods\n"\
+"pb-create-fhl-period pb-get-fhl-period pb-update-fhl-period\n"\
+"pb-get-fhl-annual-summary pb-update-fhl-annual-summary\n"\
+"pb-submit-end-of-period-statement pb-get-end-of-period-statement\n\n"\
 "Dividends Income\n\n"\
 "di-get-annual-summary di-update-annual-summary\n\n"\
 "Savings Accounts\n\n"\
@@ -149,6 +157,159 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_2,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "se-get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
+	},
+	/* Self-Assessment - UK Property Business */
+	{
+		.name = "pb-get-property",
+		.api_func = {
+			.func_0 = mtd_sa_pb_get_property
+		},
+		.func = FUNC_0,
+		.nr_req_args = 0,
+		.use = MTD_CLI_CMD "pb-get-property"
+	},
+	{
+		.name = "pb-create-property",
+		.api_func = {
+			.func_1 = mtd_sa_pb_create_property
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "pb-create-property <file>"
+	},
+	{
+		.name = "pb-list-obligations",
+		.api_func = {
+			.func_0 = mtd_sa_pb_list_obligations
+		},
+		.func = FUNC_0,
+		.nr_req_args = 0,
+		.use = MTD_CLI_CMD "pb-list-obligations"
+	},
+	{
+		.name = "pb-list-non-fhl-periods",
+		.api_func = {
+			.func_0 = mtd_sa_pb_list_non_fhl_periods
+		},
+		.nr_req_args = 0,
+		.use = MTD_CLI_CMD "pb-list-non-fhl-periods"
+	},
+	{
+		.name = "pb-create-non-fhl-period",
+		.api_func = {
+			.func_1 = mtd_sa_pb_create_non_fhl_period
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "pb-create-non-fhl-period <file>"
+	},
+	{
+		.name = "pb-get-non-fhl-period",
+		.api_func = {
+			.func_1 = mtd_sa_pb_get_non_fhl_period
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "pb-get-non-fhl-period periodId"
+	},
+	{
+		.name = "pb-update-non-fhl-period",
+		.api_func = {
+			.func_2 = mtd_sa_pb_update_non_fhl_period
+		},
+		.func = FUNC_2,
+		.nr_req_args = 2,
+		.use = MTD_CLI_CMD "pb-update-non-fhl-period <file> periodId"
+	},
+	{
+		.name = "pb-get-non-fhl-annual-summary",
+		.api_func = {
+			.func_1 = mtd_sa_pb_get_non_fhl_annual_summary
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "pb-get-non-fhl-annual-summary taxYear"
+	},
+	{
+		.name = "pb-update-non-fhl-annual-summary",
+		.api_func = {
+			.func_2 = mtd_sa_pb_update_non_fhl_annual_summary
+		},
+		.func = FUNC_2,
+		.nr_req_args = 2,
+		.use = MTD_CLI_CMD "pb-update-non-fhl-annual-summary <file> taxYear"
+	},
+	{
+		.name = "pb-list-fhl-periods",
+		.api_func = {
+			.func_0 = mtd_sa_pb_list_fhl_periods
+		},
+		.func = FUNC_0,
+		.nr_req_args = 0,
+		.use = MTD_CLI_CMD "pb-list-fhl-periods"
+	},
+	{
+		.name = "pb-create-fhl-period",
+		.api_func = {
+			.func_1 = mtd_sa_pb_create_fhl_period
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "pb-create-fhl-period <file>"
+	},
+	{
+		.name = "pb-get-fhl-period",
+		.api_func = {
+			.func_1 = mtd_sa_pb_get_fhl_period
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "pb-get-fhl-period periodId"
+	},
+	{
+		.name = "pb-update-fhl-period",
+		.api_func = {
+			.func_2 = mtd_sa_pb_update_fhl_period
+		},
+		.func = FUNC_2,
+		.nr_req_args = 2,
+		.use = MTD_CLI_CMD "pb-update-fhl-period <file> periodId"
+	},
+	{
+		.name = "pb-get-fhl-annual-summary",
+		.api_func = {
+			.func_1 = mtd_sa_pb_get_fhl_annual_summary
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = MTD_CLI_CMD "pb-get-fhl-annual-summary taxYear"
+	},
+	{
+		.name = "pb-update-fhl-annual-summary",
+		.api_func = {
+			.func_2 = mtd_sa_pb_update_fhl_annual_summary
+		},
+		.func = FUNC_2,
+		.nr_req_args = 2,
+		.use = MTD_CLI_CMD "pb-update-fhl-annual-summary <file> taxYear"
+	},
+	{
+		.name = "pb-submit-end-of-period-statement",
+		.api_func = {
+			.func_3 = mtd_sa_pb_submit_end_of_period_statement
+		},
+		.func = FUNC_3,
+		.nr_req_args = 3,
+		.use = MTD_CLI_CMD "pb-submit-end-of-period-statement <file> start end"
+	},
+	{
+		.name = "pb-get-end-of-period-statement",
+		.api_func = {
+			.func_1 = mtd_sa_pb_get_end_of_period_statement
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = "pb-get-end-of-period-statement from=YYYY-MM-DD,to=YYYY-MM-DD"
 	},
 	/* Dividends Income */
 	{

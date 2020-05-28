@@ -63,6 +63,16 @@ to connect to. These are
     se-update-period se-get-annual-summary se-update-annual-summary
     se-submit-end-of-period-statement se-get-end-of-period-statement
 
+    UK Property Business
+
+    pb-get-property pb-create-property pb-list-obligations
+    pb-list-non-fhl-periods pb-create-non-fhl-period pb-get-non-fhl-period
+    pb-update-non-fhl-period pb-get-non-fhl-annual-summary
+    pb-update-non-fhl-annual-summary pb-list-fhl-periods pb-create-fhl-period
+    pb-get-fhl-period pb-update-fhl-period pb-get-fhl-annual-summary
+    pb-update-fhl-annual-summary pb-submit-end-of-period-statement
+    pb-get-end-of-period-statement
+
     Savings Accounts
 
     sa-list-accounts sa-create-account sa-get-account sa-get-annual-summary
@@ -102,6 +112,40 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa se-get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]
 
+    $ mtd-cli sa pb-get-property
+
+    $ mtd-cli sa pb-create-property <file>
+
+    $ mtd-cli sa pb-list-obligations
+
+    $ mtd-cli sa pb-list-non-fhl-periods
+
+    $ mtd-cli sa pb-create-non-fhl-period <file>
+
+    $ mtd-cli sa pb-get-non-fhl-period periodId
+
+    $ mtd-cli sa pb-update-non-fhl-period <file> periodId
+
+    $ mtd-cli sa pb-get-non-fhl-annual-summary taxYear
+
+    $ mtd-cli sa pb-update-non-fhl-annual-summary <file> taxYear
+
+    $ mtd-cli sa pb-list-fhl-periods
+
+    $ mtd-cli sa pb-create-fhl-period <file>
+
+    $ mtd-cli sa pb-get-fhl-period periodId
+
+    $ mtd-cli sa pb-update-fhl-period <file> periodId
+
+    $ mtd-cli sa pb-get-fhl-annual-summary taxYear
+
+    $ mtd-cli sa pb-update-fhl-annual-summary <file> taxYear
+
+    $ mtd-cli sa pb-submit-end-of-period-statement <file> start end
+
+    $ mtd-cli sa pb-get-end-of-period-statement from=YYYY-MM-DD,to=YYYY-MM-DD
+
     $ mtd-cli sa di-get-annual-summary taxYear
 
     $ mtd-cli sa di-update-annual-summary <file> taxYear
@@ -134,7 +178,7 @@ The following shows each of the above and what arguments (if any) they take.
 
 *selfEmploymentId* is an 'id' as returned from '*mtd-cli sa se-list-employments*'.
 
-*periodId* is an 'id' as returned from '*mtd-cli sa list-periods ...*'.
+*periodId* is an 'id' as returned from '*mtd-cli sa *-list-periods ...*'.
 
 *\<file\>* is a file containing JSON in the appropriate format for the endpoint
 being used.
