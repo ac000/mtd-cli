@@ -6,28 +6,21 @@
  * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
  */
 
-#include <stdio.h>
+#include <stddef.h>
 
 #include <libmtdac/mtd-il.h>
 
 #include "mtd-cli.h"
 
 #define MTD_CLI_CMD	MTD_CLI " il "
-#define API_NAME	"Individual Loses"
 
-#define ENDPOINTS \
+static const char * const API_NAME = "Individual Loses";
+static const char * const CMDS =
 "Brought Forward Losses\n\n"\
 "bf-list-loses bf-create-loss bf-get-loss bf-delete-loss bf-update-loss-amnt\n\n"\
 "Loss Claims\n\n"\
 "lc-list-loses lc-create-loss lc-get-loss lc-delete-loss lc-update-loss-type\n"\
-"lc-update-loss-order"
-
-static int print_endpoints(void)
-{
-	printf("Available " API_NAME " endpoints :-\n\n%s\n", ENDPOINTS);
-
-	return -1;
-}
+"lc-update-loss-order";
 
 static const struct endpoint endpoints[] = {
 	/* Brought Forward Loses */
@@ -136,5 +129,6 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint il_endpoint = {
 	.endpoints = endpoints,
-	.print_help = print_endpoints
+	.api_name = API_NAME,
+	.cmds = CMDS
 };

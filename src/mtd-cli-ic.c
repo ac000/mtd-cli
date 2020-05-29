@@ -6,26 +6,19 @@
  * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
  */
 
-#include <stdio.h>
+#include <stddef.h>
 
 #include <libmtdac/mtd-ic.h>
 
 #include "mtd-cli.h"
 
 #define MTD_CLI_CMD	" ic "
-#define API_NAME	"Individual Calculations"
 
-#define ENDPOINTS \
+static const char * const API_NAME = "Individual Calculations";
+static const char * const CMDS =
 "list-calculations trigger-calculation get-calculation-metadata\n"\
 "get-income-tax-nics-calc get-taxable-income get-allowances-deductions-reliefs\n"\
-"get-end-of-year-estimate get-messages"
-
-static int print_endpoints(void)
-{
-	printf("Available " API_NAME " endpoints :-\n\n%s\n", ENDPOINTS);
-
-	return -1;
-}
+"get-end-of-year-estimate get-messages";
 
 static const struct endpoint endpoints[] = {
 	{
@@ -105,5 +98,6 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint ic_endpoint = {
 	.endpoints = endpoints,
-	.print_help = print_endpoints
+	.api_name = API_NAME,
+	.cmds = CMDS
 };

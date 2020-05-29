@@ -6,25 +6,18 @@
  * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
  */
 
-#include <stdio.h>
+#include <stddef.h>
 
 #include <libmtdac/mtd-saac.h>
 
 #include "mtd-cli.h"
 
 #define MTD_CLI_CMD	MTD_CLI " saac "
-#define API_NAME	"Self-Assessment Accounts"
 
-#define ENDPOINTS \
+static const char * const API_NAME = "Self-Assessment Accounts";
+static const char * const CMDS =
 "get-balance list-transactions get-transaction list-charges get-charge\n"\
-"list-payments get-payment"
-
-static int print_endpoints(void)
-{
-	printf("Available " API_NAME " endpoints :-\n\n%s\n", ENDPOINTS);
-
-	return -1;
-}
+"list-payments get-payment";
 
 static const struct endpoint endpoints[] = {
 	{
@@ -93,5 +86,6 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint saac_endpoint = {
 	.endpoints = endpoints,
-	.print_help = print_endpoints
+	.api_name = API_NAME,
+	.cmds = CMDS
 };

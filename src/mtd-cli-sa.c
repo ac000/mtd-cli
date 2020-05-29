@@ -6,16 +6,16 @@
  * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
  */
 
-#include <stdio.h>
+#include <stddef.h>
 
 #include <libmtdac/mtd-sa.h>
 
 #include "mtd-cli.h"
 
 #define MTD_CLI_CMD	MTD_CLI " sa "
-#define API_NAME	"Self-Assessment"
 
-#define ENDPOINTS \
+static const char * const API_NAME = "Self-Assessment";
+static const char * const CMDS =
 "Self-Employment\n\n"\
 "se-list-employments se-create-employment se-get-employment\n"\
 "se-list-obligations se-list-periods se-create-period se-get-period\n"\
@@ -39,14 +39,7 @@
 "Tax Calculations\n\n"\
 "tc-calculate tc-get-calculation tc-get-validation-msgs\n\n"\
 "Crystallisation\n\n"\
-"cr-intent-to-crystallise cr-crystallise cr-list-obligations"
-
-static int print_endpoints(void)
-{
-	printf("Available " API_NAME " endpoints :-\n\n%s\n", ENDPOINTS);
-
-	return -1;
-}
+"cr-intent-to-crystallise cr-crystallise cr-list-obligations";
 
 static const struct endpoint endpoints[] = {
 	/* Self-Employment */
@@ -456,5 +449,6 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint sa_endpoint = {
 	.endpoints = endpoints,
-	.print_help = print_endpoints
+	.api_name = API_NAME,
+	.cmds = CMDS
 };

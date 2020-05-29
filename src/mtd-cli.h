@@ -25,7 +25,8 @@ enum nr_func_args {
 
 struct _endpoint {
 	const struct endpoint *endpoints;
-	int (*print_help)(void);
+	const char *cmds;
+	const char *api_name;
 };
 
 struct endpoint {

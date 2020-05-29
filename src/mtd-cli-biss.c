@@ -6,23 +6,16 @@
  * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
  */
 
-#include <stdio.h>
+#include <stddef.h>
 
 #include <libmtdac/mtd-biss.h>
 
 #include "mtd-cli.h"
 
 #define MTD_CLI_CMD	MTD_CLI " biss "
-#define API_NAME	"Business Income Source Summary"
 
-#define ENDPOINTS	"get-self-employment get-property"
-
-static int print_endpoints(void)
-{
-	printf("Available " API_NAME " endpoints :-\n\n%s\n", ENDPOINTS);
-
-	return -1;
-}
+static const char * const API_NAME = "Business Income Source Summary";
+static const char * const CMDS = "get-self-employment get-property";
 
 static const struct endpoint endpoints[] = {
 	{
@@ -48,5 +41,6 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint biss_endpoint = {
 	.endpoints = endpoints,
-	.print_help = print_endpoints
+	.api_name = API_NAME,
+	.cmds = CMDS
 };

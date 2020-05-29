@@ -82,29 +82,29 @@ static int print_api_help(void)
 	return -1;
 }
 
-int check_args(int argc, char *argv[], const struct endpoint *ep,
-	       int (*print_help)(void))
+int check_args(int argc, char *argv[], const struct _endpoint *ep)
 {
 	int i = 0;
 	const char *name = argv[0];
+	const struct endpoint *eps = ep->endpoints;
 
 	if (!name)
 		goto out_help;
 
-	for ( ; ep[i].name != NULL; i++) {
-		if (strcmp(ep[i].name, name) != 0)
+	for ( ; eps[i].name != NULL; i++) {
+		if (strcmp(eps[i].name, name) != 0)
 			continue;
 
-		if (argc >= ep[i].nr_req_args && *argv[argc] != '?')
+		if (argc >= eps[i].nr_req_args && *argv[argc] != '?')
 			return 0;
 
-		printf("Usage: %s\n", ep[i].use);
+		printf("Usage: %s\n", eps[i].use);
 
 		return -1;
 	}
 
 out_help:
-	print_help();
+	printf("Available %s endpoints :-\n\n%s\n", ep->api_name, ep->cmds);
 
 	return -1;
 }
@@ -159,16 +159,15 @@ static int do_mtd_api(const char *name, int argc, char *argv[])
 	int err = ERR_UNKNOWN_CMD;
 
 	for ( ; api_ep_map[i].api != NULL; i++) {
-		const struct endpoint *ep = api_ep_map[i].endpoint->endpoints;
+		const struct _endpoint *ep = api_ep_map[i].endpoint;
 
 		if (strcmp(api_ep_map[i].api, name) != 0)
 			continue;
 
-		err = check_args(argc, argv, ep,
-				 api_ep_map[i].endpoint->print_help);
+		err = check_args(argc, argv, ep);
 		if (err)
 			return err;
-		err = do_api_func(ep, argc, argv, &buf);
+		err = do_api_func(ep->endpoints, argc, argv, &buf);
 
 		break;
 	}

@@ -6,23 +6,16 @@
  * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
  */
 
-#include <stdio.h>
+#include <stddef.h>
 
 #include <libmtdac/mtd-ni.h>
 
 #include "mtd-cli.h"
 
 #define MTD_CLI_CMD	MTD_CLI " ni "
-#define API_NAME	"National Insurance"
 
-#define ENDPOINTS	"get-annual-summary"
-
-static int print_endpoints(void)
-{
-	printf("Available " API_NAME " endpoints :-\n\n%s\n", ENDPOINTS);
-
-	return -1;
-}
+static const char * const API_NAME = "National Insurance";
+static const char * const CMDS = "get-annual-summary";
 
 static const struct endpoint endpoints[] = {
 	{
@@ -39,5 +32,6 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint ni_endpoint = {
 	.endpoints = endpoints,
-	.print_help = print_endpoints
+	.api_name = API_NAME,
+	.cmds = CMDS
 };

@@ -6,24 +6,17 @@
  * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
  */
 
-#include <stdio.h>
+#include <stddef.h>
 
 #include <libmtdac/mtd-test-cu.h>
 
 #include "mtd-cli.h"
 
 #define MTD_CLI_CMD	MTD_CLI " test-cu "
-#define API_NAME	"Create Test User"
 
-#define ENDPOINTS \
-"create-individual create-organisation create-agent list-services"
-
-static int print_endpoints(void)
-{
-	printf("Available " API_NAME " endpoints :-\n\n%s\n", ENDPOINTS);
-
-	return -1;
-}
+static const char * const API_NAME = "Create Test User";
+static const char * const CMDS =
+"create-individual create-organisation create-agent list-services";
 
 static const struct endpoint endpoints[] = {
 	{
@@ -67,5 +60,6 @@ static const struct endpoint endpoints[] = {
 
 const struct _endpoint test_cu_endpoint = {
 	.endpoints = endpoints,
-	.print_help = print_endpoints
+	.api_name = API_NAME,
+	.cmds = CMDS
 };
