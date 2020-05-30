@@ -26,16 +26,18 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|oauth|config|sa|saac|ic|il|ni [endpoint args ...]
+    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|il|ni|biss|test-cu|test-fph [endpoint args ...]
 
 The first argument specifies the API to interface with
 
   * **init** is for doing an initial setup, creating appropriate oauth.json &
     config.json files.
 
-  * **oauth** is for doing a reauthorisation.
+  * **init-oauth** is for doing a reauthorisation.
 
-  * **config** is for regenerating the config.json file.
+  * **init-config** is for regenerating the config.json file.
+
+  * **init-nino** is for storing the National Insurance Number in the nino.json file.
 
   * **sa** is for interacting with the Self-Assessment API.
 

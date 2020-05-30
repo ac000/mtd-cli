@@ -29,7 +29,8 @@
 
 #define MAX_ARGV	7
 
-#define APIS		"init oauth config sa saac ic il ni biss "\
+#define APIS		"init init-oauth init-config init-nino "\
+			"sa saac ic il ni biss "\
 			"test-cu test-fph"
 
 static const struct api_ep {
@@ -185,12 +186,17 @@ static int do_mtd_api(const char *name, int argc, char *argv[])
 	return err;
 }
 
-static int do_config(void)
+static int do_init_nino(void)
+{
+	return mtd_init_nino();
+}
+
+static int do_init_config(void)
 {
 	return mtd_init_config();
 }
 
-static int do_oauth(void)
+static int do_init_oauth(void)
 {
 	return mtd_init_auth();
 }
@@ -201,6 +207,11 @@ static int do_init(void)
 
 	printf("Initialising...\n\n");
 	err = mtd_init_config();
+	if (err)
+		return err;
+
+	printf("\n");
+	err = mtd_init_nino();
 	if (err)
 		return err;
 
@@ -224,10 +235,12 @@ static int dispatcher(int argc, char *argv[])
 
 	if (IS_API("init"))
 		err = do_init();
-	else if (IS_API("oauth"))
-		err = do_oauth();
-	else if (IS_API("config"))
-		err = do_config();
+	else if (IS_API("init-oauth"))
+		err = do_init_oauth();
+	else if (IS_API("init-config"))
+		err = do_init_config();
+	else if (IS_API("init-nino"))
+		err = do_init_nino();
 	else
 		err = do_mtd_api(ep, argc - 2, argv + 1);
 
@@ -256,11 +269,8 @@ int main(int argc, char *argv[])
 		opt_log_level = MTD_OPT_LOG_INFO;
 
 	err = mtd_init(opt_log_level|opt_snd_fph_hdrs);
-	if (err && strcmp(argv[1], "init") != 0) {
-		if (err == MTD_ERR_MISSING_CONFIG)
-			fprintf(stderr, "Please run 'mtd-cli init\n");
+	if (err)
 		exit(EXIT_FAILURE);
-	}
 
 	err = dispatcher(argc - 1, argv + 1);
 	if (err) {
