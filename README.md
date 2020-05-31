@@ -26,7 +26,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|il|ni|biss|test-cu|test-fph [endpoint args ...]
+    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|il|ni|biss|test-cu|test-ni|test-fph [endpoint args ...]
 
 The first argument specifies the API to interface with
 
@@ -52,6 +52,8 @@ The first argument specifies the API to interface with
   * **biss** is for interacting with the Business Income Source Summary API
 
   * **test-cu** is for interacting with the Create Test User API.
+
+  * **test-ni** is for interacting with the National Insurance Test Support API.
 
   * **test-fph** if for interacting with the Test Fraud Prevention Headers API.
 
@@ -399,6 +401,15 @@ with the following usage
     $ mtd-cli test-cu list-service
 
 *\<file\>* is a JSON file containing a list of service names
+
+
+**test-ni** currently has a single endpoint
+
+    create-annual-summary
+
+which takes three arguments
+
+    $ mtd-cli test-ni create-annual-summary <file> utr taxYear
 
 
 **test-fph** currently has a single endpoint
