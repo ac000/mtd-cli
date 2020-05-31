@@ -1,0 +1,35 @@
+_mtd_cli()
+{
+	local cur prev
+	local cmd
+
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+
+	cmd=${COMP_WORDS[0]}
+
+	case ${COMP_CWORD} in
+	1)
+		COMPREPLY=($(compgen -W "$(${prev} | tail -1)" -- ${cur}))
+		;;
+	2)
+		local scmd cmds
+
+		# The init* commands have no sub commands
+		if [[ ${prev} =~ init* ]]; then
+			COMPREPLY=()
+			return
+		fi
+
+		scmd="${cmd} ${prev}"
+		cmds=$(${scmd} | grep ^[a-z])
+
+		COMPREPLY=($(compgen -W "${cmds}" -- ${cur}))
+		;;
+
+	*)
+		COMPREPLY=()
+		;;
+	esac
+}
+complete -F _mtd_cli mtd-cli
