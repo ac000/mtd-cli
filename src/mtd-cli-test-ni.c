@@ -14,8 +14,8 @@
 
 #define MTD_CLI_CMD	MTD_CLI " test-ni "
 
-static const char * const API_NAME = "National Insurance Test Support";
-static const char * const CMDS = "create-annual-summary";
+#define API_NAME "National Insurance Test Support"
+#define CMDS "create-annual-summary"
 
 static const struct endpoint endpoints[] = {
 	{

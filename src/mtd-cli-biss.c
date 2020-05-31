@@ -14,8 +14,8 @@
 
 #define MTD_CLI_CMD	MTD_CLI " biss "
 
-static const char * const API_NAME = "Business Income Source Summary";
-static const char * const CMDS = "get-self-employment get-property";
+#define API_NAME "Business Income Source Summary"
+#define CMDS "get-self-employment get-property"
 
 static const struct endpoint endpoints[] = {
 	{

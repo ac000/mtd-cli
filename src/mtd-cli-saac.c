@@ -14,10 +14,10 @@
 
 #define MTD_CLI_CMD	MTD_CLI " saac "
 
-static const char * const API_NAME = "Self-Assessment Accounts";
-static const char * const CMDS =
+#define API_NAME "Self-Assessment Accounts"
+#define CMDS \
 "get-balance list-transactions get-transaction list-charges get-charge\n"\
-"list-payments get-payment";
+"list-payments get-payment"
 
 static const struct endpoint endpoints[] = {
 	{

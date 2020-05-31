@@ -14,9 +14,8 @@
 
 #define MTD_CLI_CMD	MTD_CLI " test-cu "
 
-static const char * const API_NAME = "Create Test User";
-static const char * const CMDS =
-"create-individual create-organisation create-agent list-services";
+#define API_NAME "Create Test User"
+#define CMDS "create-individual create-organisation create-agent list-services"
 
 static const struct endpoint endpoints[] = {
 	{

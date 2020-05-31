@@ -14,13 +14,13 @@
 
 #define MTD_CLI_CMD	MTD_CLI " il "
 
-static const char * const API_NAME = "Individual Loses";
-static const char * const CMDS =
+#define API_NAME "Individual Loses"
+#define CMDS \
 "Brought Forward Losses\n\n"\
 "bf-list-loses bf-create-loss bf-get-loss bf-delete-loss bf-update-loss-amnt\n\n"\
 "Loss Claims\n\n"\
 "lc-list-loses lc-create-loss lc-get-loss lc-delete-loss lc-update-loss-type\n"\
-"lc-update-loss-order";
+"lc-update-loss-order"
 
 static const struct endpoint endpoints[] = {
 	/* Brought Forward Loses */

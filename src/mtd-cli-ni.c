@@ -14,8 +14,8 @@
 
 #define MTD_CLI_CMD	MTD_CLI " ni "
 
-static const char * const API_NAME = "National Insurance";
-static const char * const CMDS = "get-annual-summary";
+#define API_NAME "National Insurance"
+#define CMDS "get-annual-summary"
 
 static const struct endpoint endpoints[] = {
 	{

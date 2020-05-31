@@ -14,8 +14,8 @@
 
 #define MTD_CLI_CMD	MTD_CLI " test-fph "
 
-static const char * const API_NAME = "Test Fraud Prevention Headers";
-static const char * const CMDS = "validate";
+#define API_NAME "Test Fraud Prevention Headers"
+#define CMDS "validate"
 
 static const struct endpoint endpoints[] = {
 	{

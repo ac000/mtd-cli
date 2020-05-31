@@ -14,8 +14,8 @@
 
 #define MTD_CLI_CMD	MTD_CLI " sa "
 
-static const char * const API_NAME = "Self-Assessment";
-static const char * const CMDS =
+#define API_NAME "Self-Assessment"
+#define CMDS \
 "Self-Employment\n\n"\
 "se-list-employments se-create-employment se-get-employment\n"\
 "se-list-obligations se-list-periods se-create-period se-get-period\n"\
@@ -39,7 +39,7 @@ static const char * const CMDS =
 "Tax Calculations\n\n"\
 "tc-calculate tc-get-calculation tc-get-validation-msgs\n\n"\
 "Crystallisation\n\n"\
-"cr-intent-to-crystallise cr-crystallise cr-list-obligations";
+"cr-intent-to-crystallise cr-crystallise cr-list-obligations"
 
 static const struct endpoint endpoints[] = {
 	/* Self-Employment */

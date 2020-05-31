@@ -14,11 +14,11 @@
 
 #define MTD_CLI_CMD	" ic "
 
-static const char * const API_NAME = "Individual Calculations";
-static const char * const CMDS =
+#define API_NAME "Individual Calculations"
+#define CMDS \
 "list-calculations trigger-calculation get-calculation-metadata\n"\
 "get-income-tax-nics-calc get-taxable-income get-allowances-deductions-reliefs\n"\
-"get-end-of-year-estimate get-messages";
+"get-end-of-year-estimate get-messages"
 
 static const struct endpoint endpoints[] = {
 	{
