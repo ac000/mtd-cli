@@ -429,11 +429,11 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "cr-crystallise",
 		.api_func = {
-			.func_1 = mtd_sa_cr_crystallise
+			.func_2 = mtd_sa_cr_crystallise
 		},
-		.func = FUNC_1,
-		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "cr-crystallise taxYear"
+		.func = FUNC_2,
+		.nr_req_args = 2,
+		.use = MTD_CLI_CMD "cr-crystallise <file> taxYear"
 	},
 	{
 		.name = "cr-list-obligations",

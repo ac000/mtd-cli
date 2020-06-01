@@ -178,7 +178,7 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa cr-intent-to-crystallise taxYear
 
-    $ mtd-cli sa cr-crystallise taxYear
+    $ mtd-cli sa cr-crystallise <file> taxYear
 
     $ mtd-cli sa cr-list-obligations from=YYYY-MM-DD,to=YYYY-MM-DD
 
