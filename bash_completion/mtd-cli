@@ -1,3 +1,6 @@
+# Either copy this into /usr/share/bash-completion/completions/
+# or you can load it in situ with 'source mtd-cli'
+
 _mtd_cli()
 {
 	local cur prev
