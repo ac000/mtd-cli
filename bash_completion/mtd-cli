@@ -35,4 +35,4 @@ _mtd_cli()
 		;;
 	esac
 }
-complete -F _mtd_cli mtd-cli ./mtd-cli
+complete -o bashdefault -o default -F _mtd_cli mtd-cli ./mtd-cli
