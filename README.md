@@ -26,7 +26,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|il|ni|biss|test-cu|test-ni|test-fph [endpoint args ...]
+    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|il|ni|biss|bsas|test-cu|test-ni|test-fph [endpoint args ...]
 
 The first argument specifies the API to interface with
 
@@ -49,7 +49,9 @@ The first argument specifies the API to interface with
 
   * **ni** is for interacting with the National Insurance API.
 
-  * **biss** is for interacting with the Business Income Source Summary API
+  * **biss** is for interacting with the Business Income Source Summary API.
+
+  * **bsas** if ro interacting with the Business Source Adjustable Summary API.
 
   * **test-cu** is for interacting with the Create Test User API.
 
@@ -384,6 +386,25 @@ which takes two arguments
     $ mtd-cli biss get-self-employment selfEmploymentId=[,taxYear=YYYY-YY]
 
     $ mtd-cli biss get-property typeOfBusiness={uk-property-non-fhl,uk-property-fhl}[,taxYear=YYYY-YY]
+
+
+**bsas** has the following endpoints
+
+    $ mtd-cli bsas bsas-list-summaries [[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl}][,[taxYear=YYYY-YY]]]]
+
+    $ mtd-cli bsas bsas-trigger-summary <file>
+
+    $ mtd-cli bsas bsas-se-get-summary bsasId [adjustedStatus={true,false}]
+
+    $ mtd-cli bsas bsas-se-list-summary-adjustments bsasId
+
+    $ mtd-cli bsas bsas-se-update-summary-adjustments <file> bsasId
+
+    $ mtd-cli bsas bsas-pb-get-summary bsasId [adjustedStatus={true,false}]
+
+    $ mtd-cli bsas bsas-pb-list-summary-adjustments bsasId
+
+    $ mtd-cli bsas bsas-pb-update-summary-adjustments <file> bsasId
 
 
 **test-cu** has the following commands
