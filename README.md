@@ -394,6 +394,20 @@ with the following usage
 
 **bsas** has the following endpoints
 
+    bsas-list-summaries bsas-trigger-summary
+
+    Self-Employment
+
+    bsas-se-get-summary bsas-se-list-summary-adjustments
+    bsas-se-update-summary-adjustments
+
+    UK Property Business
+
+    bsas-pb-get-summary bsas-pb-list-summary-adjustments
+    bsas-pb-update-summary-adjustments
+
+with the following usage
+
     $ mtd-cli bsas bsas-list-summaries [[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl}][,[taxYear=YYYY-YY]]]]
 
     $ mtd-cli bsas bsas-trigger-summary <file>
