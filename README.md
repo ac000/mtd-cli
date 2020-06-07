@@ -383,6 +383,10 @@ which takes two arguments
 
 **biss** has the following endpoints
 
+    get-self-employment get-property
+
+with the following usage
+
     $ mtd-cli biss get-self-employment selfEmploymentId=[,taxYear=YYYY-YY]
 
     $ mtd-cli biss get-property typeOfBusiness={uk-property-non-fhl,uk-property-fhl}[,taxYear=YYYY-YY]
