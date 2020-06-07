@@ -186,7 +186,7 @@ The following shows each of the above and what arguments (if any) they take.
 
 *selfEmploymentId* is an 'id' as returned from '*mtd-cli sa se-list-employments*'.
 
-*periodId* is an 'id' as returned from '*mtd-cli sa *-list-periods ...*'.
+*periodId* is an 'id' as returned from '*mtd-cli sa \*-list-periods ...*'.
 
 *\<file\>* is a file containing JSON in the appropriate format for the endpoint
 being used.
@@ -541,7 +541,7 @@ behaviour
 
 #### **MTD_CLI_OPT_LOG_LEVEL**
 
-This can be used to override the default log level (MTD_OPT_LOG_ERR.
+This can be used to override the default log level (MTD\_OPT\_LOG\_ERR).
 
 Currently recognised values are; *debug* & *info*
 
