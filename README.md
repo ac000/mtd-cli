@@ -238,7 +238,7 @@ The following shows each of the above and what arguments (if any) they take.
 
 with the following usage
 
-    $ mtd-cli ic list-calculations
+    $ mtd-cli ic list-calculations [taxYear=YYYY-YY]
 
     $ mtd-cli ic trigger-calculation <file>
 

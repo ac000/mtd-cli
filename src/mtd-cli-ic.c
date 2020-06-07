@@ -24,11 +24,11 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "list-calculations",
 		.api_func = {
-			.func_0 = mtd_ic_list_calculations
+			.func_1 = mtd_ic_list_calculations
 		},
-		.func = FUNC_0,
+		.func = FUNC_1,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "list-calculations"
+		.use = MTD_CLI_CMD "list-calculations [taxYear=YYYY-YY]"
 	},
 	{
 		.name = "trigger-calculation",
