@@ -9,14 +9,6 @@
 #ifndef _MTD_CLI_IL_H_
 #define _MTD_CLI_IL_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 extern const struct _endpoint il_endpoint;
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
 
 #endif /* _MTD_CLI_IL_H_ */

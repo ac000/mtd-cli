@@ -9,14 +9,6 @@
 #ifndef _MTD_CLI_TEST_CU_H_
 #define _MTD_CLI_TEST_CU_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 extern const struct _endpoint test_cu_endpoint;
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
 
 #endif /* _MTD_CLI_TEST_CU_H_ */

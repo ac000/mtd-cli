@@ -9,10 +9,6 @@
 #ifndef _MTD_CLI_H_
 #define _MTD_CLI_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #define MTD_CLI			"mtd-cli"
 
 enum nr_func_args {
@@ -44,9 +40,5 @@ struct endpoint {
 	const int nr_req_args;
 	const char *use;
 };
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
 
 #endif /* _MTD_CLI_H_ */
