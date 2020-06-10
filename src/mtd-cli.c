@@ -278,7 +278,7 @@ int main(int argc, char *argv[])
 	else if (log_level && *log_level == 'i')
 		opt_log_level = MTD_OPT_LOG_INFO;
 
-	err = mtd_init(opt_log_level|opt_snd_fph_hdrs);
+	err = mtd_init(opt_log_level|opt_snd_fph_hdrs|MTD_OPT_GLOBAL_INIT);
 	if (err)
 		exit(EXIT_FAILURE);
 
