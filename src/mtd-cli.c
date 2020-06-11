@@ -265,6 +265,7 @@ int main(int argc, char *argv[])
 	int opt_log_level = MTD_OPT_LOG_ERR;
 	char *snd_fph_hdrs = getenv("MTD_CLI_OPT_SND_FPH_HDRS");
 	char *log_level = getenv("MTD_CLI_OPT_LOG_LEVEL");
+	const char *hdrs[2] = { NULL };
 
 	if (argc == 1) {
 		print_api_help();
@@ -281,6 +282,20 @@ int main(int argc, char *argv[])
 	err = mtd_init(opt_log_level|opt_snd_fph_hdrs|MTD_OPT_GLOBAL_INIT);
 	if (err)
 		exit(EXIT_FAILURE);
+
+	/*
+	 * Set any extra user supplied http headers.
+	 *
+	 * Currently just one header is supported which should be
+	 * enough for adding a Gov-Test-Scenario header in the
+	 * Test API.
+	 *
+	 * The underlying libmtdac supports however many you set
+	 * in the array.
+	 */
+	hdrs[0] = getenv("MTD_CLI_HDRS");
+	if (hdrs[0])
+		mtd_hdrs_add(hdrs);
 
 	err = dispatcher(argc - 1, argv + 1);
 	if (err) {

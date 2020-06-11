@@ -554,6 +554,15 @@ to
 
 *true* or *1*
 
+#### **MTD_CLI_HDRS**
+
+This can be used to set extra HTTP headers to be sent.
+
+Currently only one header is supported which should be sufficient for setting
+the *Gov-Test-Scenario* Test API header. e.g
+
+    MTD_CLI_HDRS="Gov-Test-Scenario: NO_SUBMISSIONS_EXIST" mtd-cli sa cr-intent-to-crystallise 2018-19
+
 
 ## License
 
