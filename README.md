@@ -424,6 +424,8 @@ with the following usage
 
     $ mtd-cli bsas bsas-pb-update-summary-adjustments <file> bsasId
 
+*bsasId* is as returned by '*mtd-cli bsas bsas-list-summaries*'.
+
 
 **test-cu** has the following commands
 
