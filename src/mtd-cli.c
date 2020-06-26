@@ -140,22 +140,39 @@ int do_api_func(const struct endpoint *ep, int argc, char *argv[], char **buf)
 	}
 
 	for (i = 0; ep[i].name != NULL; i++) {
+		struct mtd_dsrc_ctx dsctx;
+
 		if (strcmp(ep[i].name, argv[0]) != 0)
 			continue;
+
+		switch (ep[i].func) {
+		case FUNC_1d:
+		case FUNC_2d:
+		case FUNC_3d:
+		case FUNC_4d:
+			dsctx.data_src.file = args[0];
+			dsctx.src_type = MTD_DATA_SRC_FILE;
+		default:
+			break;
+		}
 
 		switch (ep[i].func) {
 		case FUNC_0:
 			return ep[i].api_func.func_0(buf);
 		case FUNC_1:
 			return ep[i].api_func.func_1(args[0], buf);
+		case FUNC_1d:
+			return ep[i].api_func.func_1d(&dsctx, buf);
 		case FUNC_2:
 			return ep[i].api_func.func_2(args[0], args[1], buf);
-		case FUNC_3:
-			return ep[i].api_func.func_3(args[0], args[1], args[2],
-						     buf);
-		case FUNC_4:
-			return ep[i].api_func.func_4(args[0], args[1], args[2],
-						     args[3], buf);
+		case FUNC_2d:
+			return ep[i].api_func.func_2d(&dsctx, args[1], buf);
+		case FUNC_3d:
+			return ep[i].api_func.func_3d(&dsctx, args[1], args[2],
+						      buf);
+		case FUNC_4d:
+			return ep[i].api_func.func_4d(&dsctx, args[1], args[2],
+						      args[3], buf);
 		}
 	}
 

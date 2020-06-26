@@ -36,9 +36,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "bf-create-loss",
 		.api_func = {
-			.func_1 = mtd_il_bf_create_loss
+			.func_1d = mtd_il_bf_create_loss
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "bf-create-loss <file>"
 	},
@@ -63,9 +63,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "bf-update-loss-amnt",
 		.api_func = {
-			.func_2 = mtd_il_bf_update_loss_amnt
+			.func_2d = mtd_il_bf_update_loss_amnt
 		},
-		.func = FUNC_2,
+		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "bf-update-loss-amnt <file> lossaId"
 	},
@@ -82,9 +82,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "lc-create-loss",
 		.api_func = {
-			.func_1 = mtd_il_lc_create_loss
+			.func_1d = mtd_il_lc_create_loss
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "lc-create-loss <file>"
 	},
@@ -109,18 +109,18 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "lc-update-loss-type",
 		.api_func = {
-			.func_2 = mtd_il_lc_update_loss_type
+			.func_2d = mtd_il_lc_update_loss_type
 		},
-		.func = FUNC_2,
+		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "lc-update-loss-type <file> claimId"
 	},
 	{
 		.name = "lc-update-loss-order",
 		.api_func = {
-			.func_1 = mtd_il_lc_update_loss_order
+			.func_1d = mtd_il_lc_update_loss_order
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "lc-update-loss-order <file>"
 	},

@@ -55,9 +55,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-create-employment",
 		.api_func = {
-			.func_1 = mtd_sa_se_create_employment
+			.func_1d = mtd_sa_se_create_employment
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "se-create-employment <file>"
 	},
@@ -91,9 +91,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-create-period",
 		.api_func = {
-			.func_2 = mtd_sa_se_create_period
+			.func_2d = mtd_sa_se_create_period
 		},
-		.func = FUNC_2,
+		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "se-create-period <file> selfEmploymentId"
 	},
@@ -109,9 +109,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-update-period",
 		.api_func = {
-			.func_3 = mtd_sa_se_update_period
+			.func_3d = mtd_sa_se_update_period
 		},
-		.func = FUNC_3,
+		.func = FUNC_3d,
 		.nr_req_args = 3,
 		.use = MTD_CLI_CMD "se-update-period <file> selfEmploymentId periodId"
 	},
@@ -127,18 +127,18 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-update-annual-summary",
 		.api_func = {
-			.func_3 = mtd_sa_se_update_annual_summary
+			.func_3d = mtd_sa_se_update_annual_summary
 		},
-		.func = FUNC_3,
+		.func = FUNC_3d,
 		.nr_req_args = 3,
 		.use = MTD_CLI_CMD "se-update-annual-summary <file> selfEmploymentId taxYear"
 	},
 	{
 		.name = "se-submit-end-of-period-statement",
 		.api_func = {
-			.func_4 = mtd_sa_se_submit_end_of_period_statement
+			.func_4d = mtd_sa_se_submit_end_of_period_statement
 		},
-		.func = FUNC_4,
+		.func = FUNC_4d,
 		.nr_req_args = 4,
 		.use = MTD_CLI_CMD "se-submit-end-of-period-statement <file> selfEmploymentId start end"
 	},
@@ -164,9 +164,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "pb-create-property",
 		.api_func = {
-			.func_1 = mtd_sa_pb_create_property
+			.func_1d = mtd_sa_pb_create_property
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "pb-create-property <file>"
 	},
@@ -190,9 +190,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "pb-create-non-fhl-period",
 		.api_func = {
-			.func_1 = mtd_sa_pb_create_non_fhl_period
+			.func_1d = mtd_sa_pb_create_non_fhl_period
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "pb-create-non-fhl-period <file>"
 	},
@@ -208,9 +208,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "pb-update-non-fhl-period",
 		.api_func = {
-			.func_2 = mtd_sa_pb_update_non_fhl_period
+			.func_2d = mtd_sa_pb_update_non_fhl_period
 		},
-		.func = FUNC_2,
+		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "pb-update-non-fhl-period <file> periodId"
 	},
@@ -226,9 +226,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "pb-update-non-fhl-annual-summary",
 		.api_func = {
-			.func_2 = mtd_sa_pb_update_non_fhl_annual_summary
+			.func_2d = mtd_sa_pb_update_non_fhl_annual_summary
 		},
-		.func = FUNC_2,
+		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "pb-update-non-fhl-annual-summary <file> taxYear"
 	},
@@ -244,9 +244,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "pb-create-fhl-period",
 		.api_func = {
-			.func_1 = mtd_sa_pb_create_fhl_period
+			.func_1d = mtd_sa_pb_create_fhl_period
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "pb-create-fhl-period <file>"
 	},
@@ -262,9 +262,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "pb-update-fhl-period",
 		.api_func = {
-			.func_2 = mtd_sa_pb_update_fhl_period
+			.func_2d = mtd_sa_pb_update_fhl_period
 		},
-		.func = FUNC_2,
+		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "pb-update-fhl-period <file> periodId"
 	},
@@ -280,18 +280,18 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "pb-update-fhl-annual-summary",
 		.api_func = {
-			.func_2 = mtd_sa_pb_update_fhl_annual_summary
+			.func_2d = mtd_sa_pb_update_fhl_annual_summary
 		},
-		.func = FUNC_2,
+		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "pb-update-fhl-annual-summary <file> taxYear"
 	},
 	{
 		.name = "pb-submit-end-of-period-statement",
 		.api_func = {
-			.func_3 = mtd_sa_pb_submit_end_of_period_statement
+			.func_3d = mtd_sa_pb_submit_end_of_period_statement
 		},
-		.func = FUNC_3,
+		.func = FUNC_3d,
 		.nr_req_args = 3,
 		.use = MTD_CLI_CMD "pb-submit-end-of-period-statement <file> start end"
 	},
@@ -317,9 +317,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "di-update-annual-summary",
 		.api_func = {
-			.func_2 = mtd_sa_di_update_annual_summary
+			.func_2d = mtd_sa_di_update_annual_summary
 		},
-		.func = FUNC_2,
+		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "di-get-annual-summary <file> taxYear"
 	},
@@ -336,9 +336,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "sa-create-account",
 		.api_func = {
-			.func_1 = mtd_sa_sa_create_account
+			.func_1d = mtd_sa_sa_create_account
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "sa-create-account <file>"
 	},
@@ -363,9 +363,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "sa-update-annual-summary",
 		.api_func = {
-			.func_3 = mtd_sa_sa_update_annual_summary
+			.func_3d = mtd_sa_sa_update_annual_summary
 		},
-		.func = FUNC_3,
+		.func = FUNC_3d,
 		.nr_req_args = 3,
 		.use = MTD_CLI_CMD "sa-update-annual-summary <file> savingsAccountId taxYear"
 	},
@@ -382,9 +382,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "cg-update-charitable-giving",
 		.api_func = {
-			.func_2 = mtd_sa_cg_update_charitable_giving
+			.func_2d = mtd_sa_cg_update_charitable_giving
 		},
-		.func = FUNC_2,
+		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "cg-get-charitable-giving <file> taxYear"
 	},
@@ -392,9 +392,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "tc-calculate",
 		.api_func = {
-			.func_1 = mtd_sa_tc_calculate
+			.func_1d = mtd_sa_tc_calculate
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "tc-calculate <file>"
 	},
@@ -419,6 +419,7 @@ static const struct endpoint endpoints[] = {
 	/* Crystallisation */
 	{
 		.name = "cr-intent-to-crystallise",
+		/* While this is a POST request, it doesn't send any body */
 		.api_func = {
 			.func_1 = mtd_sa_cr_intent_to_crystallise
 		},
@@ -429,9 +430,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "cr-crystallise",
 		.api_func = {
-			.func_2 = mtd_sa_cr_crystallise
+			.func_2d = mtd_sa_cr_crystallise
 		},
-		.func = FUNC_2,
+		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "cr-crystallise <file> taxYear"
 	},

@@ -37,9 +37,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "bsas-trigger-summary",
 		.api_func = {
-			.func_1 = mtd_bsas_trigger_summary
+			.func_1d = mtd_bsas_trigger_summary
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "bsas-trigger-summary <file>"
 	},
@@ -64,8 +64,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "bsas-se-update-summary-adjustments",
 		.api_func = {
-			.func_2 = mtd_bsas_se_update_summary_adjustments
+			.func_2d = mtd_bsas_se_update_summary_adjustments
 		},
+		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "bsas-se-update-summary-adjustments <file> bsasId"
 	},
@@ -90,8 +91,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "bsas-pb-update-summary-adjustments",
 		.api_func = {
-			.func_2 = mtd_bsas_pb_update_summary_adjustments
+			.func_2d = mtd_bsas_pb_update_summary_adjustments
 		},
+		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = MTD_CLI_CMD "bsas-pb-update-summary-adjustments <file> bsasId"
 	},

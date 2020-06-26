@@ -33,9 +33,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "trigger-calculation",
 		.api_func = {
-			.func_1 = mtd_ic_trigger_calculation
+			.func_1d = mtd_ic_trigger_calculation
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "trigger-calculation <file>"
 	},

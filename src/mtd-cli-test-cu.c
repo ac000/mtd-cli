@@ -21,27 +21,27 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "create-individual",
 		.api_func = {
-			.func_1 = mtd_test_cu_create_individual
+			.func_1d = mtd_test_cu_create_individual
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "create-individual <file>"
 	},
 	{
 		.name = "create-organisation",
 		.api_func = {
-			.func_1 = mtd_test_cu_create_organisation
+			.func_1d = mtd_test_cu_create_organisation
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "create-organisation <file>"
 	},
 	{
 		.name = "create-agent",
 		.api_func = {
-			.func_1 = mtd_test_cu_create_agent
+			.func_1d = mtd_test_cu_create_agent
 		},
-		.func = FUNC_1,
+		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = MTD_CLI_CMD "create-agent <file?"
 	},

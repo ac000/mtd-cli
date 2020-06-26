@@ -21,9 +21,9 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "create-annual-summary",
 		.api_func = {
-			.func_3 = mtd_test_ni_create_annual_summary
+			.func_3d = mtd_test_ni_create_annual_summary
 		},
-		.func = FUNC_3,
+		.func = FUNC_3d,
 		.nr_req_args = 3,
 		.use = MTD_CLI_CMD "create-annual-summary <file> utr taxYear"
 	},
