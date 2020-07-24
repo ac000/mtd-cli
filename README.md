@@ -312,7 +312,7 @@ with the following usage
 
     $ mtd-cli il lc-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]
 
-    $ mtd-cli il lc-create-loss <file>
+    $ mtd-cli il lc-create-loss <file> [taxYear=YYYY-YY]
 
 *\<file\>* is a JSON file that looks like
 

@@ -118,11 +118,11 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "lc-update-loss-order",
 		.api_func = {
-			.func_1d = mtd_il_lc_update_loss_order
+			.func_2d = mtd_il_lc_update_loss_order
 		},
-		.func = FUNC_1d,
+		.func = FUNC_2d,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "lc-update-loss-order <file>"
+		.use = MTD_CLI_CMD "lc-update-loss-order <file> [taxYear=YYYY-YY]"
 	},
 	{ NULL, { NULL }, 0, 0, NULL }
 };
