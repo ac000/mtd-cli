@@ -73,11 +73,11 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "se-list-obligations",
 		.api_func = {
-			.func_1 = mtd_sa_se_list_obligations
+			.func_2 = mtd_sa_se_list_obligations
 		},
-		.func = FUNC_1,
+		.func = FUNC_2,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "se-list-obligations selfEmploymentId"
+		.use = MTD_CLI_CMD "se-list-obligations selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
 	},
 	{
 		.name = "se-list-periods",

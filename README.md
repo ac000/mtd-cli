@@ -102,7 +102,7 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa se-get-employment selfEmploymentId
 
-    $ mtd-cli sa se-list-obligations selfEmploymentId
+    $ mtd-cli sa se-list-obligations selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]
 
     $ mtd-cli sa se-list-periods selfEmploymentId
 
