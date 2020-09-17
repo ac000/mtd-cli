@@ -547,9 +547,9 @@ This can be used to override the default log level (MTD\_OPT\_LOG\_ERR).
 
 Currently recognised values are; *debug* & *info*
 
-#### **MTD_CLI_OPT_SND_FPH_HDRS**
+#### **MTD_CLI_OPT_NO_FPH_HDRS**
 
-This can be used to enable the sending of 'Fraud Prevention Headers', set it
+This can be used to disable the sending of 'Fraud Prevention Headers', set it
 to
 
 *true* or *1*
