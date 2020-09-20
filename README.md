@@ -81,6 +81,10 @@ to connect to. These are
     pb-update-fhl-annual-summary pb-submit-end-of-period-statement
     pb-get-end-of-period-statement
 
+    Dividends Income
+
+    di-get-annual-summary di-update-annual-summary
+
     Savings Accounts
 
     sa-list-accounts sa-create-account sa-get-account sa-get-annual-summary
