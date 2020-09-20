@@ -172,12 +172,6 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa cg-update-charitable-giving taxYear
 
-    $ mtd-cli sa tc-calculate <file>
-
-    $ mtd-cli sa tc-get-calculation calculationId
-
-    $ mtd-cli sa tc-get-validation-msgs calculationId
-
     $ mtd-cli sa cr-intent-to-crystallise taxYear
 
     $ mtd-cli sa cr-crystallise <file> taxYear
