@@ -13,6 +13,27 @@
 
 #define MTD_CLI			"mtd-cli"
 
+/*
+ * Funky macro magic so we can autogenerate the endpoint structure
+ * name.
+ *
+ * API will be defined in the mtd-cli-*.c files, e.g
+ *
+ *     #define API	ni
+ *
+ * this will then allow
+ *
+ *     const struct _endpoint ENDPOINT = {
+ *
+ * which will get turned into
+ *
+ *     const struct _endpoint ni_endpoint = {
+ */
+#define EP_DUMMY()
+#define EP(name)		name ## _endpoint
+#define EP_EVAL(...)		__VA_ARGS__
+#define ENDPOINT		EP_EVAL(EP EP_DUMMY() (API))
+
 enum function_selector {
 	FUNC_0 = 0,
 	FUNC_1,
