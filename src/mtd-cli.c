@@ -16,7 +16,6 @@
 
 #include <jansson.h>
 
-#include "utils.h"
 #include "mtd-cli.h"
 #include "mtd-cli-sa.h"
 #include "mtd-cli-saac.h"
@@ -96,6 +95,25 @@ static int print_api_help(void)
 	printf("Available APIs :-\n\n%s\n", APIS);
 
 	return -1;
+}
+
+static char *gen_query_string(const char *src, char *dst, size_t len)
+{
+	char *ptr = dst;
+	size_t i = 1;
+
+	*(dst++) = '?';
+	while (*src && i++ < len - 1) {
+		if (*src == ',')
+			*dst = '&';
+		else
+			*dst = *src;
+		src++;
+		dst++;
+	}
+	*dst = '\0';
+
+	return ptr;
 }
 
 int check_args(int argc, char *argv[], const struct _endpoint *ep)
