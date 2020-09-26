@@ -47,6 +47,8 @@ The first argument specifies the API to interface with
 
   * **il** is for interacting with the Individual Loses API.
 
+  * **ii** is for interacting with the Individual Income API.
+
   * **ni** is for interacting with the National Insurance API.
 
   * **biss** is for interacting with the Business Income Source Summary API.
@@ -364,6 +366,19 @@ with the following usage
 *lossId* is an 'id' as returned by the '*mtd-cli il bf-list-loses*' command
 
 *claimId* is an 'id' as returned by the '*mtd-cli il lc-list-loses*' command
+
+
+**il** supports the following commands
+
+    get-annual-summary
+
+which takes two arguments
+
+    $ mtd-cli ii get-annual-summary utr taxYear
+
+*utr* is the Unique Tax Reference.
+
+*taxYear* is the Tax year to get in the form; *YYYY-YY*
 
 
 **ni** currently has a single endpoint
