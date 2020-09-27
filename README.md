@@ -26,7 +26,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|il|ni|biss|bsas|test-cu|test-ni|test-fph [endpoint args ...]
+    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|il|ie|ni|biss|bsas|test-cu|test-ni|test-fph [endpoint args ...]
 
 The first argument specifies the API to interface with
 
@@ -48,6 +48,8 @@ The first argument specifies the API to interface with
   * **il** is for interacting with the Individual Loses API.
 
   * **ii** is for interacting with the Individual Income API.
+
+  * **ie** is for interacting with the Individual Employment API.
 
   * **ni** is for interacting with the National Insurance API.
 
@@ -368,13 +370,26 @@ with the following usage
 *claimId* is an 'id' as returned by the '*mtd-cli il lc-list-loses*' command
 
 
-**il** supports the following commands
+**ii** supports the following commands
 
     get-annual-summary
 
 which takes two arguments
 
     $ mtd-cli ii get-annual-summary utr taxYear
+
+*utr* is the Unique Tax Reference.
+
+*taxYear* is the Tax year to get in the form; *YYYY-YY*
+
+
+**ie** supports the following commands
+
+    get-annual-summary
+
+which takes two arguments
+
+    $ mtd-cli ie get-annual-summary utr taxYear
 
 *utr* is the Unique Tax Reference.
 

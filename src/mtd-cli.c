@@ -24,7 +24,7 @@
 #define MAX_ARGV	7
 
 #define APIS		"init init-oauth init-config init-nino "\
-			"sa saac ic il ii ni biss bsas "\
+			"sa saac ic il ii ie ni biss bsas "\
 			"test-cu test-ni test-fph"
 
 static const struct api_ep {
@@ -50,6 +50,10 @@ static const struct api_ep {
 	{
 		.api = "ii",
 		.endpoint = &ii_endpoint
+	},
+	{
+		.api = "ie",
+		.endpoint = &ie_endpoint
 	},
 	{
 		.api = "ni",
