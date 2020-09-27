@@ -12,7 +12,7 @@
 
 #include "mtd-cli.h"
 
-#define MTD_CLI_CMD	MTD_CLI " sa "
+#define API	sa
 
 #define API_NAME "Self-Assessment"
 #define CMDS \
@@ -48,7 +48,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "se-list-employments"
+		.use = "se-list-employments"
 	},
 	{
 		.name = "se-create-employment",
@@ -57,7 +57,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "se-create-employment <file>"
+		.use = "se-create-employment <file>"
 	},
 	{
 		.name = "se-get-employment",
@@ -66,7 +66,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "se-get-employment selfEmploymentId"
+		.use = "se-get-employment selfEmploymentId"
 	},
 	{
 		.name = "se-list-obligations",
@@ -75,7 +75,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "se-list-obligations selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
+		.use = "se-list-obligations selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
 	},
 	{
 		.name = "se-list-periods",
@@ -84,7 +84,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "se-list-periods selfEmploymentId"
+		.use = "se-list-periods selfEmploymentId"
 	},
 	{
 		.name = "se-create-period",
@@ -93,7 +93,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "se-create-period <file> selfEmploymentId"
+		.use = "se-create-period <file> selfEmploymentId"
 	},
 	{
 		.name = "se-get-period",
@@ -102,7 +102,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "se-get-period selfEmploymentId periodId"
+		.use = "se-get-period selfEmploymentId periodId"
 	},
 	{
 		.name = "se-update-period",
@@ -111,7 +111,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_3d,
 		.nr_req_args = 3,
-		.use = MTD_CLI_CMD "se-update-period <file> selfEmploymentId periodId"
+		.use = "se-update-period <file> selfEmploymentId periodId"
 	},
 	{
 		.name = "se-get-annual-summary",
@@ -120,7 +120,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "se-get-annual-summary selfEmploymentId taxYear"
+		.use = "se-get-annual-summary selfEmploymentId taxYear"
 	},
 	{
 		.name = "se-update-annual-summary",
@@ -129,7 +129,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_3d,
 		.nr_req_args = 3,
-		.use = MTD_CLI_CMD "se-update-annual-summary <file> selfEmploymentId taxYear"
+		.use = "se-update-annual-summary <file> selfEmploymentId taxYear"
 	},
 	{
 		.name = "se-submit-end-of-period-statement",
@@ -138,7 +138,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_4d,
 		.nr_req_args = 4,
-		.use = MTD_CLI_CMD "se-submit-end-of-period-statement <file> selfEmploymentId start end"
+		.use = "se-submit-end-of-period-statement <file> selfEmploymentId start end"
 	},
 	{
 		.name = "se-get-end-of-period-statement",
@@ -147,7 +147,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "se-get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
+		.use = "se-get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
 	},
 	/* Self-Assessment - UK Property Business */
 	{
@@ -157,7 +157,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "pb-get-property"
+		.use = "pb-get-property"
 	},
 	{
 		.name = "pb-create-property",
@@ -166,7 +166,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "pb-create-property <file>"
+		.use = "pb-create-property <file>"
 	},
 	{
 		.name = "pb-list-obligations",
@@ -175,7 +175,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "pb-list-obligations"
+		.use = "pb-list-obligations"
 	},
 	{
 		.name = "pb-list-non-fhl-periods",
@@ -183,7 +183,7 @@ static const struct endpoint endpoints[] = {
 			.func_0 = mtd_sa_pb_list_non_fhl_periods
 		},
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "pb-list-non-fhl-periods"
+		.use = "pb-list-non-fhl-periods"
 	},
 	{
 		.name = "pb-create-non-fhl-period",
@@ -192,7 +192,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "pb-create-non-fhl-period <file>"
+		.use = "pb-create-non-fhl-period <file>"
 	},
 	{
 		.name = "pb-get-non-fhl-period",
@@ -201,7 +201,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "pb-get-non-fhl-period periodId"
+		.use = "pb-get-non-fhl-period periodId"
 	},
 	{
 		.name = "pb-update-non-fhl-period",
@@ -210,7 +210,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "pb-update-non-fhl-period <file> periodId"
+		.use = "pb-update-non-fhl-period <file> periodId"
 	},
 	{
 		.name = "pb-get-non-fhl-annual-summary",
@@ -219,7 +219,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "pb-get-non-fhl-annual-summary taxYear"
+		.use = "pb-get-non-fhl-annual-summary taxYear"
 	},
 	{
 		.name = "pb-update-non-fhl-annual-summary",
@@ -228,7 +228,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "pb-update-non-fhl-annual-summary <file> taxYear"
+		.use = "pb-update-non-fhl-annual-summary <file> taxYear"
 	},
 	{
 		.name = "pb-list-fhl-periods",
@@ -237,7 +237,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "pb-list-fhl-periods"
+		.use = "pb-list-fhl-periods"
 	},
 	{
 		.name = "pb-create-fhl-period",
@@ -246,7 +246,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "pb-create-fhl-period <file>"
+		.use = "pb-create-fhl-period <file>"
 	},
 	{
 		.name = "pb-get-fhl-period",
@@ -255,7 +255,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "pb-get-fhl-period periodId"
+		.use = "pb-get-fhl-period periodId"
 	},
 	{
 		.name = "pb-update-fhl-period",
@@ -264,7 +264,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "pb-update-fhl-period <file> periodId"
+		.use = "pb-update-fhl-period <file> periodId"
 	},
 	{
 		.name = "pb-get-fhl-annual-summary",
@@ -273,7 +273,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "pb-get-fhl-annual-summary taxYear"
+		.use = "pb-get-fhl-annual-summary taxYear"
 	},
 	{
 		.name = "pb-update-fhl-annual-summary",
@@ -282,7 +282,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "pb-update-fhl-annual-summary <file> taxYear"
+		.use = "pb-update-fhl-annual-summary <file> taxYear"
 	},
 	{
 		.name = "pb-submit-end-of-period-statement",
@@ -291,7 +291,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_3d,
 		.nr_req_args = 3,
-		.use = MTD_CLI_CMD "pb-submit-end-of-period-statement <file> start end"
+		.use = "pb-submit-end-of-period-statement <file> start end"
 	},
 	{
 		.name = "pb-get-end-of-period-statement",
@@ -310,7 +310,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "di-get-annual-summary taxYear"
+		.use = "di-get-annual-summary taxYear"
 	},
 	{
 		.name = "di-update-annual-summary",
@@ -319,7 +319,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "di-get-annual-summary <file> taxYear"
+		.use = "di-get-annual-summary <file> taxYear"
 	},
 	/* Savings Accounts */
 	{
@@ -329,7 +329,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "sa-list-accounts"
+		.use = "sa-list-accounts"
 	},
 	{
 		.name = "sa-create-account",
@@ -338,7 +338,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "sa-create-account <file>"
+		.use = "sa-create-account <file>"
 	},
 	{
 		.name = "sa-get-account",
@@ -347,7 +347,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "sa-get-account savingsAccountId"
+		.use = "sa-get-account savingsAccountId"
 	},
 	{
 		.name = "sa-get-annual-summary",
@@ -356,7 +356,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "sa-get-annual-summary savingsAccountId taxYear"
+		.use = "sa-get-annual-summary savingsAccountId taxYear"
 	},
 	{
 		.name = "sa-update-annual-summary",
@@ -365,7 +365,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_3d,
 		.nr_req_args = 3,
-		.use = MTD_CLI_CMD "sa-update-annual-summary <file> savingsAccountId taxYear"
+		.use = "sa-update-annual-summary <file> savingsAccountId taxYear"
 	},
 	/* Charitable Giving */
 	{
@@ -375,7 +375,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "cg-get-charitable-giving taxYear"
+		.use = "cg-get-charitable-giving taxYear"
 	},
 	{
 		.name = "cg-update-charitable-giving",
@@ -384,7 +384,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "cg-get-charitable-giving <file> taxYear"
+		.use = "cg-get-charitable-giving <file> taxYear"
 	},
 	/* Crystallisation */
 	{
@@ -395,7 +395,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "cr-intent-to-crystallise taxYear"
+		.use = "cr-intent-to-crystallise taxYear"
 	},
 	{
 		.name = "cr-crystallise",
@@ -404,7 +404,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "cr-crystallise <file> taxYear"
+		.use = "cr-crystallise <file> taxYear"
 	},
 	{
 		.name = "cr-list-obligations",
@@ -413,12 +413,12 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "cr-list-obligations from=YYYY-MM-DD,to=YYYY-MM-DD"
+		.use = "cr-list-obligations from=YYYY-MM-DD,to=YYYY-MM-DD"
 	},
 	{ NULL, { NULL }, 0, 0, NULL }
 };
 
-const struct _endpoint sa_endpoint = {
+const struct _endpoint ENDPOINT = {
 	.endpoints = endpoints,
 	.api_name = API_NAME,
 	.cmds = CMDS

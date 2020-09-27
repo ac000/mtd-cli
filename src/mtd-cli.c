@@ -29,6 +29,8 @@
 #include "mtd-cli-test-ni.h"
 #include "mtd-cli-test-fph.h"
 
+#define MTD_CLI		"mtd-cli"
+
 #define MAX_ARGV	7
 
 #define APIS		"init init-oauth init-config init-nino "\
@@ -116,7 +118,8 @@ static char *gen_query_string(const char *src, char *dst, size_t len)
 	return ptr;
 }
 
-int check_args(int argc, char *argv[], const struct _endpoint *ep)
+int check_args(int argc, char *argv[], const char *api,
+	       const struct _endpoint *ep)
 {
 	int i = 0;
 	const char *name = argv[0];
@@ -132,7 +135,7 @@ int check_args(int argc, char *argv[], const struct _endpoint *ep)
 		if (argc >= eps[i].nr_req_args && *argv[argc] != '?')
 			return 0;
 
-		printf("Usage: %s\n", eps[i].use);
+		printf("Usage: %s %s %s\n", MTD_CLI, api, eps[i].use);
 
 		return -1;
 	}
@@ -215,7 +218,7 @@ static int do_mtd_api(const char *name, int argc, char *argv[])
 		if (strcmp(api_ep_map[i].api, name) != 0)
 			continue;
 
-		err = check_args(argc, argv, ep);
+		err = check_args(argc, argv, api_ep_map[i].api, ep);
 		if (err)
 			return err;
 		err = do_api_func(ep->endpoints, argc, argv, &buf);

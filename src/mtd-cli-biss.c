@@ -12,7 +12,7 @@
 
 #include "mtd-cli.h"
 
-#define MTD_CLI_CMD	MTD_CLI " biss "
+#define API	biss
 
 #define API_NAME "Business Income Source Summary"
 #define CMDS "get-self-employment get-property"
@@ -25,7 +25,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "get-self-employment selfEmploymentId=[,taxYear=YYYY-YY]"
+		.use = "get-self-employment selfEmploymentId=[,taxYear=YYYY-YY]"
 	},
 	{
 		.name = "get-property",
@@ -34,12 +34,12 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "get-property typeOfBusiness={uk-property-non-fhl,uk-property-fhl}[,taxYear=YYYY-YY]"
+		.use = "get-property typeOfBusiness={uk-property-non-fhl,uk-property-fhl}[,taxYear=YYYY-YY]"
 	},
 	{ NULL, { NULL }, 0, 0, NULL}
 };
 
-const struct _endpoint biss_endpoint = {
+const struct _endpoint ENDPOINT = {
 	.endpoints = endpoints,
 	.api_name = API_NAME,
 	.cmds = CMDS

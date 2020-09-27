@@ -12,7 +12,7 @@
 
 #include "mtd-cli.h"
 
-#define MTD_CLI_CMD	MTD_CLI " saac "
+#define API	saac
 
 #define API_NAME "Self-Assessment Accounts"
 #define CMDS \
@@ -27,7 +27,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "get-balance"
+		.use = "get-balance"
 	},
 	{
 		.name = "list-transactions",
@@ -36,7 +36,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "list-transactions from=YYYY-MM-DD,to=YYYY-MM-DD"
+		.use = "list-transactions from=YYYY-MM-DD,to=YYYY-MM-DD"
 	},
 	{
 		.name = "get-transaction",
@@ -45,7 +45,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "get-transaction transactionId"
+		.use = "get-transaction transactionId"
 	},
 	{
 		.name = "list-charges",
@@ -54,7 +54,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "list-charges from=YYYY-MM-DD,to=YYYY-MM-DD"
+		.use = "list-charges from=YYYY-MM-DD,to=YYYY-MM-DD"
 	},
 	{
 		.name = "get-charge",
@@ -63,7 +63,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "get-charge transactionId" },
+		.use = "get-charge transactionId" },
 	{
 		.name = "list-payments",
 		.api_func = {
@@ -71,7 +71,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "list-payments from=YYYY-MM-DD,to=YYYY-MM-DD" },
+		.use = "list-payments from=YYYY-MM-DD,to=YYYY-MM-DD" },
 	{
 		.name = "get-payment",
 		.api_func = {
@@ -79,12 +79,12 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "get-payment paymentId"
+		.use = "get-payment paymentId"
 	},
 	{ NULL, { NULL }, 0, 0, NULL }
 };
 
-const struct _endpoint saac_endpoint = {
+const struct _endpoint ENDPOINT = {
 	.endpoints = endpoints,
 	.api_name = API_NAME,
 	.cmds = CMDS

@@ -12,7 +12,8 @@
 
 #include "mtd-cli.h"
 
-#define MTD_CLI_CMD	MTD_CLI " test-ni "
+#define API	test_ni
+#define API_CMD	"test-ni"
 
 #define API_NAME "National Insurance Test Support"
 #define CMDS "create-annual-summary"
@@ -25,12 +26,12 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_3d,
 		.nr_req_args = 3,
-		.use = MTD_CLI_CMD "create-annual-summary <file> utr taxYear"
+		.use = "create-annual-summary <file> utr taxYear"
 	},
 	{ NULL, { NULL }, 0, 0, NULL}
 };
 
-const struct _endpoint test_ni_endpoint = {
+const struct _endpoint ENDPOINT = {
 	.endpoints = endpoints,
 	.api_name = API_NAME,
 	.cmds = CMDS

@@ -12,7 +12,7 @@
 
 #include "mtd-cli.h"
 
-#define MTD_CLI_CMD	" ic "
+#define API	ic
 
 #define API_NAME "Individual Calculations"
 #define CMDS \
@@ -28,7 +28,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "list-calculations [taxYear=YYYY-YY]"
+		.use = "list-calculations [taxYear=YYYY-YY]"
 	},
 	{
 		.name = "trigger-calculation",
@@ -37,7 +37,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "trigger-calculation <file>"
+		.use = "trigger-calculation <file>"
 	},
 	{
 		.name = "get-calculation-metadata",
@@ -46,7 +46,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "get-calculation-metadata calculationId"
+		.use = "get-calculation-metadata calculationId"
 	},
 	{
 		.name = "get-income-tax-nics-calc",
@@ -55,7 +55,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "get-income-tax-nics-calc calculationId"
+		.use = "get-income-tax-nics-calc calculationId"
 	},
 	{
 		.name = "get-taxable-income",
@@ -64,7 +64,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "create-period calculationId"
+		.use = "create-period calculationId"
 	},
 	{
 		.name = "get-allowances-deductions-reliefs",
@@ -73,7 +73,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "get-allowances-deductions-reliefs calculationId"
+		.use = "get-allowances-deductions-reliefs calculationId"
 	},
 	{
 		.name = "get-end-of-year-estimate",
@@ -82,7 +82,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "get-end-of-year-estimate calculationId"
+		.use = "get-end-of-year-estimate calculationId"
 	},
 	{
 		.name = "get-messages",
@@ -91,12 +91,12 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "get-messages calculationId"
+		.use = "get-messages calculationId"
 	},
 	{ NULL, { NULL }, 0, 0, NULL }
 };
 
-const struct _endpoint ic_endpoint = {
+const struct _endpoint ENDPOINT = {
 	.endpoints = endpoints,
 	.api_name = API_NAME,
 	.cmds = CMDS

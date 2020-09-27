@@ -12,7 +12,7 @@
 
 #include "mtd-cli.h"
 
-#define MTD_CLI_CMD	MTD_CLI " il "
+#define API	il
 
 #define API_NAME "Individual Loses"
 #define CMDS \
@@ -31,7 +31,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "bf-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]"
+		.use = "bf-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]"
 	},
 	{
 		.name = "bf-create-loss",
@@ -40,7 +40,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "bf-create-loss <file>"
+		.use = "bf-create-loss <file>"
 	},
 	{
 		.name = "bf-get-loss",
@@ -49,7 +49,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "bf-get-loss lossId"
+		.use = "bf-get-loss lossId"
 	},
 	{
 		.name = "bf-delete-loss",
@@ -58,7 +58,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "bf-delete-loss lossId"
+		.use = "bf-delete-loss lossId"
 	},
 	{
 		.name = "bf-update-loss-amnt",
@@ -67,7 +67,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "bf-update-loss-amnt <file> lossaId"
+		.use = "bf-update-loss-amnt <file> lossaId"
 	},
 	/* Loass Claims */
 	{
@@ -77,7 +77,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "lc-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]"
+		.use = "lc-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]"
 	},
 	{
 		.name = "lc-create-loss",
@@ -86,7 +86,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "lc-create-loss <file>"
+		.use = "lc-create-loss <file>"
 	},
 	{
 		.name = "lc-get-loss",
@@ -95,7 +95,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "lc-get-loss claimId"
+		.use = "lc-get-loss claimId"
 	},
 	{
 		.name = "lc-delete-loss",
@@ -104,7 +104,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "lc-delete-loss claimId"
+		.use = "lc-delete-loss claimId"
 	},
 	{
 		.name = "lc-update-loss-type",
@@ -113,7 +113,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "lc-update-loss-type <file> claimId"
+		.use = "lc-update-loss-type <file> claimId"
 	},
 	{
 		.name = "lc-update-loss-order",
@@ -122,12 +122,12 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "lc-update-loss-order <file> [taxYear=YYYY-YY]"
+		.use = "lc-update-loss-order <file> [taxYear=YYYY-YY]"
 	},
 	{ NULL, { NULL }, 0, 0, NULL }
 };
 
-const struct _endpoint il_endpoint = {
+const struct _endpoint ENDPOINT = {
 	.endpoints = endpoints,
 	.api_name = API_NAME,
 	.cmds = CMDS

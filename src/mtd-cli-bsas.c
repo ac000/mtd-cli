@@ -12,7 +12,7 @@
 
 #include "mtd-cli.h"
 
-#define MTD_CLI_CMD	MTD_CLI " bsas "
+#define API	bsas
 
 #define API_NAME "Business Source Adjustable Summary"
 #define CMDS \
@@ -32,7 +32,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "bsas-list-summaries [[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl}][,[taxYear=YYYY-YY]]]]"
+		.use = "bsas-list-summaries [[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl}][,[taxYear=YYYY-YY]]]]"
 	},
 	{
 		.name = "bsas-trigger-summary",
@@ -41,7 +41,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "bsas-trigger-summary <file>"
+		.use = "bsas-trigger-summary <file>"
 	},
 	{
 		.name = "bsas-se-get-summary",
@@ -50,7 +50,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "bsas-se-get-summary bsasId [adjustedStatus={true,false}]"
+		.use = "bsas-se-get-summary bsasId [adjustedStatus={true,false}]"
 	},
 	{
 		.name = "bsas-se-list-summary-adjustments",
@@ -59,7 +59,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "bsas-se-list-summary-adjustments bsasId"
+		.use = "bsas-se-list-summary-adjustments bsasId"
 	},
 	{
 		.name = "bsas-se-update-summary-adjustments",
@@ -68,7 +68,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "bsas-se-update-summary-adjustments <file> bsasId"
+		.use = "bsas-se-update-summary-adjustments <file> bsasId"
 	},
 	{
 		.name = "bsas-pb-get-summary",
@@ -77,7 +77,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "bsas-pb-get-summary bsasId [adjustedStatus={true,false}]"
+		.use = "bsas-pb-get-summary bsasId [adjustedStatus={true,false}]"
 	},
 	{
 		.name = "bsas-pb-list-summary-adjustments",
@@ -86,7 +86,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = MTD_CLI_CMD "bsas-pb-list-summary-adjustments bsasId"
+		.use = "bsas-pb-list-summary-adjustments bsasId"
 	},
 	{
 		.name = "bsas-pb-update-summary-adjustments",
@@ -95,12 +95,12 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "bsas-pb-update-summary-adjustments <file> bsasId"
+		.use = "bsas-pb-update-summary-adjustments <file> bsasId"
 	},
 	{ NULL, { NULL }, 0, 0, NULL}
 };
 
-const struct _endpoint bsas_endpoint = {
+const struct _endpoint ENDPOINT = {
 	.endpoints = endpoints,
 	.api_name = API_NAME,
 	.cmds = CMDS

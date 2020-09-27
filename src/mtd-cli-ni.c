@@ -12,7 +12,7 @@
 
 #include "mtd-cli.h"
 
-#define MTD_CLI_CMD	MTD_CLI " ni "
+#define API	ni
 
 #define API_NAME "National Insurance"
 #define CMDS "get-annual-summary"
@@ -25,12 +25,12 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
-		.use = MTD_CLI_CMD "get-annual-summary utr taxYear"
+		.use = "get-annual-summary utr taxYear"
 	},
 	{ NULL, { NULL }, 0, 0, NULL}
 };
 
-const struct _endpoint ni_endpoint = {
+const struct _endpoint ENDPOINT = {
 	.endpoints = endpoints,
 	.api_name = API_NAME,
 	.cmds = CMDS

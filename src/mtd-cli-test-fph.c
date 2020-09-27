@@ -12,7 +12,8 @@
 
 #include "mtd-cli.h"
 
-#define MTD_CLI_CMD	MTD_CLI " test-fph "
+#define API	test_fph
+#define API_CMD	"test-fph"
 
 #define API_NAME "Test Fraud Prevention Headers"
 #define CMDS "validate"
@@ -25,12 +26,12 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = MTD_CLI_CMD "validate"
+		.use = "validate"
 	},
 	{ NULL, { NULL }, 0, 0, NULL}
 };
 
-const struct _endpoint test_fph_endpoint = {
+const struct _endpoint ENDPOINT = {
 	.endpoints = endpoints,
 	.api_name = API_NAME,
 	.cmds = CMDS

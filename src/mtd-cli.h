@@ -11,8 +11,6 @@
 
 #include <libmtdac/mtd.h>
 
-#define MTD_CLI			"mtd-cli"
-
 /*
  * Funky macro magic so we can autogenerate the endpoint structure
  * name.
