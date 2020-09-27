@@ -63,7 +63,8 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "get-charge transactionId" },
+		.use = "get-charge transactionId"
+	},
 	{
 		.name = "list-payments",
 		.api_func = {
@@ -71,7 +72,8 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "list-payments from=YYYY-MM-DD,to=YYYY-MM-DD" },
+		.use = "list-payments from=YYYY-MM-DD,to=YYYY-MM-DD"
+	},
 	{
 		.name = "get-payment",
 		.api_func = {
