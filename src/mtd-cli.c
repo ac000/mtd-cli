@@ -17,17 +17,7 @@
 #include <jansson.h>
 
 #include "mtd-cli.h"
-#include "mtd-cli-sa.h"
-#include "mtd-cli-saac.h"
-#include "mtd-cli-ic.h"
-#include "mtd-cli-il.h"
-#include "mtd-cli-ii.h"
-#include "mtd-cli-ni.h"
-#include "mtd-cli-biss.h"
-#include "mtd-cli-bsas.h"
-#include "mtd-cli-test-cu.h"
-#include "mtd-cli-test-ni.h"
-#include "mtd-cli-test-fph.h"
+#include "endpoints.h"
 
 #define MTD_CLI		"mtd-cli"
 
