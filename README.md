@@ -26,7 +26,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|il|ie|ni|biss|bsas|test-cu|test-ni|test-fph [endpoint args ...]
+    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|il|ie|ni|biss|bsas|vat|test-cu|test-ni|test-fph [endpoint args ...]
 
 The first argument specifies the API to interface with
 
@@ -453,6 +453,46 @@ with the following usage
     $ mtd-cli bsas bsas-pb-update-summary-adjustments <file> bsasId
 
 *bsasId* is as returned by '*mtd-cli bsas bsas-list-summaries*'.
+
+
+**vat** has the following commands
+
+    list-obligations submit-period get-period list-liabilities list-payments
+
+with the following usage
+
+    $ mtd-cli vat list-obligations vrn [from=YYY-MM-DD][,[to=YYYY-MM-DD]][,[status=O|F]]
+
+    $ mtd-cli vat submit-period <file> vrn
+
+    $ mtd-cli vat get-period vrn periodKek
+
+    $ mtd-cli vat list-liabilities vrn from=YYYY-MM-DD,to=YYYY-MM-DD
+
+    $ mtd-cli vat list-payments vrn from=YYYY-MM-DD,to=YYYY-MM-DD
+
+*vrn* is the VAT Registration Number
+
+In the query string, *status=*; *O* is open and *F* is Fulfilled. Omit status
+to retrieve all obligations.
+
+*\<file\>* is a JSON file that looks like
+
+```JSON
+{
+    "periodKey": "A001",
+    "vatDueSales": 105.50,
+    "vatDueAcquisitions": -100.45,
+    "totalVatDue": 5.05,
+    "vatReclaimedCurrPeriod": 105.15,
+    "netVatDue": 100.10,
+    "totalValueSalesExVAT": 300,
+    "totalValuePurchasesExVAT": 300,
+    "totalValueGoodsSuppliedExVAT": 3000,
+    "totalAcquisitionsExVAT": 3000,
+    "finalised": true
+}
+```
 
 
 **test-cu** has the following commands
