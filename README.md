@@ -55,13 +55,15 @@ The first argument specifies the API to interface with
 
   * **biss** is for interacting with the Business Income Source Summary API.
 
-  * **bsas** if ro interacting with the Business Source Adjustable Summary API.
+  * **bsas** is for interacting with the Business Source Adjustable Summary API.
+
+  * **vat** is for interacting with the VAT API.
 
   * **test-cu** is for interacting with the Create Test User API.
 
   * **test-ni** is for interacting with the National Insurance Test Support API.
 
-  * **test-fph** if for interacting with the Test Fraud Prevention Headers API.
+  * **test-fph** is for interacting with the Test Fraud Prevention Headers API.
 
 *init*, *oauth* & *config* don't take any arguments.
 
