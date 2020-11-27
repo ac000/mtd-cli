@@ -6,6 +6,8 @@
  * Copyright (C) 2020           Andrew Clayton <andrew@digital-domain.net>
  */
 
+#define _GNU_SOURCE	/* asprintf(3) */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -298,6 +300,28 @@ static int dispatcher(int argc, char *argv[])
 	return err;
 }
 
+static char *set_ver_cli(void)
+{
+	char *buf;
+	char *encname;
+	char *encver;
+	int len;
+
+	encname = mtd_percent_encode("mtd-cli", -1);
+	encver = mtd_percent_encode(GIT_VERSION, -1);
+
+	len = asprintf(&buf, "%s=%s", encname, encver);
+	if (len == -1) {
+		perror("asprintf");
+		buf = NULL;
+	}
+
+	free(encname);
+	free(encver);
+
+	return buf;
+}
+
 int main(int argc, char *argv[])
 {
 	int err;
@@ -306,7 +330,8 @@ int main(int argc, char *argv[])
 	char *snd_fph_hdrs = getenv("MTD_CLI_OPT_NO_FPH_HDRS");
 	char *log_level = getenv("MTD_CLI_OPT_LOG_LEVEL");
 	const char *hdrs[2] = { NULL };
-	const struct mtd_cfg cfg = { .extra_hdrs = hdrs };
+	const struct mtd_fph_ops fph_ops = { .fph_version_cli = set_ver_cli };
+	const struct mtd_cfg cfg = { .fph_ops = &fph_ops, .extra_hdrs = hdrs };
 
 	if (argc == 1) {
 		print_api_help();
