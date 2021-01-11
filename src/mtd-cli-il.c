@@ -3,7 +3,7 @@
 /*
  * mtd-cli-il.c - Make Tax Digital - Individual Loses
  *
- * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2021	Andrew Clayton <andrew@digital-domain.net>
  */
 
 #include <stddef.h>
@@ -69,7 +69,7 @@ static const struct endpoint endpoints[] = {
 		.nr_req_args = 2,
 		.use = "bf-update-loss-amnt <file> lossaId"
 	},
-	/* Loass Claims */
+	/* Loss Claims */
 	{
 		.name = "lc-list-loses",
 		.api_func = {
