@@ -239,22 +239,7 @@ static int do_mtd_api(const char *name, int argc, char *argv[])
 	return err;
 }
 
-static int do_init_nino(void)
-{
-	return mtd_init_nino();
-}
-
-static int do_init_config(void)
-{
-	return mtd_init_config();
-}
-
-static int do_init_oauth(void)
-{
-	return mtd_init_auth();
-}
-
-static int do_init(void)
+static int do_init_all(void)
 {
 	int err;
 
@@ -286,13 +271,13 @@ static int dispatcher(int argc, char *argv[])
 	int err = -1;
 
 	if (IS_API("init"))
-		err = do_init();
+		err = do_init_all();
 	else if (IS_API("init-oauth"))
-		err = do_init_oauth();
+		err = mtd_init_auth();
 	else if (IS_API("init-config"))
-		err = do_init_config();
+		err = mtd_init_config();
 	else if (IS_API("init-nino"))
-		err = do_init_nino();
+		err = mtd_init_nino();
 	else
 		err = do_mtd_api(ep, argc - 2, argv + 1);
 
