@@ -21,6 +21,8 @@
 #include "mtd-cli.h"
 #include "endpoints.h"
 
+#define PROD_NAME	"mtd-cli"
+
 #define MTD_CLI		"mtd-cli"
 
 #define MAX_ARGV	7
@@ -309,6 +311,11 @@ static char *set_ver_cli(void)
 	return buf;
 }
 
+static char *set_prod_name(void)
+{
+	return strdup(PROD_NAME);
+}
+
 int main(int argc, char *argv[])
 {
 	int err;
@@ -317,7 +324,8 @@ int main(int argc, char *argv[])
 	char *snd_fph_hdrs = getenv("MTD_CLI_OPT_NO_FPH_HDRS");
 	char *log_level = getenv("MTD_CLI_OPT_LOG_LEVEL");
 	const char *hdrs[2] = { NULL };
-	const struct mtd_fph_ops fph_ops = { .fph_version_cli = set_ver_cli };
+	const struct mtd_fph_ops fph_ops = { .fph_version_cli = set_ver_cli,
+					     .fph_prod_name = set_prod_name };
 	const struct mtd_cfg cfg = { .fph_ops = &fph_ops, .extra_hdrs = hdrs };
 
 	if (argc == 1) {
