@@ -3,7 +3,7 @@
 /*
  * mtd-cli.c - Make Tax Digital CLI
  *
- * Copyright (C) 2020           Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2021	Andrew Clayton <andrew@digital-domain.net>
  */
 
 #define _GNU_SOURCE	/* asprintf(3) */
@@ -278,7 +278,6 @@ static int do_init(void)
 
 	return 0;
 }
-
 
 #define IS_API(api)		(strcmp(api, ep) == 0)
 static int dispatcher(int argc, char *argv[])
