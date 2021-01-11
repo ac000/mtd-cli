@@ -25,10 +25,6 @@
 
 #define MAX_ARGV	7
 
-#define APIS		"init init-oauth init-config init-nino "\
-			"sa saac ic il ii ie ni biss bsas vat "\
-			"test-cu test-ni test-fph"
-
 static const struct api_ep {
 	const char *api;
 	const struct _endpoint *endpoint;
@@ -94,7 +90,14 @@ enum error {
 
 static int print_api_help(void)
 {
-	printf("Available APIs :-\n\n%s\n", APIS);
+	const struct api_ep *ep = api_ep_map;
+
+	printf("Available APIs :-\n\n");
+	printf("init init-oauth init-config init-nino");
+
+	for ( ; ep->api != NULL; ep++)
+		printf(" %s", ep->api);
+	printf("\n");
 
 	return -1;
 }
