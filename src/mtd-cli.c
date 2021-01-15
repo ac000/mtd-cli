@@ -16,8 +16,6 @@
 
 #include <libmtdac/mtd.h>
 
-#include <jansson.h>
-
 #include "mtd-cli.h"
 #include "endpoints.h"
 
@@ -213,7 +211,6 @@ int do_api_func(const struct endpoint *ep, int argc, char *argv[], char **buf)
 static int do_mtd_api(const char *name, int argc, char *argv[])
 {
 	char *buf = NULL;
-	json_t *rootbuf;
 	int i = 0;
 	int err = ERR_UNKNOWN_CMD;
 
@@ -234,11 +231,7 @@ static int do_mtd_api(const char *name, int argc, char *argv[])
 	if (!buf)
 		return err;
 
-	rootbuf = json_loads(buf, 0, NULL);
-	json_dumpf(rootbuf, stdout, JSON_INDENT(4));
-	printf("\n");
-	json_decref(rootbuf);
-
+	printf("%s\n", buf);
 	free(buf);
 
 	return err;

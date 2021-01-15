@@ -12,7 +12,7 @@ CFLAGS	= -Wall -Wextra -Wdeclaration-after-statement -Wvla \
 	  -fPIC -fexceptions -I../../libmtdac/include \
 	  -DGIT_VERSION=${GIT_VERSION} -pipe
 LDFLAGS = -L../../libmtdac/src -Wl,-z,now,-z,defs,-z,relro,--as-needed -fpie
-LIBS	= -ljansson -lmtdac
+LIBS	= -lmtdac
 POSTCOMPILE = @mv -f $(DEPDIR)/$*.Td $(DEPDIR)/$*.d && touch $@
 
 sources     = $(wildcard *.c)
