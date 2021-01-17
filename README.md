@@ -26,7 +26,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|il|ni|biss|bsas|vat|test-cu|test-ni|test-fph [endpoint args ...]
+    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|id|il|ni|biss|bsas|vat|test-cu|test-ni|test-fph [endpoint args ...]
 
 The first argument specifies the API to interface with
 
@@ -44,6 +44,8 @@ The first argument specifies the API to interface with
   * **saac** is for interacting with the Self-Assessment Accounts API.
 
   * **ic** is for interacting with the Individual Calculations API.
+
+  * **id** is for interacting with the Individuals Disclosures API
 
   * **il** is for interacting with the Individual Loses API.
 
@@ -266,6 +268,37 @@ that is sent to the server.
 
 *calculationId* is an *'id'* as returned by the
 '*mtd-cli ic list-calculations*' command.
+
+
+**id** supports the following commands
+
+    get set delete
+
+with the following usage
+
+    $ mtd-cli id get taxYear
+
+    $ mtd-cli id set <file> taxYear
+
+    $ mtd-cli id delete taxYear
+
+*taxYear* is a tax year in the form *YYYY-YY*
+
+*\<file\>* is a JSON file that looks like
+
+```JSON
+{
+    "taxAvoidance": [
+        {
+            "srn": "14211123",
+            "taxYear": "2020-21"
+        }
+    ],
+    "class2Nics": {
+        "class2VoluntaryContributions": true
+    }
+}
+```
 
 
 **il** supports the following commands
