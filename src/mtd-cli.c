@@ -12,6 +12,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include <linux/limits.h>
 
 #include <libmtdac/mtd.h>
@@ -305,17 +309,50 @@ static char *set_prod_name(void)
 	return strdup(PROD_NAME);
 }
 
+static const char *conf_dir(char *path)
+{
+	const char *home_dir = getenv("HOME");
+	struct stat sb;
+	int dfd;
+	int err;
+
+	snprintf(path, PATH_MAX, "%s/.config/mtd-cli", home_dir);
+	dfd = open(home_dir, O_PATH|O_DIRECTORY);
+	if (dfd == -1) {
+		fprintf(stderr, "openat: Can't open %s\n", home_dir);
+		exit(EXIT_FAILURE);
+	}
+
+	err = fstatat(dfd, ".config", &sb, 0);
+	if (err)
+		mkdirat(dfd, ".config", 0777);
+	err = fstatat(dfd, ".config/mtd-cli", &sb, 0);
+	if (err)
+		mkdirat(dfd, ".config/mtd-cli", 0700);
+
+	close(dfd);
+
+	return path;
+}
+
 int main(int argc, char *argv[])
 {
 	int err;
 	int ret = EXIT_SUCCESS;
 	unsigned int flags = MTD_OPT_GLOBAL_INIT;
+	char conf_dir_path[PATH_MAX];
 	char *snd_fph_hdrs = getenv("MTD_CLI_OPT_NO_FPH_HDRS");
 	char *log_level = getenv("MTD_CLI_OPT_LOG_LEVEL");
 	const char *hdrs[2] = { NULL };
-	const struct mtd_fph_ops fph_ops = { .fph_version_cli = set_ver_cli,
-					     .fph_prod_name = set_prod_name };
-	const struct mtd_cfg cfg = { .fph_ops = &fph_ops, .extra_hdrs = hdrs };
+	const struct mtd_fph_ops fph_ops = {
+		.fph_version_cli = set_ver_cli,
+		.fph_prod_name = set_prod_name
+	};
+	const struct mtd_cfg cfg = {
+		.config_dir = conf_dir(conf_dir_path),
+		.fph_ops = &fph_ops,
+		.extra_hdrs = hdrs
+	};
 
 	if (argc == 1) {
 		print_api_help();
