@@ -3,7 +3,7 @@
 /*
  * mtd-cli-biss.c - Make Tax Digital - Business Income Source Summary
  *
- * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2021	Andrew Clayton <andrew@digital-domain.net>
  */
 
 #include <stddef.h>
@@ -15,7 +15,7 @@
 #define API	biss
 
 #define API_NAME "Business Income Source Summary"
-#define CMDS "get-self-employment get-property"
+#define CMDS "get-self-employment get-uk-property"
 
 static const struct endpoint endpoints[] = {
 	{
@@ -28,13 +28,13 @@ static const struct endpoint endpoints[] = {
 		.use = "get-self-employment selfEmploymentId=[,taxYear=YYYY-YY]"
 	},
 	{
-		.name = "get-property",
+		.name = "get-uk-property",
 		.api_func = {
-			.func_1 = mtd_biss_get_property
+			.func_1 = mtd_biss_get_uk_property
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "get-property typeOfBusiness={uk-property-non-fhl,uk-property-fhl}[,taxYear=YYYY-YY]"
+		.use = "get-uk-property typeOfBusiness={uk-property-non-fhl,uk-property-fhl}[,taxYear=YYYY-YY]"
 	},
 	{ NULL, { NULL }, 0, 0, NULL}
 };
