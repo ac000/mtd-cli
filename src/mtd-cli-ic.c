@@ -16,82 +16,84 @@
 
 #define API_NAME "Individual Calculations"
 #define CMDS \
-"list-calculations trigger-calculation get-calculation-metadata\n"\
-"get-income-tax-nics-calc get-taxable-income get-allowances-deductions-reliefs\n"\
-"get-end-of-year-estimate get-messages"
+"Self-Assessment\n\n"\
+"sa-list-calculations sa-trigger-calculation sa-get-calculation-metadata\n"\
+"sa-get-income-tax-nics-calc sa-get-taxable-income\n"\
+"sa-get-allowances-deductions-reliefs sa-get-end-of-year-estimate\n"\
+"sa-get-messages"
 
 static const struct endpoint endpoints[] = {
 	{
-		.name = "list-calculations",
+		.name = "sa-list-calculations",
 		.api_func = {
-			.func_1 = mtd_ic_list_calculations
+			.func_1 = mtd_ic_sa_list_calculations
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.use = "list-calculations [taxYear=YYYY-YY]"
+		.use = "sa-list-calculations [taxYear=YYYY-YY]"
 	},
 	{
-		.name = "trigger-calculation",
+		.name = "sa-trigger-calculation",
 		.api_func = {
-			.func_1d = mtd_ic_trigger_calculation
+			.func_1d = mtd_ic_sa_trigger_calculation
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = "trigger-calculation <file>"
+		.use = "sa-trigger-calculation <file>"
 	},
 	{
-		.name = "get-calculation-metadata",
+		.name = "sa-get-calculation-metadata",
 		.api_func = {
-			.func_1 = mtd_ic_get_calculation_meta
+			.func_1 = mtd_ic_sa_get_calculation_meta
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "get-calculation-metadata calculationId"
+		.use = "sa-get-calculation-metadata calculationId"
 	},
 	{
-		.name = "get-income-tax-nics-calc",
+		.name = "sa-get-income-tax-nics-calc",
 		.api_func = {
-			.func_1 = mtd_ic_get_income_tax_nics_calc
+			.func_1 = mtd_ic_sa_get_income_tax_nics_calc
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "get-income-tax-nics-calc calculationId"
+		.use = "sa-get-income-tax-nics-calc calculationId"
 	},
 	{
-		.name = "get-taxable-income",
+		.name = "sa-get-taxable-income",
 		.api_func = {
-			.func_1 = mtd_ic_get_taxable_income
+			.func_1 = mtd_ic_sa_get_taxable_income
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "create-period calculationId"
+		.use = "sa-create-period calculationId"
 	},
 	{
-		.name = "get-allowances-deductions-reliefs",
+		.name = "sa-get-allowances-deductions-reliefs",
 		.api_func = {
-			.func_1 = mtd_ic_get_allowances_deductions_reliefs
+			.func_1 = mtd_ic_sa_get_allowances_deductions_reliefs
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "get-allowances-deductions-reliefs calculationId"
+		.use = "sa-get-allowances-deductions-reliefs calculationId"
 	},
 	{
-		.name = "get-end-of-year-estimate",
+		.name = "sa-get-end-of-year-estimate",
 		.api_func = {
-			.func_1 = mtd_ic_get_end_of_year_est
+			.func_1 = mtd_ic_sa_get_end_of_year_est
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "get-end-of-year-estimate calculationId"
+		.use = "sa-get-end-of-year-estimate calculationId"
 	},
 	{
-		.name = "get-messages",
+		.name = "sa-get-messages",
 		.api_func = {
-			.func_1 = mtd_ic_get_messages
+			.func_1 = mtd_ic_sa_get_messages
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "get-messages calculationId"
+		.use = "sa-get-messages calculationId"
 	},
 	{ NULL, { NULL }, 0, 0, NULL }
 };

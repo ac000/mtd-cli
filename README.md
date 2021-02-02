@@ -234,27 +234,30 @@ The following shows each of the above and what arguments (if any) they take.
 
 **ic** supports the following commands
 
-    list-calculations trigger-calculation get-calculation-metadata
-    get-income-tax-nics-calc get-taxable-income
-    get-allowances-deductions-reliefs get-end-of-year-estimate get-messages
+    Self-Assessment
+
+    sa- list-calculations sa-trigger-calculation sa-get-calculation-metadata
+    sa-get-income-tax-nics-calc sa-get-taxable-income
+    sa-get-allowances-deductions-reliefs sa-get-end-of-year-estimate
+    sa-get-messages
 
 with the following usage
 
-    $ mtd-cli ic list-calculations [taxYear=YYYY-YY]
+    $ mtd-cli ic sa-list-calculations [taxYear=YYYY-YY]
 
-    $ mtd-cli ic trigger-calculation <file>
+    $ mtd-cli ic sa-trigger-calculation <file>
 
-    $ mtd-cli ic get-calculation-metadata calculationId
+    $ mtd-cli ic sa-get-calculation-metadata calculationId
 
-    $ mtd-cli ic get-income-tax-nics-calc calculationId
+    $ mtd-cli ic sa-get-income-tax-nics-calc calculationId
 
-    $ mtd-cli ic get-taxable-income calculationId
+    $ mtd-cli ic sa-get-taxable-income calculationId
 
-    $ mtd-cli ic get-allowances-deductions-reliefs calculationId
+    $ mtd-cli ic sa-get-allowances-deductions-reliefs calculationId
 
-    $ mtd-cli ic get-end-of-year-estimate calculationId
+    $ mtd-cli ic sa-get-end-of-year-estimate calculationId
 
-    $ mtd-cli ic get-messages calculationId
+    $ mtd-cli ic sa-get-messages calculationId
 
 *\<file\>* is a JSON file that looks like
 
