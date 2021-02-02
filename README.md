@@ -416,13 +416,15 @@ which takes two arguments
 
 **biss** has the following endpoints
 
-    get-self-employment get-uk-property
+    get-self-employment get-uk-property get-foreign-property
 
 with the following usage
 
     $ mtd-cli biss get-self-employment selfEmploymentId=[,taxYear=YYYY-YY]
 
     $ mtd-cli biss get-uk-property typeOfBusiness={uk-property-non-fhl,uk-property-fhl}[,taxYear=YYYY-YY]
+
+    $ mtd-cli biss get-foreign-property businessId=,typeOfBusiness={foreign-property-fhl-eea,foreign-property}[,taxYear=YYYY-YY]
 
 
 **bsas** has the following endpoints
