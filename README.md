@@ -261,7 +261,7 @@ with the following usage
 
     $ mtd-cli ic sa-get-end-of-year-estimate calculationId
 
-    $ mtd-cli ic sa-get-messages calculationId
+    $ mtd-cli ic sa-get-messages calculationId [[type={info,warning,error}], ...]
 
     $ mtd-cli ic cr-intent-to-crystallise taxYear
 

@@ -92,11 +92,11 @@ static const struct endpoint endpoints[] = {
 	{
 		.name = "sa-get-messages",
 		.api_func = {
-			.func_1 = mtd_ic_sa_get_messages
+			.func_2 = mtd_ic_sa_get_messages
 		},
-		.func = FUNC_1,
+		.func = FUNC_2,
 		.nr_req_args = 1,
-		.use = "sa-get-messages calculationId"
+		.use = "sa-get-messages calculationId [[type={info,warning,error}], ...]"
 	},
 	{
 		.name = "cr-intent-to-crystallise",
