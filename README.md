@@ -241,6 +241,10 @@ The following shows each of the above and what arguments (if any) they take.
     sa-get-allowances-deductions-reliefs sa-get-end-of-year-estimate
     sa-get-messages
 
+    Crystallisation
+
+    cr-intent-to-crystallise cr-crystallise
+
 with the following usage
 
     $ mtd-cli ic sa-list-calculations [taxYear=YYYY-YY]
