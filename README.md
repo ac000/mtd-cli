@@ -259,11 +259,23 @@ with the following usage
 
     $ mtd-cli ic sa-get-messages calculationId
 
-*\<file\>* is a JSON file that looks like
+    $ mtd-cli ic cr-intent-to-crystallise taxYear
+
+    $ mtd-cli ic cr-crystallise <file> taxYear
+
+*\<file\>* is a JSON file that looks like for sa-trigger-calculation
 
 ```JSON
 {
     "taxYear": "2017-18"
+}
+```
+
+or for cr-crystallise
+
+```JSON
+{
+    "calculationId": "041f7e4d-87d9-4d4a-a296-3cfbdf92f7e2"
 }
 ```
 

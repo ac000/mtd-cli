@@ -20,7 +20,10 @@
 "sa-list-calculations sa-trigger-calculation sa-get-calculation-metadata\n"\
 "sa-get-income-tax-nics-calc sa-get-taxable-income\n"\
 "sa-get-allowances-deductions-reliefs sa-get-end-of-year-estimate\n"\
-"sa-get-messages"
+"sa-get-messages\n\n"\
+"Crystallisation\n\n"\
+"cr-intent-to-crystallise cr-crystallise"
+
 
 static const struct endpoint endpoints[] = {
 	{
@@ -94,6 +97,24 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.use = "sa-get-messages calculationId"
+	},
+	{
+		.name = "cr-intent-to-crystallise",
+		.api_func = {
+			.func_1 = mtd_ic_cr_intent_to_crystallise
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = "cr-intent-to-crystallise taxYear"
+	},
+	{
+		.name = "cr-crystallise",
+		.api_func = {
+			.func_2d = mtd_ic_cr_crystallise
+		},
+		.func = FUNC_2d,
+		.nr_req_args = 2,
+		.use = "cr-crystallise <file> taxYear"
 	},
 	{ NULL, { NULL }, 0, 0, NULL }
 };
