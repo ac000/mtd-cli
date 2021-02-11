@@ -81,7 +81,8 @@ static const struct api_ep {
 		.api = "test-fph",
 		.endpoint = &test_fph_endpoint
 	},
-	{ NULL, NULL }
+
+	{ }
 };
 
 enum error {

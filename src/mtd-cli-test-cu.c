@@ -3,7 +3,7 @@
 /*
  * mtd-cli-tesst-cu.c - Make Tax Digital - Create Test User
  *
- * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2021	Andrew Clayton <andrew@digital-domain.net>
  */
 
 #include <stddef.h>
@@ -55,7 +55,8 @@ static const struct endpoint endpoints[] = {
 		.nr_req_args = 0,
 		.use = "list-services"
 	},
-	{ NULL, { NULL }, 0, 0, NULL }
+
+	{ }
 };
 
 const struct _endpoint ENDPOINT = {

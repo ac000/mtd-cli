@@ -124,7 +124,8 @@ static const struct endpoint endpoints[] = {
 		.nr_req_args = 1,
 		.use = "lc-update-loss-order <file> [taxYear=YYYY-YY]"
 	},
-	{ NULL, { NULL }, 0, 0, NULL }
+
+	{ }
 };
 
 const struct _endpoint ENDPOINT = {

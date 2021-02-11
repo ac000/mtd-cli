@@ -45,7 +45,8 @@ static const struct endpoint endpoints[] = {
 		.nr_req_args = 1,
 		.use = "get-foreign-property businessId=,typeOfBusiness={foreign-property-fhl-eea,foreign-property}[,taxYear=YYYY-YY]"
 	},
-	{ NULL, { NULL }, 0, 0, NULL}
+
+	{ }
 };
 
 const struct _endpoint ENDPOINT = {

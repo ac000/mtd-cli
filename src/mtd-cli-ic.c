@@ -3,7 +3,7 @@
 /*
  * mtd-cli-ic.c - Make Tax Digital - Individual Calculations
  *
- * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2021	Andrew Clayton <andrew@digital-domain.net>
  */
 
 #include <stddef.h>
@@ -116,7 +116,8 @@ static const struct endpoint endpoints[] = {
 		.nr_req_args = 2,
 		.use = "cr-crystallise <file> taxYear"
 	},
-	{ NULL, { NULL }, 0, 0, NULL }
+
+	{ }
 };
 
 const struct _endpoint ENDPOINT = {

@@ -3,7 +3,7 @@
 /*
  * mtd-cli-bsas.c - Make Tax Digital - Business Source Adjustable Summary
  *
- * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2021	Andrew Clayton <andrew@digital-domain.net>
  */
 
 #include <stddef.h>
@@ -97,7 +97,8 @@ static const struct endpoint endpoints[] = {
 		.nr_req_args = 2,
 		.use = "bsas-pb-update-summary-adjustments <file> bsasId"
 	},
-	{ NULL, { NULL }, 0, 0, NULL}
+
+	{ }
 };
 
 const struct _endpoint ENDPOINT = {
