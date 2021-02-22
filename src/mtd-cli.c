@@ -342,8 +342,8 @@ int main(int argc, char *argv[])
 	int ret = EXIT_SUCCESS;
 	unsigned int flags = MTD_OPT_GLOBAL_INIT;
 	char conf_dir_path[PATH_MAX];
-	char *snd_fph_hdrs = getenv("MTD_CLI_OPT_NO_FPH_HDRS");
-	char *log_level = getenv("MTD_CLI_OPT_LOG_LEVEL");
+	const char *snd_fph_hdrs = getenv("MTD_CLI_OPT_NO_FPH_HDRS");
+	const char *log_level = getenv("MTD_CLI_OPT_LOG_LEVEL");
 	const char *hdrs[2] = { NULL };
 	const struct mtd_fph_ops fph_ops = {
 		.fph_version_cli = set_ver_cli,
