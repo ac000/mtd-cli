@@ -283,7 +283,7 @@ static int dispatcher(int argc, char *argv[])
 	return err;
 }
 
-static char *set_ver_cli(void)
+static char *set_ver_cli(void *user_data __attribute__((unused)))
 {
 	char *buf;
 	char *encname;
@@ -305,7 +305,7 @@ static char *set_ver_cli(void)
 	return buf;
 }
 
-static char *set_prod_name(void)
+static char *set_prod_name(void *user_data __attribute__((unused)))
 {
 	return strdup(PROD_NAME);
 }
