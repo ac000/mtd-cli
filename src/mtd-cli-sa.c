@@ -20,7 +20,8 @@
 "se-list-employments se-create-employment se-get-employment\n"\
 "se-list-obligations se-list-periods se-create-period se-get-period\n"\
 "se-update-period se-get-annual-summary se-update-annual-summary\n"\
-"se-submit-end-of-period-statement se-get-end-of-period-statement\n\n"\
+"se-submit-end-of-period-statement se-get-end-of-period-statement-obligations"\
+"\n\n"\
 "UK Property Business\n\n"\
 "pb-get-property pb-create-property pb-list-obligations\n"\
 "pb-list-non-fhl-periods pb-create-non-fhl-period pb-get-non-fhl-period\n"\
@@ -141,13 +142,13 @@ static const struct endpoint endpoints[] = {
 		.use = "se-submit-end-of-period-statement <file> selfEmploymentId start end"
 	},
 	{
-		.name = "se-get-end-of-period-statement",
+		.name = "se-get-end-of-period-statement-obligations",
 		.api_func = {
-			.func_2 = mtd_sa_se_get_end_of_period_statement
+			.func_2 = mtd_sa_se_get_end_of_period_obligations
 		},
 		.func = FUNC_2,
 		.nr_req_args = 1,
-		.use = "se-get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
+		.use = "se-get-end-of-period-statement-obligations selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
 	},
 	/* Self-Assessment - UK Property Business */
 	{

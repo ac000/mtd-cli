@@ -73,7 +73,7 @@ to connect to. These are
     se-list-employments se-create-employment se-get-employment
     se-list-obligations se-list-periods se-create-period se-get-period
     se-update-period se-get-annual-summary se-update-annual-summary
-    se-submit-end-of-period-statement se-get-end-of-period-statement
+    se-submit-end-of-period-statement se-get-end-of-period-statement-obligations
 
     UK Property Business
 
@@ -126,7 +126,7 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa se-submit-end-of-period-statement <file> selfEmploymentId start end
 
-    $ mtd-cli sa se-get-end-of-period-statement selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]
+    $ mtd-cli sa se-get-end-of-period-statement-obligations selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]
 
     $ mtd-cli sa pb-get-property
 
