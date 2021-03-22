@@ -154,6 +154,7 @@ int do_api_func(const struct endpoint *ep, int argc, char *argv[], char **buf)
 {
 	int i;
 	const char *args[MAX_ARGV] = { NULL };
+	const struct endpoint *eps = ep;
 	char *ptr;
 	char qs[129];
 
@@ -169,13 +170,13 @@ int do_api_func(const struct endpoint *ep, int argc, char *argv[], char **buf)
 		args[i] = ptr;
 	}
 
-	for (i = 0; ep[i].name != NULL; i++) {
+	for ( ; eps->name != NULL; eps++) {
 		struct mtd_dsrc_ctx dsctx;
 
-		if (strcmp(ep[i].name, argv[0]) != 0)
+		if (strcmp(eps->name, argv[0]) != 0)
 			continue;
 
-		switch (ep[i].func) {
+		switch (eps->func) {
 		case FUNC_1d:
 		case FUNC_2d:
 		case FUNC_3d:
@@ -186,23 +187,23 @@ int do_api_func(const struct endpoint *ep, int argc, char *argv[], char **buf)
 			break;
 		}
 
-		switch (ep[i].func) {
+		switch (eps->func) {
 		case FUNC_0:
-			return ep[i].api_func.func_0(buf);
+			return eps->api_func.func_0(buf);
 		case FUNC_1:
-			return ep[i].api_func.func_1(args[0], buf);
+			return eps->api_func.func_1(args[0], buf);
 		case FUNC_1d:
-			return ep[i].api_func.func_1d(&dsctx, buf);
+			return eps->api_func.func_1d(&dsctx, buf);
 		case FUNC_2:
-			return ep[i].api_func.func_2(args[0], args[1], buf);
+			return eps->api_func.func_2(args[0], args[1], buf);
 		case FUNC_2d:
-			return ep[i].api_func.func_2d(&dsctx, args[1], buf);
+			return eps->api_func.func_2d(&dsctx, args[1], buf);
 		case FUNC_3d:
-			return ep[i].api_func.func_3d(&dsctx, args[1], args[2],
-						      buf);
+			return eps->api_func.func_3d(&dsctx, args[1], args[2],
+						     buf);
 		case FUNC_4d:
-			return ep[i].api_func.func_4d(&dsctx, args[1], args[2],
-						      args[3], buf);
+			return eps->api_func.func_4d(&dsctx, args[1], args[2],
+						     args[3], buf);
 		}
 	}
 
@@ -212,16 +213,16 @@ int do_api_func(const struct endpoint *ep, int argc, char *argv[], char **buf)
 static int do_mtd_api(const char *name, int argc, char *argv[])
 {
 	char *buf = NULL;
-	int i = 0;
+	const struct api_ep *apis = api_ep_map;
 	int err = ERR_UNKNOWN_CMD;
 
-	for ( ; api_ep_map[i].api != NULL; i++) {
-		const struct _endpoint *ep = api_ep_map[i].endpoint;
+	for ( ; apis->api != NULL; apis++) {
+		const struct _endpoint *ep = apis->endpoint;
 
-		if (strcmp(api_ep_map[i].api, name) != 0)
+		if (strcmp(apis->api, name) != 0)
 			continue;
 
-		err = check_args(argc, argv, api_ep_map[i].api, ep);
+		err = check_args(argc, argv, apis->api, ep);
 		if (err)
 			return err;
 		err = do_api_func(ep->endpoints, argc, argv, &buf);
