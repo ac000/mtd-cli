@@ -268,20 +268,17 @@ static int do_init_all(void)
 static int dispatcher(int argc, char *argv[])
 {
 	const char *ep = argv[0];
-	int err = -1;
 
 	if (IS_API("init"))
-		err = do_init_all();
-	else if (IS_API("init-oauth"))
-		err = mtd_init_auth();
-	else if (IS_API("init-config"))
-		err = mtd_init_config();
-	else if (IS_API("init-nino"))
-		err = mtd_init_nino();
-	else
-		err = do_mtd_api(ep, argc - 2, argv + 1);
+		return do_init_all();
+	if (IS_API("init-oauth"))
+		return mtd_init_auth();
+	if (IS_API("init-config"))
+		return mtd_init_config();
+	if (IS_API("init-nino"))
+		return mtd_init_nino();
 
-	return err;
+	return do_mtd_api(ep, argc - 2, argv + 1);
 }
 
 static char *set_ver_cli(void *user_data __attribute__((unused)))
