@@ -34,36 +34,36 @@ static const struct api_ep {
 	const struct _endpoint *endpoint;
 } api_ep_map[] = {
 	{
-		.api = "sa",
-		.endpoint = &sa_endpoint
-	},
-	{
-		.api = "saac",
-		.endpoint = &saac_endpoint
-	},
-	{
-		.api = "ic",
-		.endpoint = &ic_endpoint
-	},
-	{
-		.api = "il",
-		.endpoint = &il_endpoint
-	},
-	{
-		.api = "id",
-		.endpoint = &id_endpoint
-	},
-	{
-		.api = "ni",
-		.endpoint = &ni_endpoint
-	},
-	{
 		.api = "biss",
 		.endpoint = &biss_endpoint
 	},
 	{
 		.api = "bsas",
 		.endpoint = &bsas_endpoint
+	},
+	{
+		.api = "ic",
+		.endpoint = &ic_endpoint
+	},
+	{
+		.api = "id",
+		.endpoint = &id_endpoint
+	},
+	{
+		.api = "il",
+		.endpoint = &il_endpoint
+	},
+	{
+		.api = "ni",
+		.endpoint = &ni_endpoint
+	},
+	{
+		.api = "sa",
+		.endpoint = &sa_endpoint
+	},
+	{
+		.api = "saac",
+		.endpoint = &saac_endpoint
 	},
 	{
 		.api = "vat",
@@ -74,12 +74,12 @@ static const struct api_ep {
 		.endpoint = &test_cu_endpoint
 	},
 	{
-		.api = "test-ni",
-		.endpoint = &test_ni_endpoint
-	},
-	{
 		.api = "test-fph",
 		.endpoint = &test_fph_endpoint
+	},
+	{
+		.api = "test-ni",
+		.endpoint = &test_ni_endpoint
 	},
 
 	{ }
