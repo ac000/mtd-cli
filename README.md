@@ -70,15 +70,14 @@ to connect to. These are
 
     Self-Employment
 
-    se-list-employments se-create-employment se-get-employment
-    se-list-obligations se-list-periods se-create-period se-get-period
+    se-create-employment se-list-periods se-create-period se-get-period
     se-update-period se-get-annual-summary se-update-annual-summary
-    se-submit-end-of-period-statement se-get-end-of-period-statement-obligations
+    se-submit-end-of-period-statement
 
     UK Property Business
 
-    pb-get-property pb-create-property pb-list-obligations
-    pb-list-non-fhl-periods pb-create-non-fhl-period pb-get-non-fhl-period
+    pb-create-property pb-list-obligations pb-list-non-fhl-periods
+    pb-create-non-fhl-period pb-get-non-fhl-period
     pb-update-non-fhl-period pb-get-non-fhl-annual-summary
     pb-update-non-fhl-annual-summary pb-list-fhl-periods pb-create-fhl-period
     pb-get-fhl-period pb-update-fhl-period pb-get-fhl-annual-summary
@@ -100,17 +99,11 @@ to connect to. These are
 
     Crystallisation
 
-    cr-intent-to-crystallise cr-crystallise cr-list-obligations
+    cr-intent-to-crystallise cr-crystallise
 
 The following shows each of the above and what arguments (if any) they take.
 
-    $ mtd-cli sa se-list-employments
-
     $ mtd-cli sa se-create-employment <file>
-
-    $ mtd-cli sa se-get-employment selfEmploymentId
-
-    $ mtd-cli sa se-list-obligations selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]
 
     $ mtd-cli sa se-list-periods selfEmploymentId
 
@@ -125,10 +118,6 @@ The following shows each of the above and what arguments (if any) they take.
     $ mtd-cli sa se-update-annual-summary <file> selfEmploymentId taxYear
 
     $ mtd-cli sa se-submit-end-of-period-statement <file> selfEmploymentId start end
-
-    $ mtd-cli sa se-get-end-of-period-statement-obligations selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]
-
-    $ mtd-cli sa pb-get-property
 
     $ mtd-cli sa pb-create-property <file>
 
@@ -183,8 +172,6 @@ The following shows each of the above and what arguments (if any) they take.
     $ mtd-cli sa cr-intent-to-crystallise taxYear
 
     $ mtd-cli sa cr-crystallise <file> taxYear
-
-    $ mtd-cli sa cr-list-obligations from=YYYY-MM-DD,to=YYYY-MM-DD
 
 *selfEmploymentId* is an 'id' as returned from '*mtd-cli sa se-list-employments*'.
 

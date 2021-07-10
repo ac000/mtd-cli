@@ -17,14 +17,12 @@
 #define API_NAME "Self-Assessment"
 #define CMDS \
 "Self-Employment\n\n"\
-"se-list-employments se-create-employment se-get-employment\n"\
-"se-list-obligations se-list-periods se-create-period se-get-period\n"\
+"se-create-employment se-list-periods se-create-period se-get-period\n"\
 "se-update-period se-get-annual-summary se-update-annual-summary\n"\
-"se-submit-end-of-period-statement se-get-end-of-period-statement-obligations"\
-"\n\n"\
+"se-submit-end-of-period-statement\n\n"\
 "UK Property Business\n\n"\
-"pb-get-property pb-create-property pb-list-obligations\n"\
-"pb-list-non-fhl-periods pb-create-non-fhl-period pb-get-non-fhl-period\n"\
+"pb-create-property pb-list-obligations pb-list-non-fhl-periods\n"\
+"pb-create-non-fhl-period pb-get-non-fhl-period\n"\
 "pb-update-non-fhl-period pb-get-non-fhl-annual-summary\n"\
 "pb-update-non-fhl-annual-summary pb-list-fhl-periods\n"\
 "pb-create-fhl-period pb-get-fhl-period pb-update-fhl-period\n"\
@@ -38,19 +36,10 @@
 "Charitable Giving\n\n"\
 "cg-get-charitable-giving cg-update-charitable-giving\n\n"\
 "Crystallisation\n\n"\
-"cr-intent-to-crystallise cr-crystallise cr-list-obligations"
+"cr-intent-to-crystallise cr-crystallise"
 
 static const struct endpoint endpoints[] = {
 	/* Self-Employment */
-	{
-		.name = "se-list-employments",
-		.api_func = {
-			.func_0 = mtd_sa_se_list_employments
-		},
-		.func = FUNC_0,
-		.nr_req_args = 0,
-		.use = "se-list-employments"
-	},
 	{
 		.name = "se-create-employment",
 		.api_func = {
@@ -59,24 +48,6 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.use = "se-create-employment <file>"
-	},
-	{
-		.name = "se-get-employment",
-		.api_func = {
-			.func_1 = mtd_sa_se_get_employment
-		},
-		.func = FUNC_1,
-		.nr_req_args = 1,
-		.use = "se-get-employment selfEmploymentId"
-	},
-	{
-		.name = "se-list-obligations",
-		.api_func = {
-			.func_2 = mtd_sa_se_list_obligations
-		},
-		.func = FUNC_2,
-		.nr_req_args = 1,
-		.use = "se-list-obligations selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
 	},
 	{
 		.name = "se-list-periods",
@@ -141,25 +112,7 @@ static const struct endpoint endpoints[] = {
 		.nr_req_args = 4,
 		.use = "se-submit-end-of-period-statement <file> selfEmploymentId start end"
 	},
-	{
-		.name = "se-get-end-of-period-statement-obligations",
-		.api_func = {
-			.func_2 = mtd_sa_se_get_end_of_period_obligations
-		},
-		.func = FUNC_2,
-		.nr_req_args = 1,
-		.use = "se-get-end-of-period-statement-obligations selfEmploymentId [[from=YYYY-MM-DD][,[to=YYYY-MM-DD]]]"
-	},
 	/* Self-Assessment - UK Property Business */
-	{
-		.name = "pb-get-property",
-		.api_func = {
-			.func_0 = mtd_sa_pb_get_property
-		},
-		.func = FUNC_0,
-		.nr_req_args = 0,
-		.use = "pb-get-property"
-	},
 	{
 		.name = "pb-create-property",
 		.api_func = {
@@ -406,15 +359,6 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = "cr-crystallise <file> taxYear"
-	},
-	{
-		.name = "cr-list-obligations",
-		.api_func = {
-			.func_1 = mtd_sa_cr_list_obligations
-		},
-		.func = FUNC_1,
-		.nr_req_args = 1,
-		.use = "cr-list-obligations from=YYYY-MM-DD,to=YYYY-MM-DD"
 	},
 
 	{ }
