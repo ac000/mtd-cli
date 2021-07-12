@@ -34,6 +34,10 @@ static const struct api_ep {
 	const struct _endpoint *endpoint;
 } api_ep_map[] = {
 	{
+		.api = "bd",
+		.endpoint = &bd_endpoint
+	},
+	{
 		.api = "biss",
 		.endpoint = &biss_endpoint
 	},

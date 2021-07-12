@@ -39,6 +39,8 @@ The first argument specifies the API to interface with
 
   * **init-nino** is for storing the National Insurance Number in the nino.json file.
 
+  * **bd** is for interacting with the Business Details API
+
   * **sa** is for interacting with the Self-Assessment API.
 
   * **saac** is for interacting with the Self-Assessment Accounts API.
@@ -66,6 +68,19 @@ The first argument specifies the API to interface with
   * **test-fph** is for interacting with the Test Fraud Prevention Headers API.
 
 *init*, *oauth* & *config* don't take any arguments.
+
+**bd** supports the following commands
+
+    list get
+
+with the following usage
+
+    $ mtd-cli bd list
+
+    $ mtd-cli bd get businessId
+
+*businessId* is what used to be called *selfEmploymentId*
+
 
 **sa** takes various arguments, the first of which is the endpoint of the API
 to connect to. These are

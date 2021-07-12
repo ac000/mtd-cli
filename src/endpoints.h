@@ -9,6 +9,7 @@
 #ifndef _ENDPOINTS_H_
 #define _ENDPOINTS_H_
 
+extern const struct _endpoint bd_endpoint;
 extern const struct _endpoint biss_endpoint;
 extern const struct _endpoint bsas_endpoint;
 extern const struct _endpoint ic_endpoint;
