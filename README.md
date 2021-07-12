@@ -55,6 +55,8 @@ The first argument specifies the API to interface with
 
   * **bsas** is for interacting with the Business Source Adjustable Summary API.
 
+  * **ob** is for interacting with the Obligations API.
+
   * **vat** is for interacting with the VAT API.
 
   * **test-cu** is for interacting with the Create Test User API.
@@ -466,6 +468,22 @@ with the following usage
     $ mtd-cli bsas bsas-pb-update-summary-adjustments <file> bsasId
 
 *bsasId* is as returned by '*mtd-cli bsas bsas-list-summaries*'.
+
+
+**ob** has the following endpoints
+
+    list-inc-and-exp-obligations list-crystallisation-obligations
+    list-end-of-period-obligations
+
+with the following usage
+
+    $ mtd-cli ob list-inc-and-exp-obligations [[typeOfBusiness={self-employment,uk-property,foreign-property}][,[businessId=]][,[fromDate=YYYY-MM-DD]][,[toDate=YYYY-MM-DD]][,[status={Open,Fulfilled}]]]
+
+    $ mtd-cli ob list-crystallisation-obligation [taxYear=YYYY-MM]
+
+    $ mtd-cli ob list-end-of-period-obligations [[typeOfBusiness={self-employment,uk-property,foreign-property}][,[businessId=]][,[fromDate=YYYY-MM-DD]][,[toDate=YYYY-MM-DD]][,[status={Open,Fulfilled}]]]
+
+*businessId* is what used to be called *selfEmploymentId*
 
 
 **vat** has the following commands
