@@ -36,48 +36,37 @@ static const struct api_ep {
 	{
 		.api = "bd",
 		.endpoint = &bd_endpoint
-	},
-	{
+	}, {
 		.api = "biss",
 		.endpoint = &biss_endpoint
-	},
-	{
+	}, {
 		.api = "bsas",
 		.endpoint = &bsas_endpoint
-	},
-	{
+	}, {
 		.api = "ic",
 		.endpoint = &ic_endpoint
-	},
-	{
+	}, {
 		.api = "id",
 		.endpoint = &id_endpoint
-	},
-	{
+	}, {
 		.api = "il",
 		.endpoint = &il_endpoint
-	},
-	{
+	}, {
 		.api = "ob",
 		.endpoint = &ob_endpoint
-	},
-	{
+	}, {
 		.api = "sa",
 		.endpoint = &sa_endpoint
-	},
-	{
+	}, {
 		.api = "saac",
 		.endpoint = &saac_endpoint
-	},
-	{
+	}, {
 		.api = "vat",
 		.endpoint = &vat_endpoint
-	},
-	{
+	}, {
 		.api = "test-cu",
 		.endpoint = &test_cu_endpoint
-	},
-	{
+	}, {
 		.api = "test-fph",
 		.endpoint = &test_fph_endpoint
 	},
