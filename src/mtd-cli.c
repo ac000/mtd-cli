@@ -58,10 +58,6 @@ static const struct api_ep {
 		.endpoint = &il_endpoint
 	},
 	{
-		.api = "ni",
-		.endpoint = &ni_endpoint
-	},
-	{
 		.api = "ob",
 		.endpoint = &ob_endpoint
 	},
