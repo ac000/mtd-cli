@@ -81,10 +81,6 @@ static const struct api_ep {
 		.api = "test-fph",
 		.endpoint = &test_fph_endpoint
 	},
-	{
-		.api = "test-ni",
-		.endpoint = &test_ni_endpoint
-	},
 
 	{ }
 };
