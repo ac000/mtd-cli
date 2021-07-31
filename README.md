@@ -30,8 +30,9 @@ It has a fairly straightforward interface, essentially
 
 The first argument specifies the API to interface with
 
-  * **init** is for doing an initial setup, creating appropriate oauth.json &
-    config.json files.
+  * **init** is for doing an initial setup, creating the JSON config files.
+             This runs the equivalent of; *init-oauth*, *init-config* &
+             *init-nino*.
 
   * **init-oauth** is for doing a reauthorisation.
 
