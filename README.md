@@ -26,7 +26,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|id|il|ni|biss|bsas|vat|test-cu|test-ni|test-fph [endpoint args ...]
+    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|id|il|biss|bsas|vat|test-cu|test-fph [endpoint args ...]
 
 The first argument specifies the API to interface with
 
@@ -51,8 +51,6 @@ The first argument specifies the API to interface with
 
   * **il** is for interacting with the Individual Loses API.
 
-  * **ni** is for interacting with the National Insurance API.
-
   * **biss** is for interacting with the Business Income Source Summary API.
 
   * **bsas** is for interacting with the Business Source Adjustable Summary API.
@@ -62,8 +60,6 @@ The first argument specifies the API to interface with
   * **vat** is for interacting with the VAT API.
 
   * **test-cu** is for interacting with the Create Test User API.
-
-  * **test-ni** is for interacting with the National Insurance Test Support API.
 
   * **test-fph** is for interacting with the Test Fraud Prevention Headers API.
 
@@ -424,19 +420,6 @@ with the following usage
 *claimId* is an 'id' as returned by the '*mtd-cli il lc-list-loses*' command
 
 
-**ni** currently has a single endpoint
-
-    get-annual-summary
-
-which takes two arguments
-
-    $ mtd-cli ni get-annual-summary utr taxYear
-
-*utr* is the Unique Tax Reference.
-
-*taxYear* is the Tax year to get in the form; *YYYY-YY*
-
-
 **biss** has the following endpoints
 
     get-self-employment get-uk-property get-foreign-property
@@ -556,15 +539,6 @@ with the following usage
     $ mtd-cli test-cu list-service
 
 *\<file\>* is a JSON file containing a list of service names
-
-
-**test-ni** currently has a single endpoint
-
-    create-annual-summary
-
-which takes three arguments
-
-    $ mtd-cli test-ni create-annual-summary <file> utr taxYear
 
 
 **test-fph** currently has a single endpoint
