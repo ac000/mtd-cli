@@ -26,7 +26,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|init-oauth|init-config|init-nino|sa|saac|ic|id|il|biss|bsas|vat|test-cu|test-fph [endpoint args ...]
+    mtd-cli init|init-oauth|init-config|init-nino|bd|biss|bsas|ic|id|il|ob|sa|saac|vat|test-cu|test-fph [endpoint args ...]
 
 The first argument specifies the API to interface with
 
