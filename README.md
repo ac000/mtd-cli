@@ -542,13 +542,40 @@ with the following usage
 *\<file\>* is a JSON file containing a list of service names
 
 
-**test-fph** currently has a single endpoint
+**test-fph** has the following commands
 
-    validate
+    validate feedback
 
-which takes no arguments
+with the following usage
 
     $ mtd-cli test-fph validate
+
+    $ mtd-cli test-fph feedback api [connectionMethod={BATCH_PROCESS_DIRECT,DESKTOP_APP_DIRECT,DESKTOP_APP_VIA_SERVER,MOBILE_APP_DIRECT,MOBILE_APP_VIA_SERVER,OTHER_DIRECT,OTHER_VIA_SERVER,WEB_APP_VIA_SERVER}]
+
+*api* is the Making Tax Digital API to retrieve the validation information for
+and can be one of the following
+
+```
+    business-details-mtd
+    business-income-source-summary-mtd
+    business-source-adjustable-summary-mtd
+    cis-deductions-mtd
+    individual-calculations-mtd
+    individual-losses-mtd
+    individuals-business-end-of-period-statement-mtd
+    individuals-charges-mtd
+    individuals-disclosures-mtd
+    individuals-expenses-mtd
+    individuals-income-received-mtd
+    individuals-reliefs-mtd
+    individuals-state-benefits-mtd
+    obligations-mtd
+    other-deductions-mtd
+    property-business-mtd
+    self-assessment-mtd
+    self-assessment-accounts-mtd
+    vat-mtd
+```
 
 
 When running you will get a JSON response in both cases of error and success.

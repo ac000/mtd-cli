@@ -16,7 +16,7 @@
 #define API_CMD	"test-fph"
 
 #define API_NAME "Test Fraud Prevention Headers"
-#define CMDS "validate"
+#define CMDS "validate feedback"
 
 static const struct endpoint endpoints[] = {
 	{
@@ -27,6 +27,14 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_0,
 		.nr_req_args = 0,
 		.use = "validate"
+	}, {
+		.name = "feedback",
+		.api_func = {
+			.func_2 = mtd_test_fph_feedback
+		},
+		.func = FUNC_2,
+		.nr_req_args = 1,
+		.use = "feedback api [connectionMethod=]"
 	},
 
 	{ }
