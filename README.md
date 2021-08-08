@@ -436,48 +436,45 @@ with the following usage
 
 **bsas** has the following endpoints
 
-    bsas-list-summaries bsas-trigger-summary
+    list-summaries trigger-summary
 
     Self-Employment
 
-    bsas-se-get-summary bsas-se-list-summary-adjustments
-    bsas-se-update-summary-adjustments
+    se-get-summary se-list-summary-adjustments se-update-summary-adjustments
 
     UK Property Business
 
-    bsas-pb-get-summary bsas-pb-list-summary-adjustments
-    bsas-pb-update-summary-adjustments
+    pb-get-summary pb-list-summary-adjustments pb-update-summary-adjustments
 
     Foreign Property Business
 
-    bsas-fp-get-summary bsas-fp-list-summary-adjustments
-    bsas-fp-update-summary-adjustments
+    fp-get-summary fp-list-summary-adjustments fp-update-summary-adjustments
 
 with the following usage
 
-    $ mtd-cli bsas bsas-list-summaries [[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl}][,[taxYear=YYYY-YY]]]]
+    $ mtd-cli bsas list-summaries [[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl}][,[taxYear=YYYY-YY]]]]
 
-    $ mtd-cli bsas bsas-trigger-summary <file>
+    $ mtd-cli bsas trigger-summary <file>
 
-    $ mtd-cli bsas bsas-se-get-summary bsasId [adjustedStatus={true,false}]
+    $ mtd-cli bsas se-get-summary bsasId [adjustedStatus={true,false}]
 
-    $ mtd-cli bsas bsas-se-list-summary-adjustments bsasId
+    $ mtd-cli bsas se-list-summary-adjustments bsasId
 
-    $ mtd-cli bsas bsas-se-update-summary-adjustments <file> bsasId
+    $ mtd-cli bsas se-update-summary-adjustments <file> bsasId
 
-    $ mtd-cli bsas bsas-pb-get-summary bsasId [adjustedStatus={true,false}]
+    $ mtd-cli bsas pb-get-summary bsasId [adjustedStatus={true,false}]
 
-    $ mtd-cli bsas bsas-pb-list-summary-adjustments bsasId
+    $ mtd-cli bsas pb-list-summary-adjustments bsasId
 
-    $ mtd-cli bsas bsas-pb-update-summary-adjustments <file> bsasId
+    $ mtd-cli bsas pb-update-summary-adjustments <file> bsasId
 
-    $ mtd-cli bsas bsas-fp-get-summary bsasId [adjustedStatus={true,false}]
+    $ mtd-cli bsas fp-get-summary bsasId [adjustedStatus={true,false}]
 
-    $ mtd-cli bsas bsas-fp-list-summary-adjustments bsasId
+    $ mtd-cli bsas fp-list-summary-adjustments bsasId
 
-    $ mtd-cli bsas bsas-fp-update-summary-adjustments <file> bsasId
+    $ mtd-cli bsas fp-update-summary-adjustments <file> bsasId
 
-*bsasId* is as returned by '*mtd-cli bsas bsas-list-summaries*'.
+*bsasId* is as returned by '*mtd-cli bsas list-summaries*'.
 
 
 **ob** has the following endpoints
