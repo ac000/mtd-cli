@@ -33,88 +33,79 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.use = "sa-list-calculations [taxYear=YYYY-YY]"
-	},
-	{
+		.args = "[taxYear=YYYY-YY]"
+	}, {
 		.name = "sa-trigger-calculation",
 		.api_func = {
 			.func_1d = mtd_ic_sa_trigger_calculation
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = "sa-trigger-calculation <file>"
-	},
-	{
+		.args = "<file>"
+	}, {
 		.name = "sa-get-calculation-metadata",
 		.api_func = {
 			.func_1 = mtd_ic_sa_get_calculation_meta
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "sa-get-calculation-metadata calculationId"
-	},
-	{
+		.args = "calculationId"
+	}, {
 		.name = "sa-get-income-tax-nics-calc",
 		.api_func = {
 			.func_1 = mtd_ic_sa_get_income_tax_nics_calc
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "sa-get-income-tax-nics-calc calculationId"
-	},
-	{
+		.args = "calculationId"
+	}, {
 		.name = "sa-get-taxable-income",
 		.api_func = {
 			.func_1 = mtd_ic_sa_get_taxable_income
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "sa-create-period calculationId"
-	},
-	{
+		.args = "calculationId"
+	}, {
 		.name = "sa-get-allowances-deductions-reliefs",
 		.api_func = {
 			.func_1 = mtd_ic_sa_get_allowances_deductions_reliefs
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "sa-get-allowances-deductions-reliefs calculationId"
-	},
-	{
+		.args = "calculationId"
+	}, {
 		.name = "sa-get-end-of-year-estimate",
 		.api_func = {
 			.func_1 = mtd_ic_sa_get_end_of_year_est
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "sa-get-end-of-year-estimate calculationId"
-	},
-	{
+		.args = "calculationId"
+	}, {
 		.name = "sa-get-messages",
 		.api_func = {
 			.func_2 = mtd_ic_sa_get_messages
 		},
 		.func = FUNC_2,
 		.nr_req_args = 1,
-		.use = "sa-get-messages calculationId [[type={info,warning,error}], ...]"
-	},
-	{
+		.args = "calculationId [[type={info,warning,error}], ...]"
+	}, {
 		.name = "cr-intent-to-crystallise",
 		.api_func = {
 			.func_1 = mtd_ic_cr_intent_to_crystallise
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "cr-intent-to-crystallise taxYear"
-	},
-	{
+		.args = "taxYear"
+	}, {
 		.name = "cr-crystallise",
 		.api_func = {
 			.func_2d = mtd_ic_cr_crystallise
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "cr-crystallise <file> taxYear"
+		.args = "<file> taxYear"
 	},
 
 	{ }

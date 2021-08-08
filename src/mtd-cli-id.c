@@ -25,25 +25,23 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "get taxYear"
-	},
-	{
+		.args = "taxYear"
+	}, {
 		.name = "set",
 		.api_func = {
 			.func_2d = mtd_id_set
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "set <file> teaxYear"
-	},
-	{
+		.args = "<file> teaxYear"
+	}, {
 		.name = "delete",
 		.api_func = {
 			.func_1 = mtd_id_delete
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "delete taxYear"
+		.args = "taxYear"
 	},
 
 	{ }

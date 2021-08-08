@@ -25,16 +25,15 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = "list"
-	},
-	{
+		.args = ""
+	}, {
 		.name = "get",
 		.api_func = {
 			.func_1 = mtd_bd_get
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "get businessId"
+		.args = "businessId"
 	},
 
 	{ }

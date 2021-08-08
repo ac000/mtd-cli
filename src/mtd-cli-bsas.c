@@ -32,7 +32,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.use = "list-summaries [[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl}][,[taxYear=YYYY-YY]]]]"
+		.args = "[[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl}][,[taxYear=YYYY-YY]]]]"
 	}, {
 		.name = "trigger-summary",
 		.api_func = {
@@ -40,7 +40,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = "trigger-summary <file>"
+		.args = "<file>"
 	}, {
 		.name = "se-get-summary",
 		.api_func = {
@@ -48,7 +48,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 1,
-		.use = "se-get-summary bsasId [adjustedStatus={true,false}]"
+		.args = "bsasId [adjustedStatus={true,false}]"
 	}, {
 		.name = "se-list-summary-adjustments",
 		.api_func = {
@@ -56,7 +56,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "se-list-summary-adjustments bsasId"
+		.args = "bsasId"
 	}, {
 		.name = "se-update-summary-adjustments",
 		.api_func = {
@@ -64,7 +64,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "se-update-summary-adjustments <file> bsasId"
+		.args = "<file> bsasId"
 	}, {
 		.name = "pb-get-summary",
 		.api_func = {
@@ -72,7 +72,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 1,
-		.use = "pb-get-summary bsasId [adjustedStatus={true,false}]"
+		.args = "bsasId [adjustedStatus={true,false}]"
 	}, {
 		.name = "pb-list-summary-adjustments",
 		.api_func = {
@@ -80,7 +80,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "pb-list-summary-adjustments bsasId"
+		.args = "bsasId"
 	}, {
 		.name = "pb-update-summary-adjustments",
 		.api_func = {
@@ -88,7 +88,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "pb-update-summary-adjustments <file> bsasId"
+		.args = "<file> bsasId"
 	}, {
 		.name = "fp-get-summary",
 		.api_func = {
@@ -96,7 +96,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 1,
-		.use = "fp-get-summary bsasId [adjustedStatus={true,false}]"
+		.args = "bsasId [adjustedStatus={true,false}]"
 	}, {
 		.name = "fp-list-summary-adjustments",
 		.api_func = {
@@ -104,7 +104,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "fp-list-summary-adjustments bsasId"
+		.args = "bsasId"
 	}, {
 		.name = "fp-update-summary-adjustments",
 		.api_func = {
@@ -112,7 +112,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "fp-update-summary-adjustments <file> bsasId"
+		.args = "<file> bsasId"
 	},
 
 	{ }

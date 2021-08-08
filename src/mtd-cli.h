@@ -3,7 +3,7 @@
 /*
  * mtd-cli.h - Make Tax Digital CLI
  *
- * Copyright (C) 2020		Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2021	Andrew Clayton <andrew@digital-domain.net>
  */
 
 #ifndef _MTD_CLI_H_
@@ -73,7 +73,7 @@ struct endpoint {
 	} api_func;
 	const enum function_selector func;
 	const int nr_req_args;
-	const char *use;
+	const char *args;
 };
 
 #endif /* _MTD_CLI_H_ */

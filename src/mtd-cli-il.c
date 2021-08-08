@@ -31,43 +31,39 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.use = "bf-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]"
-	},
-	{
+		.args = "[[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]"
+	}, {
 		.name = "bf-create-loss",
 		.api_func = {
 			.func_1d = mtd_il_bf_create_loss
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = "bf-create-loss <file>"
-	},
-	{
+		.args = "<file>"
+	}, {
 		.name = "bf-get-loss",
 		.api_func = {
 			.func_1 = mtd_il_bf_get_loss
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "bf-get-loss lossId"
-	},
-	{
+		.args = "lossId"
+	}, {
 		.name = "bf-delete-loss",
 		.api_func = {
 			.func_1 = mtd_il_bf_delete_loss
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "bf-delete-loss lossId"
-	},
-	{
+		.args = "lossId"
+	}, {
 		.name = "bf-update-loss-amnt",
 		.api_func = {
 			.func_2d = mtd_il_bf_update_loss_amnt
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "bf-update-loss-amnt <file> lossaId"
+		.args = "<file> lossaId"
 	},
 	/* Loss Claims */
 	{
@@ -77,43 +73,39 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.use = "lc-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]"
-	},
-	{
+		.args = "[[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]"
+	}, {
 		.name = "lc-create-loss",
 		.api_func = {
 			.func_1d = mtd_il_lc_create_loss
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = "lc-create-loss <file>"
-	},
-	{
+		.args = "<file>"
+	}, {
 		.name = "lc-get-loss",
 		.api_func = {
 			.func_1 = mtd_il_lc_get_loss
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "lc-get-loss claimId"
-	},
-	{
+		.args = "claimId"
+	}, {
 		.name = "lc-delete-loss",
 		.api_func = {
 			.func_1 = mtd_il_lc_delete_loss
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "lc-delete-loss claimId"
-	},
-	{
+		.args = "claimId"
+	}, {
 		.name = "lc-update-loss-type",
 		.api_func = {
 			.func_2d = mtd_il_lc_update_loss_type
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "lc-update-loss-type <file> claimId"
+		.args = "<file> claimId"
 	},
 	{
 		.name = "lc-update-loss-order",
@@ -122,7 +114,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 1,
-		.use = "lc-update-loss-order <file> [taxYear=YYYY-YY]"
+		.args = "<file> [taxYear=YYYY-YY]"
 	},
 
 	{ }

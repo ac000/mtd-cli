@@ -27,61 +27,55 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = "get-balance"
-	},
-	{
+		.args = ""
+	}, {
 		.name = "list-transactions",
 		.api_func = {
 			.func_1 = mtd_saac_list_transactions
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "list-transactions from=YYYY-MM-DD,to=YYYY-MM-DD"
-	},
-	{
+		.args = "from=YYYY-MM-DD,to=YYYY-MM-DD"
+	}, {
 		.name = "get-transaction",
 		.api_func = {
 			.func_1 = mtd_saac_get_transaction
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "get-transaction transactionId"
-	},
-	{
+		.args = "transactionId"
+	}, {
 		.name = "list-charges",
 		.api_func = {
 			.func_1 = mtd_saac_list_charges
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "list-charges from=YYYY-MM-DD,to=YYYY-MM-DD"
-	},
-	{
+		.args = "from=YYYY-MM-DD,to=YYYY-MM-DD"
+	}, {
 		.name = "get-charge",
 		.api_func = {
 			.func_1 = mtd_saac_get_charge
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "get-charge transactionId"
-	},
-	{
+		.args = "transactionId"
+	}, {
 		.name = "list-payments",
 		.api_func = {
 			.func_1 = mtd_saac_list_payments
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "list-payments from=YYYY-MM-DD,to=YYYY-MM-DD"
-	},
-	{
+		.args = "from=YYYY-MM-DD,to=YYYY-MM-DD"
+	}, {
 		.name = "get-payment",
 		.api_func = {
 			.func_1 = mtd_saac_get_payment
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "get-payment paymentId"
+		.args = "paymentId"
 	},
 
 	{ }

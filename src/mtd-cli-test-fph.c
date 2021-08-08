@@ -26,7 +26,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = "validate"
+		.args = ""
 	}, {
 		.name = "feedback",
 		.api_func = {
@@ -34,7 +34,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_2,
 		.nr_req_args = 1,
-		.use = "feedback api [connectionMethod=]"
+		.args = "api [connectionMethod=]"
 	},
 
 	{ }

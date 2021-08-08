@@ -47,70 +47,63 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = "se-create-employment <file>"
-	},
-	{
+		.args = "<file>"
+	}, {
 		.name = "se-list-periods",
 		.api_func = {
 			.func_1 = mtd_sa_se_list_periods
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "se-list-periods selfEmploymentId"
-	},
-	{
+		.args = "selfEmploymentId"
+	}, {
 		.name = "se-create-period",
 		.api_func = {
 			.func_2d = mtd_sa_se_create_period
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "se-create-period <file> selfEmploymentId"
-	},
-	{
+		.args = "<file> selfEmploymentId"
+	}, {
 		.name = "se-get-period",
 		.api_func = {
 			.func_2 = mtd_sa_se_get_period
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
-		.use = "se-get-period selfEmploymentId periodId"
-	},
-	{
+		.args = "selfEmploymentId periodId"
+	}, {
 		.name = "se-update-period",
 		.api_func = {
 			.func_3d = mtd_sa_se_update_period
 		},
 		.func = FUNC_3d,
 		.nr_req_args = 3,
-		.use = "se-update-period <file> selfEmploymentId periodId"
-	},
-	{
+		.args = "<file> selfEmploymentId periodId"
+	}, {
 		.name = "se-get-annual-summary",
 		.api_func = {
 			.func_2 = mtd_sa_se_get_annual_summary
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
-		.use = "se-get-annual-summary selfEmploymentId taxYear"
-	},
-	{
+		.args = "selfEmploymentId taxYear"
+	}, {
 		.name = "se-update-annual-summary",
 		.api_func = {
 			.func_3d = mtd_sa_se_update_annual_summary
 		},
 		.func = FUNC_3d,
 		.nr_req_args = 3,
-		.use = "se-update-annual-summary <file> selfEmploymentId taxYear"
-	},
-	{
+		.args = "<file> selfEmploymentId taxYear"
+	}, {
 		.name = "se-submit-end-of-period-statement",
 		.api_func = {
 			.func_4d = mtd_sa_se_submit_end_of_period_statement
 		},
 		.func = FUNC_4d,
 		.nr_req_args = 4,
-		.use = "se-submit-end-of-period-statement <file> selfEmploymentId start end"
+		.args = "<file> selfEmploymentId start end"
 	},
 	/* Self-Assessment - UK Property Business */
 	{
@@ -120,141 +113,126 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = "pb-create-property <file>"
-	},
-	{
+		.args = "<file>"
+	}, {
 		.name = "pb-list-obligations",
 		.api_func = {
 			.func_0 = mtd_sa_pb_list_obligations
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = "pb-list-obligations"
-	},
-	{
+		.args = ""
+	}, {
 		.name = "pb-list-non-fhl-periods",
 		.api_func = {
 			.func_0 = mtd_sa_pb_list_non_fhl_periods
 		},
 		.nr_req_args = 0,
-		.use = "pb-list-non-fhl-periods"
-	},
-	{
+		.args = ""
+	}, {
 		.name = "pb-create-non-fhl-period",
 		.api_func = {
 			.func_1d = mtd_sa_pb_create_non_fhl_period
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = "pb-create-non-fhl-period <file>"
-	},
-	{
+		.args = "<file>"
+	}, {
 		.name = "pb-get-non-fhl-period",
 		.api_func = {
 			.func_1 = mtd_sa_pb_get_non_fhl_period
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "pb-get-non-fhl-period periodId"
-	},
-	{
+		.args = "periodId"
+	}, {
 		.name = "pb-update-non-fhl-period",
 		.api_func = {
 			.func_2d = mtd_sa_pb_update_non_fhl_period
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "pb-update-non-fhl-period <file> periodId"
-	},
-	{
+		.args = "<file> periodId"
+	}, {
 		.name = "pb-get-non-fhl-annual-summary",
 		.api_func = {
 			.func_1 = mtd_sa_pb_get_non_fhl_annual_summary
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "pb-get-non-fhl-annual-summary taxYear"
-	},
-	{
+		.args = "taxYear"
+	}, {
 		.name = "pb-update-non-fhl-annual-summary",
 		.api_func = {
 			.func_2d = mtd_sa_pb_update_non_fhl_annual_summary
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "pb-update-non-fhl-annual-summary <file> taxYear"
-	},
-	{
+		.args = "<file> taxYear"
+	}, {
 		.name = "pb-list-fhl-periods",
 		.api_func = {
 			.func_0 = mtd_sa_pb_list_fhl_periods
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = "pb-list-fhl-periods"
-	},
-	{
+		.args = ""
+	}, {
 		.name = "pb-create-fhl-period",
 		.api_func = {
 			.func_1d = mtd_sa_pb_create_fhl_period
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = "pb-create-fhl-period <file>"
-	},
-	{
+		.args = "<file>"
+	}, {
 		.name = "pb-get-fhl-period",
 		.api_func = {
 			.func_1 = mtd_sa_pb_get_fhl_period
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "pb-get-fhl-period periodId"
-	},
-	{
+		.args = "periodId"
+	}, {
 		.name = "pb-update-fhl-period",
 		.api_func = {
 			.func_2d = mtd_sa_pb_update_fhl_period
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "pb-update-fhl-period <file> periodId"
-	},
-	{
+		.args = "<file> periodId"
+	}, {
 		.name = "pb-get-fhl-annual-summary",
 		.api_func = {
 			.func_1 = mtd_sa_pb_get_fhl_annual_summary
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "pb-get-fhl-annual-summary taxYear"
-	},
-	{
+		.args = "taxYear"
+	}, {
 		.name = "pb-update-fhl-annual-summary",
 		.api_func = {
 			.func_2d = mtd_sa_pb_update_fhl_annual_summary
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "pb-update-fhl-annual-summary <file> taxYear"
-	},
-	{
+		.args = "<file> taxYear"
+	}, {
 		.name = "pb-submit-end-of-period-statement",
 		.api_func = {
 			.func_3d = mtd_sa_pb_submit_end_of_period_statement
 		},
 		.func = FUNC_3d,
 		.nr_req_args = 3,
-		.use = "pb-submit-end-of-period-statement <file> start end"
-	},
-	{
+		.args = "<file> start end"
+	}, {
 		.name = "pb-get-end-of-period-statement",
 		.api_func = {
 			.func_1 = mtd_sa_pb_get_end_of_period_statement
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "pb-get-end-of-period-statement from=YYYY-MM-DD,to=YYYY-MM-DD"
+		.args = "from=YYYY-MM-DD,to=YYYY-MM-DD"
 	},
 	/* Dividends Income */
 	{
@@ -264,16 +242,15 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "di-get-annual-summary taxYear"
-	},
-	{
+		.args = "taxYear"
+	}, {
 		.name = "di-update-annual-summary",
 		.api_func = {
 			.func_2d = mtd_sa_di_update_annual_summary
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "di-get-annual-summary <file> taxYear"
+		.args = "<file> taxYear"
 	},
 	/* Savings Accounts */
 	{
@@ -283,43 +260,39 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_0,
 		.nr_req_args = 0,
-		.use = "sa-list-accounts"
-	},
-	{
+		.args = ""
+	}, {
 		.name = "sa-create-account",
 		.api_func = {
 			.func_1d = mtd_sa_sa_create_account
 		},
 		.func = FUNC_1d,
 		.nr_req_args = 1,
-		.use = "sa-create-account <file>"
-	},
-	{
+		.args = "<file>"
+	}, {
 		.name = "sa-get-account",
 		.api_func = {
 			.func_1 = mtd_sa_sa_get_account
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "sa-get-account savingsAccountId"
-	},
-	{
+		.args = "savingsAccountId"
+	}, {
 		.name = "sa-get-annual-summary",
 		.api_func = {
 			.func_2 = mtd_sa_sa_get_annual_summary
 		},
 		.func = FUNC_2,
 		.nr_req_args = 2,
-		.use = "sa-get-annual-summary savingsAccountId taxYear"
-	},
-	{
+		.args = "savingsAccountId taxYear"
+	}, {
 		.name = "sa-update-annual-summary",
 		.api_func = {
 			.func_3d = mtd_sa_sa_update_annual_summary
 		},
 		.func = FUNC_3d,
 		.nr_req_args = 3,
-		.use = "sa-update-annual-summary <file> savingsAccountId taxYear"
+		.args = "<file> savingsAccountId taxYear"
 	},
 	/* Charitable Giving */
 	{
@@ -329,16 +302,15 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "cg-get-charitable-giving taxYear"
-	},
-	{
+		.args = "taxYear"
+	}, {
 		.name = "cg-update-charitable-giving",
 		.api_func = {
 			.func_2d = mtd_sa_cg_update_charitable_giving
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "cg-get-charitable-giving <file> taxYear"
+		.args = "<file> taxYear"
 	},
 	/* Crystallisation */
 	{
@@ -349,16 +321,15 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 1,
-		.use = "cr-intent-to-crystallise taxYear"
-	},
-	{
+		.args = "taxYear"
+	}, {
 		.name = "cr-crystallise",
 		.api_func = {
 			.func_2d = mtd_sa_cr_crystallise
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.use = "cr-crystallise <file> taxYear"
+		.args = "<file> taxYear"
 	},
 
 	{ }

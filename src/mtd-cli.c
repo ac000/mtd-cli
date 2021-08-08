@@ -128,7 +128,8 @@ int check_args(int argc, char *argv[], const char *api,
 		if (argc >= eps[i].nr_req_args && *argv[argc] != '?')
 			return 0;
 
-		printf("Usage: %s %s %s\n", MTD_CLI, api, eps[i].use);
+		printf("Usage: %s %s %s %s\n", MTD_CLI, api, eps[i].name,
+		       eps[i].args);
 
 		return -1;
 	}
