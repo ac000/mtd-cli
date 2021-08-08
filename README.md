@@ -448,6 +448,11 @@ with the following usage
     bsas-pb-get-summary bsas-pb-list-summary-adjustments
     bsas-pb-update-summary-adjustments
 
+    Foreign Property Business
+
+    bsas-fp-get-summary bsas-fp-list-summary-adjustments
+    bsas-fp-update-summary-adjustments
+
 with the following usage
 
     $ mtd-cli bsas bsas-list-summaries [[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl}][,[taxYear=YYYY-YY]]]]
@@ -465,6 +470,12 @@ with the following usage
     $ mtd-cli bsas bsas-pb-list-summary-adjustments bsasId
 
     $ mtd-cli bsas bsas-pb-update-summary-adjustments <file> bsasId
+
+    $ mtd-cli bsas bsas-fp-get-summary bsasId [adjustedStatus={true,false}]
+
+    $ mtd-cli bsas bsas-fp-list-summary-adjustments bsasId
+
+    $ mtd-cli bsas bsas-fp-update-summary-adjustments <file> bsasId
 
 *bsasId* is as returned by '*mtd-cli bsas bsas-list-summaries*'.
 
