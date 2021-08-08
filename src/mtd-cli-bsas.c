@@ -22,7 +22,10 @@
 "bsas-se-update-summary-adjustments\n\n"\
 "UK Property Business\n\n"\
 "bsas-pb-get-summary bsas-pb-list-summary-adjustments\n"\
-"bsas-pb-update-summary-adjustments"
+"bsas-pb-update-summary-adjustments\n\n"\
+"Foreign Property Business\n\n"\
+"bsas-fp-get-summary bsas-fp-list-summary-adjustments\n"\
+"bsas-fp-update-summary-adjustments"
 
 static const struct endpoint endpoints[] = {
 	{
@@ -89,6 +92,30 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.use = "bsas-pb-update-summary-adjustments <file> bsasId"
+	}, {
+		.name = "bsas-fp-get-summary",
+		.api_func = {
+			.func_2 = mtd_bsas_fp_get_summary
+		},
+		.func = FUNC_2,
+		.nr_req_args = 1,
+		.use = "bsas-fp-get-summary bsasId [adjustedStatus={true,false}]"
+	}, {
+		.name = "bsas-fp-list-summary-adjustments",
+		.api_func = {
+			.func_1 = mtd_bsas_fp_list_summary_adjustments
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.use = "bsas-fp-list-summary-adjustments bsasId"
+	}, {
+		.name = "bsas-fp-update-summary-adjustments",
+		.api_func = {
+			.func_2d = mtd_bsas_fp_update_summary_adjustments
+		},
+		.func = FUNC_2d,
+		.nr_req_args = 2,
+		.use = "bsas-fp-update-summary-adjustments <file> bsasId"
 	},
 
 	{ }
