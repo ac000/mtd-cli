@@ -15,7 +15,10 @@
 #define API	id
 
 #define API_NAME "Individuals Disclosures"
-#define CMDS "get set delete"
+#define CMDS \
+"get set delete\n\n"\
+"Marriage Allowance\n\n"\
+"ma-create"
 
 static const struct endpoint endpoints[] = {
 	{
@@ -42,6 +45,16 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "taxYear"
+	},
+	/* Marriage Allowance */
+	{
+		.name = "ma-create",
+		.api_func = {
+			.func_1d = mtd_id_ma_create
+		},
+		.func = FUNC_1d,
+		.nr_req_args = 1,
+		.args = "<file>"
 	},
 
 	{ }

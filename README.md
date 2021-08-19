@@ -294,6 +294,10 @@ that is sent to the server.
 
     get set delete
 
+    Marriage Allowance
+
+    ma-create
+
 with the following usage
 
     $ mtd-cli id get taxYear
@@ -301,6 +305,8 @@ with the following usage
     $ mtd-cli id set <file> taxYear
 
     $ mtd-cli id delete taxYear
+
+    $ mtd-cli id ma-create <file>
 
 *taxYear* is a tax year in the form *YYYY-YY*
 
