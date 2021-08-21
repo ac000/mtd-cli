@@ -310,7 +310,7 @@ with the following usage
 
 *taxYear* is a tax year in the form *YYYY-YY*
 
-*\<file\>* is a JSON file that looks like
+mtd-cli id get: *\<file\>* is a JSON file that looks like
 
 ```JSON
 {
@@ -323,6 +323,17 @@ with the following usage
     "class2Nics": {
         "class2VoluntaryContributions": true
     }
+}
+```
+
+mtd-cli id ma-create: *\<file\>* is a JSON file that looks like
+
+```JSON
+{
+    "spouseOrCivilPartnerNino": "TC663795B",
+    "spouseOrCivilPartnerFirstName": "John",
+    "spouseOrCivilPartnerSurname": "Smith",
+    "spouseOrCivilPartnerDateOfBirth": "1987-10-18"
 }
 ```
 
