@@ -43,6 +43,9 @@ static const struct api_ep {
 		.api = "bsas",
 		.endpoint = &bsas_endpoint
 	}, {
+		.api = "ibeops",
+		.endpoint = &ibeops_endpoint
+	}, {
 		.api = "ic",
 		.endpoint = &ic_endpoint
 	}, {

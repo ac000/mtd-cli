@@ -46,6 +46,8 @@ The first argument specifies the API to interface with
 
   * **saac** is for interacting with the Self-Assessment Accounts API.
 
+  * **ibeops** is for interacting with the Individuals Business End of Period Statement API.
+
   * **ic** is for interacting with the Individual Calculations API.
 
   * **id** is for interacting with the Individuals Disclosures API
@@ -219,6 +221,29 @@ The following shows each of the above and what arguments (if any) they take.
 '*mtd-cli saac list-transactions from to*'.
 
 *paymentId* is an 'id' as returned from '*mtd-cli saac list-payments from to*'.
+
+
+**ibeops** supports the following commands
+
+    submit-end-of-period-statement
+
+with the following usage
+
+    $ mtd-cli ibeops submit-end-of-period-statement <file>
+
+*\<file\>* is a JSON file that looks like
+
+```JSON
+{
+    "typeOfBusiness": "self-employment",
+    "businessId": "XAIS12345678910",
+    "accountingPeriod" : {
+        "startDate": "2021-04-06",
+        "endDate": "2022-04-05"
+    },
+    "finalised": true
+}
+```
 
 
 **ic** supports the following commands
