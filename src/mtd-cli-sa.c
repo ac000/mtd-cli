@@ -34,9 +34,7 @@
 "sa-list-accounts sa-create-account sa-get-account sa-get-annual-summary\n"\
 "sa-update-annual-summary\n\n"\
 "Charitable Giving\n\n"\
-"cg-get-charitable-giving cg-update-charitable-giving\n\n"\
-"Crystallisation\n\n"\
-"cr-intent-to-crystallise cr-crystallise"
+"cg-get-charitable-giving cg-update-charitable-giving"
 
 static const struct endpoint endpoints[] = {
 	/* Self-Employment */
@@ -307,25 +305,6 @@ static const struct endpoint endpoints[] = {
 		.name = "cg-update-charitable-giving",
 		.api_func = {
 			.func_2d = mtd_sa_cg_update_charitable_giving
-		},
-		.func = FUNC_2d,
-		.nr_req_args = 2,
-		.args = "<file> taxYear"
-	},
-	/* Crystallisation */
-	{
-		.name = "cr-intent-to-crystallise",
-		/* While this is a POST request, it doesn't send any body */
-		.api_func = {
-			.func_1 = mtd_sa_cr_intent_to_crystallise
-		},
-		.func = FUNC_1,
-		.nr_req_args = 1,
-		.args = "taxYear"
-	}, {
-		.name = "cr-crystallise",
-		.api_func = {
-			.func_2d = mtd_sa_cr_crystallise
 		},
 		.func = FUNC_2d,
 		.nr_req_args = 2,

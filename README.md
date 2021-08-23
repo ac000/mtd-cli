@@ -111,10 +111,6 @@ to connect to. These are
 
     cg-get-charitable-giving cg-update-charitable-giving
 
-    Crystallisation
-
-    cr-intent-to-crystallise cr-crystallise
-
 The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa se-create-employment <file>
@@ -182,10 +178,6 @@ The following shows each of the above and what arguments (if any) they take.
     $ mtd-cli sa cg-get-charitable-giving taxYear
 
     $ mtd-cli sa cg-update-charitable-giving taxYear
-
-    $ mtd-cli sa cr-intent-to-crystallise taxYear
-
-    $ mtd-cli sa cr-crystallise <file> taxYear
 
 *selfEmploymentId* is an 'id' as returned from '*mtd-cli sa se-list-employments*'.
 
