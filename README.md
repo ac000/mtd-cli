@@ -351,7 +351,7 @@ mtd-cli id ma-create: *\<file\>* is a JSON file that looks like
 
 with the following usage
 
-    $ mtd-cli il bf-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]
+    $ mtd-cli il bf-list-loses [[businessId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]
 
     $ mtd-cli il bf-create-loss <file>
 
@@ -360,7 +360,7 @@ with the following usage
 ```JSON
 {
     "typeOfLoss": "self-employment-class4",
-    "selfEmploymentId": "XGIS00000001319",
+    "businessId": "XGIS00000001319",
     "lossAmount": 12345.67,
     "taxYear": "2018-19"
 }
@@ -380,7 +380,7 @@ with the following usage
 }
 ```
 
-    $ mtd-cli il lc-list-loses [[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]
+    $ mtd-cli il lc-list-loses [[businessId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]
 
     $ mtd-cli il lc-create-loss <file> [taxYear=YYYY-YY]
 
@@ -389,7 +389,7 @@ with the following usage
 ```JSON
 {
     "typeOfLoss":"self-employment",
-    "selfEmploymentId": "XGIS00000001319",
+    "businessId": "XGIS00000001319",
     "typeOfClaim": "carry-forward",
     "taxYear": "2019-20"
 }

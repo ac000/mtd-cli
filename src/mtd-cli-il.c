@@ -31,7 +31,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.args = "[[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]"
+		.args = "[[businessId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]"
 	}, {
 		.name = "bf-create-loss",
 		.api_func = {
@@ -73,7 +73,7 @@ static const struct endpoint endpoints[] = {
 		},
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.args = "[[selfEmploymentId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]"
+		.args = "[[businessId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]"
 	}, {
 		.name = "lc-create-loss",
 		.api_func = {
