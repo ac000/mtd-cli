@@ -21,13 +21,13 @@
 "se-update-period se-get-annual-summary se-update-annual-summary\n"\
 "se-submit-end-of-period-statement\n\n"\
 "UK Property Business\n\n"\
-"pb-create-property pb-list-obligations pb-list-non-fhl-periods\n"\
+"pb-create-property pb-list-non-fhl-periods\n"\
 "pb-create-non-fhl-period pb-get-non-fhl-period\n"\
 "pb-update-non-fhl-period pb-get-non-fhl-annual-summary\n"\
 "pb-update-non-fhl-annual-summary pb-list-fhl-periods\n"\
 "pb-create-fhl-period pb-get-fhl-period pb-update-fhl-period\n"\
 "pb-get-fhl-annual-summary pb-update-fhl-annual-summary\n"\
-"pb-submit-end-of-period-statement pb-get-end-of-period-statement\n\n"\
+"pb-submit-end-of-period-statement\n\n"\
 "Dividends Income\n\n"\
 "di-get-annual-summary di-update-annual-summary\n\n"\
 "Savings Accounts\n\n"\
@@ -112,14 +112,6 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.args = "<file>"
-	}, {
-		.name = "pb-list-obligations",
-		.api_func = {
-			.func_0 = mtd_sa_pb_list_obligations
-		},
-		.func = FUNC_0,
-		.nr_req_args = 0,
-		.args = ""
 	}, {
 		.name = "pb-list-non-fhl-periods",
 		.api_func = {
@@ -223,14 +215,6 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_3d,
 		.nr_req_args = 3,
 		.args = "<file> start end"
-	}, {
-		.name = "pb-get-end-of-period-statement",
-		.api_func = {
-			.func_1 = mtd_sa_pb_get_end_of_period_statement
-		},
-		.func = FUNC_1,
-		.nr_req_args = 1,
-		.args = "from=YYYY-MM-DD,to=YYYY-MM-DD"
 	},
 	/* Dividends Income */
 	{

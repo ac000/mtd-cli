@@ -90,12 +90,12 @@ to connect to. These are
 
     UK Property Business
 
-    pb-create-property pb-list-obligations pb-list-non-fhl-periods
+    pb-create-property pb-list-non-fhl-periods
     pb-create-non-fhl-period pb-get-non-fhl-period
     pb-update-non-fhl-period pb-get-non-fhl-annual-summary
     pb-update-non-fhl-annual-summary pb-list-fhl-periods pb-create-fhl-period
     pb-get-fhl-period pb-update-fhl-period pb-get-fhl-annual-summary
-    pb-update-fhl-annual-summary pb-submit-end-of-period-statement
+    pb-update-fhl-annual-summary
     pb-get-end-of-period-statement
 
     Dividends Income
@@ -131,8 +131,6 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa pb-create-property <file>
 
-    $ mtd-cli sa pb-list-obligations
-
     $ mtd-cli sa pb-list-non-fhl-periods
 
     $ mtd-cli sa pb-create-non-fhl-period <file>
@@ -158,8 +156,6 @@ The following shows each of the above and what arguments (if any) they take.
     $ mtd-cli sa pb-update-fhl-annual-summary <file> taxYear
 
     $ mtd-cli sa pb-submit-end-of-period-statement <file> start end
-
-    $ mtd-cli sa pb-get-end-of-period-statement from=YYYY-MM-DD,to=YYYY-MM-DD
 
     $ mtd-cli sa di-get-annual-summary taxYear
 
