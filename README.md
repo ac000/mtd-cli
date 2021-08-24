@@ -88,7 +88,6 @@ to connect to. These are
 
     se-create-employment se-list-periods se-create-period se-get-period
     se-update-period se-get-annual-summary se-update-annual-summary
-    se-submit-end-of-period-statement
 
     UK Property Business
 
@@ -98,7 +97,6 @@ to connect to. These are
     pb-update-non-fhl-annual-summary pb-list-fhl-periods pb-create-fhl-period
     pb-get-fhl-period pb-update-fhl-period pb-get-fhl-annual-summary
     pb-update-fhl-annual-summary
-    pb-get-end-of-period-statement
 
     Dividends Income
 
@@ -129,8 +127,6 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli sa se-update-annual-summary <file> selfEmploymentId taxYear
 
-    $ mtd-cli sa se-submit-end-of-period-statement <file> selfEmploymentId start end
-
     $ mtd-cli sa pb-create-property <file>
 
     $ mtd-cli sa pb-list-non-fhl-periods
@@ -156,8 +152,6 @@ The following shows each of the above and what arguments (if any) they take.
     $ mtd-cli sa pb-get-fhl-annual-summary taxYear
 
     $ mtd-cli sa pb-update-fhl-annual-summary <file> taxYear
-
-    $ mtd-cli sa pb-submit-end-of-period-statement <file> start end
 
     $ mtd-cli sa di-get-annual-summary taxYear
 

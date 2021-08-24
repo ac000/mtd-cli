@@ -18,16 +18,14 @@
 #define CMDS \
 "Self-Employment\n\n"\
 "se-create-employment se-list-periods se-create-period se-get-period\n"\
-"se-update-period se-get-annual-summary se-update-annual-summary\n"\
-"se-submit-end-of-period-statement\n\n"\
+"se-update-period se-get-annual-summary se-update-annual-summary\n\n"\
 "UK Property Business\n\n"\
 "pb-create-property pb-list-non-fhl-periods\n"\
 "pb-create-non-fhl-period pb-get-non-fhl-period\n"\
 "pb-update-non-fhl-period pb-get-non-fhl-annual-summary\n"\
 "pb-update-non-fhl-annual-summary pb-list-fhl-periods\n"\
 "pb-create-fhl-period pb-get-fhl-period pb-update-fhl-period\n"\
-"pb-get-fhl-annual-summary pb-update-fhl-annual-summary\n"\
-"pb-submit-end-of-period-statement\n\n"\
+"pb-get-fhl-annual-summary pb-update-fhl-annual-summary\n\n"\
 "Dividends Income\n\n"\
 "di-get-annual-summary di-update-annual-summary\n\n"\
 "Savings Accounts\n\n"\
@@ -94,14 +92,6 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_3d,
 		.nr_req_args = 3,
 		.args = "<file> selfEmploymentId taxYear"
-	}, {
-		.name = "se-submit-end-of-period-statement",
-		.api_func = {
-			.func_4d = mtd_sa_se_submit_end_of_period_statement
-		},
-		.func = FUNC_4d,
-		.nr_req_args = 4,
-		.args = "<file> selfEmploymentId start end"
 	},
 	/* Self-Assessment - UK Property Business */
 	{
@@ -207,14 +197,6 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.args = "<file> taxYear"
-	}, {
-		.name = "pb-submit-end-of-period-statement",
-		.api_func = {
-			.func_3d = mtd_sa_pb_submit_end_of_period_statement
-		},
-		.func = FUNC_3d,
-		.nr_req_args = 3,
-		.args = "<file> start end"
 	},
 	/* Dividends Income */
 	{
