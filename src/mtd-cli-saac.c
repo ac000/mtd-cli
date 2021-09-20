@@ -16,10 +16,14 @@
 
 #define API_NAME "Self-Assessment Accounts"
 #define CMDS \
+"Payments and Liabilities\n\n"\
 "get-balance list-transactions get-transaction list-charges get-charge\n"\
-"list-payments get-payment"
+"list-payments get-payment\n\n"\
+"Coding Out Underpayments and Debts\n\n"\
+"co-get co-set co-delete"
 
 static const struct endpoint endpoints[] = {
+	/* Payments and Liabilities */
 	{
 		.name = "get-balance",
 		.api_func = {
@@ -76,6 +80,32 @@ static const struct endpoint endpoints[] = {
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "paymentId"
+	},
+	/* Coding Out Underpayments and Debts */
+	{
+		.name = "co-get",
+		.api_func = {
+			.func_1 = mtd_saac_get_coding_out_uda
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.args = "taxYear"
+	}, {
+		.name = "co-set",
+		.api_func = {
+			.func_2d = mtd_saac_set_coding_out_uda
+		},
+		.func = FUNC_2d,
+		.nr_req_args = 2,
+		.args = "<file> taxYear"
+	}, {
+		.name = "co-delete",
+		.api_func = {
+			.func_1 = mtd_saac_delete_coding_out_uda
+		},
+		.func = FUNC_1,
+		.nr_req_args = 1,
+		.args = "taxYear"
 	},
 
 	{ }

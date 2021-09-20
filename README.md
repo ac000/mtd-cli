@@ -192,8 +192,14 @@ Both the *from* & *to* parts are optional
 **saac** takes various arguments, the first of which is the endpoint of the API
 to connect to. These are
 
+    Payments and Liabilities
+
     get-balance list-transactions get-transaction list-charges get-charge
     list-payments get-payment
+
+    Coding Out Underpayments and Debts
+
+    get set delete
 
 The following shows each of the above and what arguments (if any) they take.
 
@@ -211,10 +217,47 @@ The following shows each of the above and what arguments (if any) they take.
 
     $ mtd-cli saac get-payment paymentId
 
+    $ mtd-cli saac co-get taxYear
+
+    $ mtd-cli saac co-set <file> taxYear
+
+    $ mtd-cli saac co-delete taxYear
+
 *transactionId* is an 'id' as returned from
 '*mtd-cli saac list-transactions from to*'.
 
 *paymentId* is an 'id' as returned from '*mtd-cli saac list-payments from to*'.
+
+*\<file\>* is a JSON file that looks like
+
+```JSON
+{
+    "taxCodeComponents": {
+        "payeUnderpayment": [
+            {
+                "amount": 2000.50,
+                "id": 1234567890
+            }
+        ],
+        "selfAssessmentUnderpayment": [
+            {
+                "amount": 1123.45,
+                "id": 4657839807
+            }
+        ],
+        "debt": [
+            {
+                "amount": 100.25,
+                "id": 2134693857
+            }
+        ],
+        "inYearAdjustment": {
+            "amount": 123.45,
+            "id": 9873562901
+        }
+    }
+}
+```
 
 
 **ibeops** supports the following commands
