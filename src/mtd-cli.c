@@ -86,7 +86,7 @@ static int print_api_help(void)
 	const struct api_ep *ep = api_ep_map;
 
 	printf("Available APIs :-\n\n");
-	printf("init init-oauth init-config init-nino");
+	printf("init init-creds init-oauth init-nino");
 
 	for ( ; ep->api != NULL; ep++)
 		printf(" %s", ep->api);
@@ -232,6 +232,22 @@ static int do_mtd_api(const char *name, int argc, char *argv[])
 	return err;
 }
 
+static int init_creds(void)
+{
+	int err;
+
+	err = mtd_init_creds(MTD_EP_API_ITSA);
+	if (err)
+		return err;
+
+	printf("\n");
+	err = mtd_init_creds(MTD_EP_API_VAT|MTD_EP_API_ADD);
+	if (err)
+		return err;
+
+	return 0;
+}
+
 #define ITSA_SCOPES	(MTD_SCOPE_RD_SA|MTD_SCOPE_WR_SA)
 #define VAT_SCOPES	(MTD_SCOPE_RD_VAT|MTD_SCOPE_WR_VAT)
 static int init_auth(void)
@@ -255,7 +271,7 @@ static int do_init_all(void)
 	int err;
 
 	printf("Initialising...\n\n");
-	err = mtd_init_config();
+	err = init_creds();
 	if (err)
 		return err;
 
@@ -284,8 +300,8 @@ static int dispatcher(int argc, char *argv[])
 		return do_init_all();
 	if (IS_API("init-oauth"))
 		return init_auth();
-	if (IS_API("init-config"))
-		return mtd_init_config();
+	if (IS_API("init-creds"))
+		return init_creds();
 	if (IS_API("init-nino"))
 		return mtd_init_nino();
 

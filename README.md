@@ -26,17 +26,17 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|init-oauth|init-config|init-nino|bd|biss|bsas|ic|id|il|ob|sa|saac|vat|test-cu|test-fph [endpoint args ...]
+    mtd-cli init|init-creds|init-oauth|init-nino|bd|biss|bsas|ic|id|il|ob|sa|saac|vat|test-cu|test-fph [endpoint args ...]
 
 The first argument specifies the API to interface with
 
   * **init** is for doing an initial setup, creating the JSON config files.
-             This runs the equivalent of; *init-oauth*, *init-config* &
+             This runs the equivalent of; *init-creds*, *init-oauth* &
              *init-nino*.
 
-  * **init-oauth** is for doing a reauthorisation.
+  * **init-creds** is for regenerating the creds.json file.
 
-  * **init-config** is for regenerating the config.json file.
+  * **init-oauth** is for doing a reauthorisation.
 
   * **init-nino** is for storing the National Insurance Number in the nino.json file.
 
