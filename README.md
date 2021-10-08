@@ -1,3 +1,7 @@
+# mtd-cli
+
+[![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/ac000/mtd-cli.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ac000/mtd-cli/context:cpp)
+
 ## Overview
 
 mtd-cli is a command line client for Linux (other Unices should not be hard to
