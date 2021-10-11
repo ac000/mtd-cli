@@ -16,7 +16,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <linux/limits.h>
+#include <limits.h>
 
 #include <libmtdac/mtd.h>
 
