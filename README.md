@@ -15,10 +15,23 @@ Currently it just supports the Self-Assessment API.
 
 ## Build it
 
+mtd-cli is primarily developed under Linux but it also builds and runs under
+FreeBSD.
+
+### Linux
+
 Once you have the above library built and installed, building this is as
 simple as
 
     $ make
+
+### FreeBSD
+
+    $ gmake
+
+or if you don't have GCC installed
+
+    gmake CC=clang
 
 
 ## How to use
