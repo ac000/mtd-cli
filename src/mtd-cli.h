@@ -9,7 +9,13 @@
 #ifndef _MTD_CLI_H_
 #define _MTD_CLI_H_
 
+#include <fcntl.h>
+
 #include <libmtdac/mtd.h>
+
+#if defined(__FreeBSD__) && !defined(O_PATH)
+#define O_PATH  0
+#endif
 
 /*
  * Funky macro magic so we can autogenerate the endpoint structure
