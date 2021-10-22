@@ -1,6 +1,6 @@
 # mtd-cli
 
-![Builds](https://github.com/ac000/mtd-cli/actions/workflows/build_tests.yaml/badge.svg)
+[![Builds](https://github.com/ac000/mtd-cli/actions/workflows/build_tests.yaml/badge.svg)](https://github.com/ac000/mtd-cli/actions/workflows/build_tests.yaml)
 [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/ac000/mtd-cli.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ac000/mtd-cli/context:cpp)
 
 ## Overview
