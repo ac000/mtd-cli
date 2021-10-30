@@ -115,8 +115,8 @@ static char *gen_query_string(const char *src, char *dst, size_t len)
 	return ptr;
 }
 
-int check_args(int argc, char *argv[], const char *api,
-	       const struct _endpoint *ep)
+static int check_args(int argc, char *argv[], const char *api,
+		      const struct _endpoint *ep)
 {
 	int i = 0;
 	const char *name = argv[0];
@@ -144,7 +144,8 @@ out_help:
 	return -ERR_IGNORE;
 }
 
-int do_api_func(const struct endpoint *ep, int argc, char *argv[], char **buf)
+static int do_api_func(const struct endpoint *ep, int argc, char *argv[],
+		       char **buf)
 {
 	int i;
 	const char *args[MAX_ARGV] = { NULL };
