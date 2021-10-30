@@ -4,7 +4,7 @@ GIT_VERSION = \"$(shell git describe --always --long --dirty --all)\"
 
 DEPDIR  := .d
 $(shell mkdir -p $(DEPDIR) >/dev/null)
-DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.Td
+DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$(@F).Td
 
 CC	= gcc
 CFLAGS += -Wall -Wextra -Wdeclaration-after-statement -Wvla -std=gnu99 \
@@ -13,7 +13,7 @@ CFLAGS += -Wall -Wextra -Wdeclaration-after-statement -Wvla -std=gnu99 \
 	  -DGIT_VERSION=${GIT_VERSION} -pipe
 LDFLAGS += -L../../libmtdac/src -Wl,-z,now,-z,defs,-z,relro,--as-needed -pie
 LIBS	 = -lmtdac
-POSTCOMPILE = @mv -f $(DEPDIR)/$*.Td $(DEPDIR)/$*.d && touch $@
+POSTCOMPILE = @mv -f $(DEPDIR)/$(@F).Td $(DEPDIR)/$(@F).d && touch $@
 
 ifeq ($(CC),gcc)
         GCC_MAJOR  := $(shell gcc -dumpfullversion -dumpversion | cut -d . -f 1)
@@ -28,7 +28,7 @@ ifeq ($(CC),gcc)
         endif
 endif
 
-sources     = $(wildcard *.c)
+sources = $(wildcard *.c)
 objects = $(sources:.c=.o)
 
 ifeq ($(ASAN),1)
@@ -48,18 +48,29 @@ $(APPNAME): $(objects)
 	$(v)$(CC) $(LDFLAGS) $(ASAN) -o $@ $(objects) $(LIBS)
 
 %.o: %.c
-%.o: %.c $(DEPDIR)/%.d
+%.o: %.c $(DEPDIR)/%.o.d
 	@echo -e "  CC\t$@"
+	$(v)$(CC) $(DEPFLAGS) $(CFLAGS) -c -o $@ $<
+	$(POSTCOMPILE)
+
+headers := $(wildcard *.h)
+hdrobjs := $(headers:.h=.gch)
+
+hdrchk: $(hdrobjs)
+%.gch: %.h
+%.gch: %.h $(DEPDIR)/%.gch.d
+	@echo -e "  CC\t$<"
 	$(v)$(CC) $(DEPFLAGS) $(CFLAGS) -c -o $@ $<
 	$(POSTCOMPILE)
 
 $(DEPDIR)/%.d: ;
 .PRECIOUS: $(DEPDIR)/%.d
 
-include $(wildcard $(patsubst %,$(DEPDIR)/%.d,$(basename $(sources))))
+include $(wildcard $(patsubst %,$(DEPDIR)/%.o.d,$(basename $(sources))))
+include $(wildcard $(patsubst %,$(DEPDIR)/%.gch.d,$(basename $(headers))))
 
 .PHONY: clean
 clean:
-	$(v)rm -f $(objects) $(APPNAME)
+	$(v)rm -f $(objects) $(hdrobjs) $(APPNAME)
 	$(v)rm -f $(DEPDIR)/*
-	$(v)rmdir $(DEPDIR)
+	$(v)@rmdir $(DEPDIR)

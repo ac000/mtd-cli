@@ -1,4 +1,4 @@
-TARGETS = mtd-cli
+TARGETS = mtd-cli hdrchk
 
 .PHONY: all $(TARGETS)
 all: $(TARGETS)
@@ -9,6 +9,11 @@ MAKE_OPTS = --no-print-directory V=$V
 mtd-cli:
 	@echo -e "Building: mtd-cli"
 	@$(MAKE) $(MAKE_OPTS) -C src/
+
+.PHONY: hdrchk
+hdrchk:
+	@echo -e "Checking Headers"
+	@$(MAKE) $(MAKE_OPTS) -C src/ hdrchk
 
 .PHONY: clean
 clean:
