@@ -74,4 +74,4 @@ include $(wildcard $(patsubst %,$(DEPDIR)/%.gch.d,$(basename $(headers))))
 clean:
 	$(v)rm -f $(objects) $(hdrobjs) $(APPNAME)
 	$(v)rm -f $(DEPDIR)/*
-	$(v)@rmdir $(DEPDIR)
+	$(v)rmdir $(DEPDIR)
