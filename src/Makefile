@@ -7,9 +7,10 @@ $(shell mkdir -p $(DEPDIR) >/dev/null)
 DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$(@F).Td
 
 CC	= gcc
-CFLAGS += -Wall -Wextra -Wdeclaration-after-statement -Wvla -std=gnu99 \
-	  -g -O2 -Wp,-D_FORTIFY_SOURCE=2 --param=ssp-buffer-size=4 \
-	  -fPIE -fexceptions -I../../libmtdac/include \
+CFLAGS += -Wall -Wextra -Wdeclaration-after-statement -Wvla \
+	  -Wmissing-prototypes -Wstrict-prototypes -Wold-style-definition \
+	  -std=gnu99 -g -O2 -Wp,-D_FORTIFY_SOURCE=2 --param=ssp-buffer-size=4 \
+	  -fno-common -fPIE -fexceptions -I../../libmtdac/include \
 	  -DGIT_VERSION=${GIT_VERSION} -pipe
 LDFLAGS += -L../../libmtdac/src -Wl,-z,now,-z,defs,-z,relro,--as-needed -pie
 LIBS	 = -lmtdac
