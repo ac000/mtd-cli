@@ -72,6 +72,6 @@ include $(wildcard $(patsubst %,$(DEPDIR)/%.gch.d,$(basename $(headers))))
 
 .PHONY: clean
 clean:
-	$(v)rm -f $(objects) $(hdrobjs) $(APPNAME)
+	$(v)rm -f *.o *.gch $(APPNAME)
 	$(v)rm -f $(DEPDIR)/*
 	$(v)rmdir $(DEPDIR)
