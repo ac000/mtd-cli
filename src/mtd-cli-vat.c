@@ -21,42 +21,32 @@
 static const struct endpoint endpoints[] = {
 	{
 		.name = "list-obligations",
-		.api_func = {
-			.func_2 = mtd_vat_list_obligations
-		},
+		.func_2 = mtd_vat_list_obligations,
 		.func = FUNC_2,
 		.nr_req_args = 1,
 		.args = "vrn [from=YYY-MM-DD][,[to=YYYY-MM-DD]][,[status=O|F]]"
 	}, {
 		.name = "submit-period",
-		.api_func = {
-			.func_2d = mtd_vat_submit_period
-		},
+		.func_2d = mtd_vat_submit_period,
 		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.args = "<file> vrn"
 	},
 	{
 		.name = "get-period",
-		.api_func = {
-			.func_2 = mtd_vat_get_period
-		},
+		.func_2 = mtd_vat_get_period,
 		.func = FUNC_2,
 		.nr_req_args = 2,
 		.args = "vrn periodKey"
 	}, {
 		.name = "list-liabilities",
-		.api_func = {
-			.func_2 = mtd_vat_list_liabilities
-		},
+		.func_2 = mtd_vat_list_liabilities,
 		.func = FUNC_2,
 		.nr_req_args = 2,
 		.args = "vrn from=YYYY-MM-DD,to=YYYY-MM-DD"
 	}, {
 		.name = "list-payments",
-		.api_func = {
-			.func_2 = mtd_vat_list_payments
-		},
+		.func_2 = mtd_vat_list_payments,
 		.func = FUNC_2,
 		.nr_req_args = 2,
 		.args = "vrn from=YYYY-MM-DD,to=YYYY-MM-DD"

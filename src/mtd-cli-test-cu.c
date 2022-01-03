@@ -21,33 +21,25 @@
 static const struct endpoint endpoints[] = {
 	{
 		.name = "create-individual",
-		.api_func = {
-			.func_1d = mtd_test_cu_create_individual
-		},
+		.func_1d = mtd_test_cu_create_individual,
 		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.args = "<file>"
 	}, {
 		.name = "create-organisation",
-		.api_func = {
-			.func_1d = mtd_test_cu_create_organisation
-		},
+		.func_1d = mtd_test_cu_create_organisation,
 		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.args = "<file>"
 	}, {
 		.name = "create-agent",
-		.api_func = {
-			.func_1d = mtd_test_cu_create_agent
-		},
+		.func_1d = mtd_test_cu_create_agent,
 		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.args = "<file>"
 	}, {
 		.name = "list-services",
-		.api_func = {
-			.func_0 = mtd_test_cu_list_services
-		},
+		.func_0 = mtd_test_cu_list_services,
 		.func = FUNC_0,
 		.nr_req_args = 0,
 		.args = ""

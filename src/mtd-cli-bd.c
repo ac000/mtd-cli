@@ -20,17 +20,13 @@
 static const struct endpoint endpoints[] = {
 	{
 		.name = "list",
-		.api_func = {
-			.func_0 = mtd_bd_list
-		},
+		.func_0 = mtd_bd_list,
 		.func = FUNC_0,
 		.nr_req_args = 0,
 		.args = ""
 	}, {
 		.name = "get",
-		.api_func = {
-			.func_1 = mtd_bd_get
-		},
+		.func_1 = mtd_bd_get,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "businessId"

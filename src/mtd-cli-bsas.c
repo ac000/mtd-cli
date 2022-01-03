@@ -27,89 +27,67 @@
 static const struct endpoint endpoints[] = {
 	{
 		.name = "list-summaries",
-		.api_func = {
-			.func_1 = mtd_bsas_list_summaries
-		},
+		.func_1 = mtd_bsas_list_summaries,
 		.func = FUNC_1,
 		.nr_req_args = 0,
 		.args = "[[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl}][,[taxYear=YYYY-YY]]]]"
 	}, {
 		.name = "trigger-summary",
-		.api_func = {
-			.func_1d = mtd_bsas_trigger_summary
-		},
+		.func_1d = mtd_bsas_trigger_summary,
 		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.args = "<file>"
 	}, {
 		.name = "se-get-summary",
-		.api_func = {
-			.func_2 = mtd_bsas_se_get_summary
-		},
+		.func_2 = mtd_bsas_se_get_summary,
 		.func = FUNC_2,
 		.nr_req_args = 1,
 		.args = "bsasId [adjustedStatus={true,false}]"
 	}, {
 		.name = "se-list-summary-adjustments",
-		.api_func = {
-			.func_1 = mtd_bsas_se_list_summary_adjustments
-		},
+		.func_1 = mtd_bsas_se_list_summary_adjustments,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "bsasId"
 	}, {
 		.name = "se-update-summary-adjustments",
-		.api_func = {
-			.func_2d = mtd_bsas_se_update_summary_adjustments
-		},
+		.func_2d = mtd_bsas_se_update_summary_adjustments,
 		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.args = "<file> bsasId"
 	}, {
 		.name = "pb-get-summary",
-		.api_func = {
-			.func_2 = mtd_bsas_pb_get_summary
-		},
+		.func_2 = mtd_bsas_pb_get_summary,
 		.func = FUNC_2,
 		.nr_req_args = 1,
 		.args = "bsasId [adjustedStatus={true,false}]"
 	}, {
 		.name = "pb-list-summary-adjustments",
-		.api_func = {
-			.func_1 = mtd_bsas_pb_list_summary_adjustments
-		},
+		.func_1 = mtd_bsas_pb_list_summary_adjustments,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "bsasId"
 	}, {
 		.name = "pb-update-summary-adjustments",
-		.api_func = {
-			.func_2d = mtd_bsas_pb_update_summary_adjustments
-		},
+		.func_2d = mtd_bsas_pb_update_summary_adjustments,
 		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.args = "<file> bsasId"
 	}, {
 		.name = "fp-get-summary",
-		.api_func = {
-			.func_2 = mtd_bsas_fp_get_summary
-		},
+		.func_2 = mtd_bsas_fp_get_summary,
 		.func = FUNC_2,
 		.nr_req_args = 1,
 		.args = "bsasId [adjustedStatus={true,false}]"
 	}, {
 		.name = "fp-list-summary-adjustments",
-		.api_func = {
-			.func_1 = mtd_bsas_fp_list_summary_adjustments
-		},
+		.func_1 = mtd_bsas_fp_list_summary_adjustments,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "bsasId"
 	}, {
 		.name = "fp-update-summary-adjustments",
-		.api_func = {
-			.func_2d = mtd_bsas_fp_update_summary_adjustments
-		},
+		.func_2d = mtd_bsas_fp_update_summary_adjustments,
 		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.args = "<file> bsasId"

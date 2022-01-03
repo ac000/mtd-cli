@@ -20,25 +20,19 @@
 static const struct endpoint endpoints[] = {
 	{
 		.name = "get-self-employment",
-		.api_func = {
-			.func_1 = mtd_biss_get_self_employment
-		},
+		.func_1 = mtd_biss_get_self_employment,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "selfEmploymentId=[,taxYear=YYYY-YY]"
 	}, {
 		.name = "get-uk-property",
-		.api_func = {
-			.func_1 = mtd_biss_get_uk_property
-		},
+		.func_1 = mtd_biss_get_uk_property,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "typeOfBusiness={uk-property-non-fhl,uk-property-fhl}[,taxYear=YYYY-YY]"
 	}, {
 		.name = "get-foreign-property",
-		.api_func = {
-			.func_1 = mtd_biss_get_foreign_property
-		},
+		.func_1 = mtd_biss_get_foreign_property,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "businessId=,typeOfBusiness={foreign-property-fhl-eea,foreign-property}[,taxYear=YYYY-YY]"

@@ -76,7 +76,7 @@ struct endpoint {
 		int (*func_4d)(const struct mtd_dsrc_ctx *dsctx,
 			       const char *a2, const char *a3, const char *a4,
 			       char **buf);
-	} api_func;
+	};
 	const enum function_selector func;
 	const int nr_req_args;
 	const char *args;

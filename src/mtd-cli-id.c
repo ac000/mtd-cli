@@ -23,25 +23,19 @@
 static const struct endpoint endpoints[] = {
 	{
 		.name = "get",
-		.api_func = {
-			.func_1 = mtd_id_get
-		},
+		.func_1 = mtd_id_get,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "taxYear"
 	}, {
 		.name = "set",
-		.api_func = {
-			.func_2d = mtd_id_set
-		},
+		.func_2d = mtd_id_set,
 		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.args = "<file> teaxYear"
 	}, {
 		.name = "delete",
-		.api_func = {
-			.func_1 = mtd_id_delete
-		},
+		.func_1 = mtd_id_delete,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "taxYear"
@@ -49,9 +43,7 @@ static const struct endpoint endpoints[] = {
 	/* Marriage Allowance */
 	{
 		.name = "ma-create",
-		.api_func = {
-			.func_1d = mtd_id_ma_create
-		},
+		.func_1d = mtd_id_ma_create,
 		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.args = "<file>"

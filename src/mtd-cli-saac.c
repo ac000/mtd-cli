@@ -26,57 +26,43 @@ static const struct endpoint endpoints[] = {
 	/* Payments and Liabilities */
 	{
 		.name = "get-balance",
-		.api_func = {
-			.func_0 = mtd_saac_get_balance
-		},
+		.func_0 = mtd_saac_get_balance,
 		.func = FUNC_0,
 		.nr_req_args = 0,
 		.args = ""
 	}, {
 		.name = "list-transactions",
-		.api_func = {
-			.func_1 = mtd_saac_list_transactions
-		},
+		.func_1 = mtd_saac_list_transactions,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "from=YYYY-MM-DD,to=YYYY-MM-DD"
 	}, {
 		.name = "get-transaction",
-		.api_func = {
-			.func_1 = mtd_saac_get_transaction
-		},
+		.func_1 = mtd_saac_get_transaction,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "transactionId"
 	}, {
 		.name = "list-charges",
-		.api_func = {
-			.func_1 = mtd_saac_list_charges
-		},
+		.func_1 = mtd_saac_list_charges,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "from=YYYY-MM-DD,to=YYYY-MM-DD"
 	}, {
 		.name = "get-charge",
-		.api_func = {
-			.func_1 = mtd_saac_get_charge
-		},
+		.func_1 = mtd_saac_get_charge,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "transactionId"
 	}, {
 		.name = "list-payments",
-		.api_func = {
-			.func_1 = mtd_saac_list_payments
-		},
+		.func_1 = mtd_saac_list_payments,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "from=YYYY-MM-DD,to=YYYY-MM-DD"
 	}, {
 		.name = "get-payment",
-		.api_func = {
-			.func_1 = mtd_saac_get_payment
-		},
+			.func_1 = mtd_saac_get_payment,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "paymentId"
@@ -84,25 +70,19 @@ static const struct endpoint endpoints[] = {
 	/* Coding Out Underpayments and Debts */
 	{
 		.name = "co-get",
-		.api_func = {
-			.func_1 = mtd_saac_get_coding_out_uda
-		},
+		.func_1 = mtd_saac_get_coding_out_uda,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "taxYear"
 	}, {
 		.name = "co-set",
-		.api_func = {
-			.func_2d = mtd_saac_set_coding_out_uda
-		},
+		.func_2d = mtd_saac_set_coding_out_uda,
 		.func = FUNC_2d,
 		.nr_req_args = 2,
 		.args = "<file> taxYear"
 	}, {
 		.name = "co-delete",
-		.api_func = {
-			.func_1 = mtd_saac_delete_coding_out_uda
-		},
+		.func_1 = mtd_saac_delete_coding_out_uda,
 		.func = FUNC_1,
 		.nr_req_args = 1,
 		.args = "taxYear"

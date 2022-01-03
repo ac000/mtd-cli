@@ -20,9 +20,7 @@
 static const struct endpoint endpoints[] = {
 	{
 		.name = "submit-end-of-period-statement",
-		.api_func = {
-			.func_1d = mtd_ibeops_submit_eops
-		},
+		.func_1d = mtd_ibeops_submit_eops,
 		.func = FUNC_1d,
 		.nr_req_args = 1,
 		.args = "<file>"

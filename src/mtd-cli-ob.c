@@ -22,25 +22,19 @@
 static const struct endpoint endpoints[] = {
 	{
 		.name = "list-inc-and-exp-obligations",
-		.api_func = {
-			.func_1 = mtd_ob_list_inc_and_expend_obligations
-		},
+		.func_1 = mtd_ob_list_inc_and_expend_obligations,
 		.func = FUNC_1,
 		.nr_req_args = 0,
 		.args = "[[[typeOfBusiness={self-employment,uk-property,foreign-property}][,businessId=]][,[fromDate=YYYY-MM-DD,toDate=YYYY-MM-DD]][,[status={Open,Fulfilled}]]]"
 	}, {
 		.name = "list-crystallisation-obligations",
-		.api_func = {
-			.func_1 = mtd_ob_list_crystallisation_obligations
-		},
+		.func_1 = mtd_ob_list_crystallisation_obligations,
 		.func = FUNC_1,
 		.nr_req_args = 0,
 		.args = "[taxYear=YYYY-MM]"
 	}, {
 		.name = "list-end-of-period-obligations",
-		.api_func = {
-			.func_1 = mtd_ob_list_end_of_period_obligations
-		},
+		.func_1 = mtd_ob_list_end_of_period_obligations,
 		.func = FUNC_1,
 		.nr_req_args = 0,
 		.args = "[[[typeOfBusiness={self-employment,uk-property,foreign-property}][,businessId=]][,[fromDate=YYYY-MM-DD,toDate=YYYY-MM-DD]][,[status={Open,Fulfilled}]]]"
