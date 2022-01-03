@@ -687,6 +687,7 @@ $ ./mtd-cli sa list-periods XXXX1234567890
         "url": "https://test-api.service.hmrc.gov.uk/self-assessment/ni/XX123456/self-employments/XXXX1234567890/periods",
         "method": "GET",
         "xid": "cdadffb4-3836-4062-a84c-c03d9f28ff00",
+        "date": "2022-01-03T20:55:46.021Z",
         "result": [
             {
                 "id": "2020-04-06_2020-07-04",
@@ -716,6 +717,7 @@ $ ./mtd-cli sa cr-intent-to-crystallise 2018-19
         "url": "https://test-api.service.hmrc.gov.uk/self-assessment/ni/XX1234567/2018-19/intent-to-crystallise",
         "method": "POST",
         "xid": "a1e8057e-fbbc-47a8-a8b4-78d9f015c253",
+        "date": "2022-01-03T20:55:46.021Z",
         "result": null
     },
     {
@@ -724,6 +726,7 @@ $ ./mtd-cli sa cr-intent-to-crystallise 2018-19
         "url": "https://test-api.service.hmrc.gov.uk/self-assessment/ni/XX1234567/calculations/c2c82d00-c407-4f98-ab7d-c8319c522e6b",
         "method": "GET",
         "xid": "a1e8057e-fbbc-47a8-a8b4-78d9f015c253",
+        "date": "2022-01-03T20:55:51.345Z",
         "result": {
             ...
         }
@@ -745,6 +748,7 @@ $ ./mtd-cli sa list-periods xxx
         "url": "https://test-api.service.hmrc.gov.uk/self-assessment/ni/XX123456/self-employments/xxx/periods",
         "method": "GET",
         "xid": "dc1411d0-5ae4-48b8-84e0-4c5379b245b8",
+        "date": "2022-01-03T20:55:46.021Z",
         "result": null
     }
 ]
