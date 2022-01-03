@@ -3,7 +3,7 @@
 /*
  * mtd-cli-bsas.c - Make Tax Digital - Business Source Adjustable Summary
  *
- * Copyright (C) 2020 - 2021	Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2022	Andrew Clayton <andrew@digital-domain.net>
  */
 
 #include <stddef.h>

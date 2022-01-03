@@ -3,7 +3,7 @@
 /*
  * mtd-cli-sa.c - Make Tax Digital - Self-Assessment
  *
- * Copyright (C) 2020 - 2021	Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2022	Andrew Clayton <andrew@digital-domain.net>
  */
 
 #include <stddef.h>
