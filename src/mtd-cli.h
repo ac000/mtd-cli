@@ -3,7 +3,7 @@
 /*
  * mtd-cli.h - Make Tax Digital CLI
  *
- * Copyright (C) 2020 - 2021	Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2022	Andrew Clayton <andrew@digital-domain.net>
  */
 
 #ifndef _MTD_CLI_H_
@@ -59,7 +59,7 @@ struct _endpoint {
  * struct mtd_dsrc_ctx rather than a char * as their
  * first argument.
  *
- * The number pertains to the number of the arguments the
+ * The number pertains to the number of arguments the
  * function takes not including buf.
  */
 struct endpoint {
