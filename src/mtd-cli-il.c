@@ -6,8 +6,6 @@
  * Copyright (C) 2020 - 2022	Andrew Clayton <andrew@digital-domain.net>
  */
 
-#include <stddef.h>
-
 #include <libmtdac/mtd-il.h>
 
 #include "mtd-cli.h"
