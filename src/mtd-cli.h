@@ -44,6 +44,7 @@ enum function_selector {
 	FUNC_1d,
 	FUNC_2,
 	FUNC_2d,
+	FUNC_3,
 	FUNC_3d,
 	FUNC_4d,
 };
@@ -71,6 +72,8 @@ struct endpoint {
 		int (*func_2)(const char *a1, const char *a2, char **buf);
 		int (*func_2d)(const struct mtd_dsrc_ctx *dsctx,
 			       const char *a2, char **buf);
+		int (*func_3)(const char *a1, const char *a2, const char *a3,
+			      char **buf);
 		int (*func_3d)(const struct mtd_dsrc_ctx *dsctx,
 			       const char *a2, const char *a3, char **buf);
 		int (*func_4d)(const struct mtd_dsrc_ctx *dsctx,

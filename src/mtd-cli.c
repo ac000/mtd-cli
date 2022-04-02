@@ -193,6 +193,8 @@ static int do_api_func(const struct endpoint *ep, int argc, char *argv[],
 			return eps->func_2(args[0], args[1], buf);
 		case FUNC_2d:
 			return eps->func_2d(&dsctx, args[1], buf);
+		case FUNC_3:
+			return eps->func_3(args[0], args[1], args[2], buf);
 		case FUNC_3d:
 			return eps->func_3d(&dsctx, args[1], args[2], buf);
 		case FUNC_4d:
