@@ -509,15 +509,11 @@ with the following usage
 
 **biss** has the following endpoints
 
-    get-self-employment get-uk-property get-foreign-property
+    get-summary
 
 with the following usage
 
-    $ mtd-cli biss get-self-employment selfEmploymentId=[,taxYear=YYYY-YY]
-
-    $ mtd-cli biss get-uk-property typeOfBusiness={uk-property-non-fhl,uk-property-fhl}[,taxYear=YYYY-YY]
-
-    $ mtd-cli biss get-foreign-property businessId=,typeOfBusiness={foreign-property-fhl-eea,foreign-property}[,taxYear=YYYY-YY]
+    $ mtd-cli biss get-summary typeOfBusiness taxYear businessId
 
 
 **bsas** has the following endpoints
@@ -526,39 +522,33 @@ with the following usage
 
     Self-Employment
 
-    se-get-summary se-list-summary-adjustments se-update-summary-adjustments
+    se-get-summary se-update-summary-adjustments
 
     UK Property Business
 
-    pb-get-summary pb-list-summary-adjustments pb-update-summary-adjustments
+    pb-get-summary pb-update-summary-adjustments
 
     Foreign Property Business
 
-    fp-get-summary fp-list-summary-adjustments fp-update-summary-adjustments
+    fp-get-summary fp-update-summary-adjustments
 
 with the following usage
 
-    $ mtd-cli bsas list-summaries [[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl}][,[taxYear=YYYY-YY]]]]
+    $ mtd-cli bsas list-summaries [[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl,foreign-property-fhl-eea,foreign-property}][,[taxYear=YYYY-YY]]]]
 
     $ mtd-cli bsas trigger-summary <file>
 
-    $ mtd-cli bsas se-get-summary bsasId [adjustedStatus={true,false}]
+    $ mtd-cli bsas se-get-summary calculationId
 
-    $ mtd-cli bsas se-list-summary-adjustments bsasId
+    $ mtd-cli bsas se-update-summary-adjustments <file> calculationId
 
-    $ mtd-cli bsas se-update-summary-adjustments <file> bsasId
+    $ mtd-cli bsas pb-get-summary calculationId
 
-    $ mtd-cli bsas pb-get-summary bsasId [adjustedStatus={true,false}]
+    $ mtd-cli bsas pb-update-summary-adjustments <file> calculationId
 
-    $ mtd-cli bsas pb-list-summary-adjustments bsasId
+    $ mtd-cli bsas fp-get-summary calculationId
 
-    $ mtd-cli bsas pb-update-summary-adjustments <file> bsasId
-
-    $ mtd-cli bsas fp-get-summary bsasId [adjustedStatus={true,false}]
-
-    $ mtd-cli bsas fp-list-summary-adjustments bsasId
-
-    $ mtd-cli bsas fp-update-summary-adjustments <file> bsasId
+    $ mtd-cli bsas fp-update-summary-adjustments <file> calculationId
 
 *bsasId* is as returned by '*mtd-cli bsas list-summaries*'.
 
