@@ -420,7 +420,7 @@ mtd-cli id ma-create: *\<file\>* is a JSON file that looks like
 
 with the following usage
 
-    $ mtd-cli il bf-list-loses [[businessId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]
+    $ mtd-cli il bf-list-loses [[businessId=][,[taxYearBroughtForwardFrom=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]
 
     $ mtd-cli il bf-create-loss <file>
 
@@ -428,10 +428,10 @@ with the following usage
 
 ```JSON
 {
-    "typeOfLoss": "self-employment-class4",
-    "businessId": "XGIS00000001319",
-    "lossAmount": 12345.67,
-    "taxYear": "2018-19"
+    "taxYearBroughtForwardFrom": "2020-21",
+    "businessId": "XBIS12345678910",
+    "typeOfLoss": "self-employment",
+    "lossAmount": 5001.99
 }
 ```
 
@@ -449,18 +449,18 @@ with the following usage
 }
 ```
 
-    $ mtd-cli il lc-list-loses [[businessId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]
+    $ mtd-cli il lc-list-loses [[businessId=][,[taxYearClaimedFor=YYYY-YY][,[typeOfLoss={self-employment,uk-property-non-fhl,foreign-property}][,[typeOfClaim=carry-sideways]]]]]
 
-    $ mtd-cli il lc-create-loss <file> [taxYear=YYYY-YY]
+    $ mtd-cli il lc-create-loss <file>
 
 *\<file\>* is a JSON file that looks like
 
 ```JSON
 {
-    "typeOfLoss":"self-employment",
-    "businessId": "XGIS00000001319",
+    "businessId": "XBIS12356589871",
+    "typeOfLoss": "self-employment",
     "typeOfClaim": "carry-forward",
-    "taxYear": "2019-20"
+    "taxYearClaimedFor": "2019-20"
 }
 ```
 
@@ -478,24 +478,24 @@ with the following usage
 }
 ```
 
-    $ mtd-cli il lc-update-loss-order <file>
+    $ mtd-cli il lc-update-loss-order <file> taxYearClaimedFor
 
 *\<file\>* is a JSON file that looks like
 
 ```JSON
 {
-    "claimType": "carry-sideways",
+    "typeOfClaim": "carry-sideways",
     "listOfLossClaims": [
         {
-            "id": "1234567890ABCDE",
+            "claimId": "1234567890ABCDE",
             "sequence": 2
         },
         {
-            "id": "1234567890ABDE0",
+            "claimId": "1234567890ABDE0",
             "sequence": 3
         },
         {
-            "id": "1234567890ABEF1",
+            "claimId": "1234567890ABEF1",
             "sequence": 1
         }
     ]

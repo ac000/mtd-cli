@@ -27,7 +27,7 @@ static const struct endpoint endpoints[] = {
 		.func_1 = mtd_il_bf_list_loses,
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.args = "[[businessId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]"
+		.args = "[[businessId=][,[taxYearBroughtForwardFrom=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}]]]]"
 	}, {
 		.name = "bf-create-loss",
 		.func_1d = mtd_il_bf_create_loss,
@@ -51,7 +51,7 @@ static const struct endpoint endpoints[] = {
 		.func_2d = mtd_il_bf_update_loss_amnt,
 		.func = FUNC_2d,
 		.nr_req_args = 2,
-		.args = "<file> lossaId"
+		.args = "<file> lossId"
 	},
 	/* Loss Claims */
 	{
@@ -59,7 +59,7 @@ static const struct endpoint endpoints[] = {
 		.func_1 = mtd_il_lc_list_loses,
 		.func = FUNC_1,
 		.nr_req_args = 0,
-		.args = "[[businessId=][,[taxYear=YYYY-YY][,[typeOfLoss={self-employment,uk-property-fhl,uk-property-non-fhl}][,[claimType=carry-sideways]]]]]"
+		.args = "[[businessId=][,[taxYearClaimedFor=YYYY-YY][,[typeOfLoss={self-employment,uk-property-non-fhl,foreign-property}][,[typeOfClaim=carry-sideways]]]]]"
 	}, {
 		.name = "lc-create-loss",
 		.func_1d = mtd_il_lc_create_loss,
@@ -89,8 +89,8 @@ static const struct endpoint endpoints[] = {
 		.name = "lc-update-loss-order",
 		.func_2d = mtd_il_lc_update_loss_order,
 		.func = FUNC_2d,
-		.nr_req_args = 1,
-		.args = "<file> [taxYear=YYYY-YY]"
+		.nr_req_args = 2,
+		.args = "<file> taxYearClaimedFor"
 	},
 
 	{ }
