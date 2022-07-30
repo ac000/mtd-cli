@@ -12,8 +12,6 @@ support) to interface with the UK's HMRC
 
 It makes use of [libmtdac](https://github.com/ac000/libmtdac)
 
-Currently it just supports the Self-Assessment API.
-
 
 ## Build it
 
@@ -59,7 +57,7 @@ The first argument specifies the API to interface with
 
   * **init-nino** is for storing the National Insurance Number in the nino.json file.
 
-  * **bd** is for interacting with the Business Details API
+  * **bd** is for interacting with the Business Details API.
 
   * **sa** is for interacting with the Self-Assessment API.
 
@@ -69,7 +67,7 @@ The first argument specifies the API to interface with
 
   * **ic** is for interacting with the Individual Calculations API.
 
-  * **id** is for interacting with the Individuals Disclosures API
+  * **id** is for interacting with the Individuals Disclosures API.
 
   * **il** is for interacting with the Individual Loses API.
 
@@ -218,7 +216,7 @@ to connect to. These are
 
     Coding Out Underpayments and Debts
 
-    get set delete
+    co-get co-set co-delete
 
 The following shows each of the above and what arguments (if any) they take.
 
