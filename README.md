@@ -302,56 +302,23 @@ with the following usage
 
 **ic** supports the following commands
 
-    Self-Assessment
+    TAX Calculations
 
-    sa- list-calculations sa-trigger-calculation sa-get-calculation-metadata
-    sa-get-income-tax-nics-calc sa-get-taxable-income
-    sa-get-allowances-deductions-reliefs sa-get-end-of-year-estimate
-    sa-get-messages
+    list-calculations trigger-calculation get-calculation
 
-    Crystallisation
+    Final Declaration
 
-    cr-intent-to-crystallise cr-crystallise
+    final-declaration
 
 with the following usage
 
-    $ mtd-cli ic sa-list-calculations [taxYear=YYYY-YY]
+    $ mtd-cli ic list-calculations [taxYear=YYYY-YY]
 
-    $ mtd-cli ic sa-trigger-calculation <file>
+    $ mtd-cli ic trigger-calculation [finalDeclaration={true,false}]
 
-    $ mtd-cli ic sa-get-calculation-metadata calculationId
+    $ mtd-cli ic get-calculation taxYear calculationId
 
-    $ mtd-cli ic sa-get-income-tax-nics-calc calculationId
-
-    $ mtd-cli ic sa-get-taxable-income calculationId
-
-    $ mtd-cli ic sa-get-allowances-deductions-reliefs calculationId
-
-    $ mtd-cli ic sa-get-end-of-year-estimate calculationId
-
-    $ mtd-cli ic sa-get-messages calculationId [[type={info,warning,error}], ...]
-
-    $ mtd-cli ic cr-intent-to-crystallise taxYear
-
-    $ mtd-cli ic cr-crystallise <file> taxYear
-
-*\<file\>* is a JSON file that looks like for sa-trigger-calculation
-
-```JSON
-{
-    "taxYear": "2017-18"
-}
-```
-
-or for cr-crystallise
-
-```JSON
-{
-    "calculationId": "041f7e4d-87d9-4d4a-a296-3cfbdf92f7e2"
-}
-```
-
-that is sent to the server.
+    $ mtd-cli ic final-declaration taxYear calculationId
 
 *calculationId* is an *'id'* as returned by the
 '*mtd-cli ic list-calculations*' command.
