@@ -3,8 +3,12 @@ name: "CodeQL"
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - 'src/**'
   pull_request:
     branches: [ "master" ]
+    paths:
+      - 'src/**'
   schedule:
     - cron: "55 17 * * 0"
 
@@ -47,7 +51,7 @@ jobs:
           queries: +security-and-quality
 
       - name: Build cpp
-        run: CFLAGS=-I${LGTM_WORKSPACE}/libmtdac/include LDFLAGS=-L${LGTM_WORKSPACE}/libmtdac/src make
+        run: CFLAGS=-I${RUNNER_TEMP}/libmtdac/include LDFLAGS=-L${RUNNER_TEMP}/libmtdac/src make
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
