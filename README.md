@@ -2,7 +2,7 @@
 
 [![Builds](https://github.com/ac000/mtd-cli/actions/workflows/build_tests.yaml/badge.svg)](https://github.com/ac000/mtd-cli/actions/workflows/build_tests.yaml)
 [![FreeBSD Build Status](https://api.cirrus-ci.com/github/ac000/mtd-cli.svg)](https://cirrus-ci.com/github/ac000/mtd-cli)
-[![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/ac000/mtd-cli.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ac000/mtd-cli/context:cpp)
+[![CodeQL](https://github.com/ac000/mtd-cli/workflows/CodeQL/badge.svg)](https://github.com/ac000/mtd-cli/actions?query=workflow:CodeQL "Code quality workflow status")
 
 ## Overview
 
