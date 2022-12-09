@@ -1,7 +1,7 @@
 # mtd-cli
 
-[![Builds](https://github.com/ac000/mtd-cli/actions/workflows/build_tests.yaml/badge.svg)](https://github.com/ac000/mtd-cli/actions/workflows/build_tests.yaml)
-[![FreeBSD Build Status](https://api.cirrus-ci.com/github/ac000/mtd-cli.svg)](https://cirrus-ci.com/github/ac000/mtd-cli)
+[![Builds](https://github.com/ac000/mtd-cli/actions/workflows/build_tests.yaml/badge.svg)](https://github.com/ac000/mtd-cli/actions/workflows/build_tests.yaml "GitHub workflow builds")
+[![FreeBSD Build Status](https://api.cirrus-ci.com/github/ac000/mtd-cli.svg)](https://cirrus-ci.com/github/ac000/mtd-cli "Cirrus FreeBSD builds")
 [![CodeQL](https://github.com/ac000/mtd-cli/workflows/CodeQL/badge.svg)](https://github.com/ac000/mtd-cli/actions?query=workflow:CodeQL "Code quality workflow status")
 
 ## Overview
