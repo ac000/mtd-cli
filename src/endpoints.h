@@ -3,7 +3,7 @@
 /*
  * endpoints.h - Make Tax Digital CLI - endpoint structures
  *
- * Copyright (C) 2020 - 2021	Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2025	Andrew Clayton <ac@sigsegv.uk>
  */
 
 #ifndef _ENDPOINTS_H_
@@ -16,6 +16,7 @@ extern const struct _endpoint ibeops_endpoint;
 extern const struct _endpoint ic_endpoint;
 extern const struct _endpoint il_endpoint;
 extern const struct _endpoint id_endpoint;
+extern const struct _endpoint isi_endpoint;
 extern const struct _endpoint ob_endpoint;
 extern const struct _endpoint saac_endpoint;
 extern const struct _endpoint sa_endpoint;

@@ -3,7 +3,7 @@
 /*
  * mtd-cli.c - Make Tax Digital CLI
  *
- * Copyright (C) 2020 - 2021	Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2025	Andrew Clayton <ac@sigsgev.uk>
  */
 
 #define _GNU_SOURCE	/* asprintf(3) */
@@ -54,6 +54,9 @@ static const struct api_ep {
 	}, {
 		.api = "il",
 		.endpoint = &il_endpoint
+	}, {
+		.api = "isi",
+		.endpoint = &isi_endpoint
 	}, {
 		.api = "ob",
 		.endpoint = &ob_endpoint

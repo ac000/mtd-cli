@@ -71,6 +71,8 @@ The first argument specifies the API to interface with
 
   * **il** is for interacting with the Individual Loses API.
 
+  * **isi** is for interacting with the Individuals Savings Income API
+
   * **biss** is for interacting with the Business Income Source Summary API.
 
   * **bsas** is for interacting with the Business Source Adjustable Summary API.
@@ -470,6 +472,87 @@ with the following usage
 *lossId* is an 'id' as returned by the '*mtd-cli il bf-list-loses*' command
 
 *claimId* is an 'id' as returned by the '*mtd-cli il lc-list-loses*' command
+
+
+**isi** has the following endpoints
+
+    UK Savings Account
+
+    ua-list ua-add ua-get-annual-summary ua-update-annual-summary
+
+    Savings Income
+
+    si-get si-update si-delete
+
+with the following usage
+
+    $ mtd-cli isi ua-list [savingsAccountId=]
+
+    $ mtd-cli isi ua-add <file>
+
+*\<file\>* is a JSON file that looks like
+```JSON
+{
+    "accountName": "Shares savings account"
+}
+```
+describing the name of the savings account to add.
+
+    $ mud-cli isi ua-get-annual-summary taxYear savingsAccountId
+
+    $ mtd-cli isi ua-update-annual-summary <file> taxYear savingsAccountId
+
+*\<file\>* is a JSON file that looks like
+```JSON
+{
+    "taxedUkInterest": 31554452289.99,
+    "untaxedUkInterest": 91523009816
+}
+```
+for a full amendment or
+```JSON
+{
+    "taxedUkInterest": 0,
+    "untaxedUkInterest": 0
+}
+```
+for a deletion.
+
+    $ mtd-cli isi si-get taxYear
+
+    $ mtd-cli isi si-update <file> taxYear
+
+*\<file\>* is a JSON file that looks like
+```JSON
+{
+    "securities": {
+        "taxTakenOff": 100.12,
+        "grossAmount": 1455.23,
+        "netAmount": 1355.11
+    },
+    "foreignInterest": [
+        {
+            "amountBeforeTax": 1232.67,
+            "countryCode": "DEU",
+            "taxTakenOff": 12.45,
+            "specialWithholdingTax": 14.78,
+            "taxableAmount": 1032.67,
+            "foreignTaxCreditRelief": true
+        },
+        {
+            "amountBeforeTax": 2232.37,
+            "countryCode": "FRA",
+            "taxTakenOff": 22.29,
+            "specialWithholdingTax": 22.06,
+            "taxableAmount": 1321.24,
+            "foreignTaxCreditRelief": true
+        }
+    ]
+}
+```
+for a full savings income amendment.
+
+    $ mtd-cli isi si-delete taxYear
 
 
 **biss** has the following endpoints
