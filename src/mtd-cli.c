@@ -193,26 +193,15 @@ static int init_creds(void)
 	if (err)
 		return err;
 
-	printf("\n");
-	err = mtd_init_creds(MTD_API_SCOPE_VAT|MTD_API_SCOPE_ADD);
-	if (err)
-		return err;
-
 	return 0;
 }
 
 #define ITSA_SCOPES	(MTD_SCOPE_RD_SA|MTD_SCOPE_WR_SA)
-#define VAT_SCOPES	(MTD_SCOPE_RD_VAT|MTD_SCOPE_WR_VAT)
 static int init_auth(void)
 {
 	int err;
 
 	err = mtd_init_auth(MTD_API_SCOPE_ITSA, ITSA_SCOPES);
-	if (err)
-		return err;
-
-	printf("\n");
-	err = mtd_init_auth(MTD_API_SCOPE_VAT|MTD_API_SCOPE_ADD, VAT_SCOPES);
 	if (err)
 		return err;
 
