@@ -3,10 +3,10 @@
 /*
  * mtd-cli-ob.c - Make Tax Digital - Obligations
  *
- * Copyright (C) 2021 - 2022	Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2021 - 2025	Andrew Clayton <ac@sigsegv.uk>
  */
 
-#include <libmtdac/mtd-ob.h>
+#include <libmtdac/mtd.h>
 
 #include "mtd-cli.h"
 
@@ -14,28 +14,25 @@
 
 #define API_NAME "Obligations"
 #define CMDS \
-"list-inc-and-exp-obligations list-crystallisation-obligations\n"\
+"list-inc-and-exp-obligations list-final-decl-obligations\n"\
 "list-end-of-period-obligations"
 
 static const struct endpoint endpoints[] = {
 	{
-		.name = "list-inc-and-exp-obligations",
-		.func_1 = mtd_ob_list_inc_and_expend_obligations,
-		.func = FUNC_1,
-		.nr_req_args = 0,
-		.args = "[[[typeOfBusiness={self-employment,uk-property,foreign-property}][,businessId=]][,[fromDate=YYYY-MM-DD,toDate=YYYY-MM-DD]][,[status={Open,Fulfilled}]]]"
+		.name		= "list-inc-and-exp-obligations",
+		.api_ep		= MTD_API_EP_OB_GET_IEO,
+		.nr_req_args	= 0,
+		.args		= "[[[typeOfBusiness={self-employment,uk-property,foreign-property}][,businessId=]][,[fromDate=YYYY-MM-DD,toDate=YYYY-MM-DD]][,[status={Oopen,fulfilled}]]]"
 	}, {
-		.name = "list-crystallisation-obligations",
-		.func_1 = mtd_ob_list_crystallisation_obligations,
-		.func = FUNC_1,
-		.nr_req_args = 0,
-		.args = "[taxYear=YYYY-MM]"
+		.name		= "list-crystallisation-obligations",
+		.api_ep		= MTD_API_EP_OB_GET_FDO,
+		.nr_req_args	= 0,
+		.args		= "[[taxYear=YYYY-MM],[status={open,fulfilled}]]"
 	}, {
-		.name = "list-end-of-period-obligations",
-		.func_1 = mtd_ob_list_end_of_period_obligations,
-		.func = FUNC_1,
-		.nr_req_args = 0,
-		.args = "[[[typeOfBusiness={self-employment,uk-property,foreign-property}][,businessId=]][,[fromDate=YYYY-MM-DD,toDate=YYYY-MM-DD]][,[status={Open,Fulfilled}]]]"
+		.name		= "list-end-of-period-obligations",
+		.api_ep		= MTD_API_EP_OB_GET_EPSO,
+		.nr_req_args	= 0,
+		.args		= "[[[typeOfBusiness={self-employment,uk-property,foreign-property}][,businessId=]][,[fromDate=YYYY-MM-DD,toDate=YYYY-MM-DD]][,[status={open,fulfilled}]]]"
 	},
 
 	{ }

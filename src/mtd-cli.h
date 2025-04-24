@@ -3,12 +3,13 @@
 /*
  * mtd-cli.h - Make Tax Digital CLI
  *
- * Copyright (C) 2020 - 2022	Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2025	Andrew Clayton <ac@sigsegv.uk>
  */
 
 #ifndef _MTD_CLI_H_
 #define _MTD_CLI_H_
 
+#include <stdbool.h>
 #include <fcntl.h>
 
 #include <libmtdac/mtd.h>
@@ -55,33 +56,11 @@ struct _endpoint {
 	const char *api_name;
 };
 
-/*
- * Functions suffixed with a 'd' are ones that take a
- * struct mtd_dsrc_ctx rather than a char * as their
- * first argument.
- *
- * The number pertains to the number of arguments the
- * function takes not including buf.
- */
 struct endpoint {
 	const char *name;
-	const union {
-		int (*func_0)(char **buf);
-		int (*func_1)(const char *a1, char **buf);
-		int (*func_1d)(const struct mtd_dsrc_ctx *dsctx, char **buf);
-		int (*func_2)(const char *a1, const char *a2, char **buf);
-		int (*func_2d)(const struct mtd_dsrc_ctx *dsctx,
-			       const char *a2, char **buf);
-		int (*func_3)(const char *a1, const char *a2, const char *a3,
-			      char **buf);
-		int (*func_3d)(const struct mtd_dsrc_ctx *dsctx,
-			       const char *a2, const char *a3, char **buf);
-		int (*func_4d)(const struct mtd_dsrc_ctx *dsctx,
-			       const char *a2, const char *a3, const char *a4,
-			       char **buf);
-	};
-	const enum function_selector func;
+	enum mtd_api_endpoint api_ep;
 	const int nr_req_args;
+	bool file_data;
 	const char *args;
 };
 

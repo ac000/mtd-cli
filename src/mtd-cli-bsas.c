@@ -3,10 +3,12 @@
 /*
  * mtd-cli-bsas.c - Make Tax Digital - Business Source Adjustable Summary
  *
- * Copyright (C) 2020 - 2022	Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2025	Andrew Clayton <ac@sigsegv.uk>
  */
 
-#include <libmtdac/mtd-bsas.h>
+#include <stdbool.h>
+
+#include <libmtdac/mtd.h>
 
 #include "mtd-cli.h"
 
@@ -14,7 +16,7 @@
 
 #define API_NAME "Business Source Adjustable Summary"
 #define CMDS \
-"list-summaries trigger-summary\n\n"\
+"list trigger\n\n"\
 "Self-Employment\n\n"\
 "se-get-summary se-update-summary-adjustments\n\n"\
 "UK Property Business\n\n"\
@@ -24,53 +26,48 @@
 
 static const struct endpoint endpoints[] = {
 	{
-		.name = "list-summaries",
-		.func_1 = mtd_bsas_list_summaries,
-		.func = FUNC_1,
-		.nr_req_args = 0,
-		.args = "[[selfEmploymentId=][,[typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl,foreign-property-fhl-eea,foreign-property}][,[taxYear=YYYY-YY]]]]"
+		.name		= "list",
+		.api_ep		= MTD_API_EP_BSAS_LIST,
+		.nr_req_args	= 1,
+		.args		= "taxYear [typeOfBusiness={self-employment,uk-property-non-fhl,uk-property-fhl,foreign-property-fhl-eea,foreign-property}]"
 	}, {
-		.name = "trigger-summary",
-		.func_1d = mtd_bsas_trigger_summary,
-		.func = FUNC_1d,
-		.nr_req_args = 1,
-		.args = "<file>"
+		.name		= "trigger",
+		.api_ep		= MTD_API_EP_BSAS_TRIGGER,
+		.nr_req_args	= 1,
+		.file_data	= true,
+		.args		= "<file>"
 	}, {
-		.name = "se-get-summary",
-		.func_1 = mtd_bsas_se_get_summary,
-		.func = FUNC_1,
-		.nr_req_args = 1,
-		.args = "calculationId"
+		.name		= "se-get-summary",
+		.api_ep		= MTD_API_EP_BSAS_SE_GET,
+		.nr_req_args	= 2,
+		.args		= "calculationId taxYear"
 	}, {
-		.name = "se-update-summary-adjustments",
-		.func_2d = mtd_bsas_se_update_summary_adjustments,
-		.func = FUNC_2d,
-		.nr_req_args = 2,
-		.args = "<file> calculationId"
+		.name		= "se-update-summary-adjustments",
+		.api_ep		= MTD_API_EP_BSAS_SE_SUBMIT,
+		.nr_req_args	= 3,
+		.file_data	= true,
+		.args		= "<file> calculationId taxYear"
 	}, {
-		.name = "pb-get-summary",
-		.func_1 = mtd_bsas_pb_get_summary,
-		.func = FUNC_1,
-		.nr_req_args = 1,
-		.args = "calculationId"
+		.name		= "pb-get-summary",
+		.api_ep		= MTD_API_EP_BSAS_PB_GET,
+		.nr_req_args	= 2,
+		.args		= "calculationId taxYear"
 	}, {
-		.name = "pb-update-summary-adjustments",
-		.func_2d = mtd_bsas_pb_update_summary_adjustments,
-		.func = FUNC_2d,
-		.nr_req_args = 2,
-		.args = "<file> calculationId"
+		.name		= "pb-update-summary-adjustments",
+		.api_ep		= MTD_API_EP_BSAS_PB_SUBMIT,
+		.nr_req_args	= 3,
+		.args		= "<file> calculationId taxYear"
 	}, {
-		.name = "fp-get-summary",
-		.func_1 = mtd_bsas_fp_get_summary,
-		.func = FUNC_1,
-		.nr_req_args = 1,
-		.args = "calculationId"
+		.name		= "fp-get-summary",
+		.api_ep		= MTD_API_EP_BSAS_FP_GET,
+		.nr_req_args	= 2,
+		.args		= "calculationId taxYear"
 	}, {
-		.name = "fp-update-summary-adjustments",
-		.func_2d = mtd_bsas_fp_update_summary_adjustments,
-		.func = FUNC_2d,
-		.nr_req_args = 2,
-		.args = "<file> calculationId"
+		.name		= "fp-update-summary-adjustments",
+		.api_ep		= MTD_API_EP_BSAS_FP_SUBMIT,
+		.nr_req_args	= 3,
+		.file_data	= true,
+		.args		= "<file> calculationId taxYear"
 	},
 
 	{ }

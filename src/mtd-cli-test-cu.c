@@ -3,44 +3,44 @@
 /*
  * mtd-cli-tesst-cu.c - Make Tax Digital - Create Test User
  *
- * Copyright (C) 2020 - 2022	Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2025	Andrew Clayton <ac@sigsegv.uk>
  */
 
-#include <libmtdac/mtd-test-cu.h>
+#include <stdbool.h>
+
+#include <libmtdac/mtd.h>
 
 #include "mtd-cli.h"
 
 #define API	test_cu
-#define API_CMD	"test-cu"
 
 #define API_NAME "Create Test User"
 #define CMDS "create-individual create-organisation create-agent list-services"
 
 static const struct endpoint endpoints[] = {
 	{
-		.name = "create-individual",
-		.func_1d = mtd_test_cu_create_individual,
-		.func = FUNC_1d,
-		.nr_req_args = 1,
-		.args = "<file>"
+		.name		= "create-individual",
+		.api_ep		= MTD_API_EP_TEST_CU_CREATE_INDIVIDUAL,
+		.nr_req_args	= 1,
+		.file_data	= true,
+		.args		= "<file>"
 	}, {
-		.name = "create-organisation",
-		.func_1d = mtd_test_cu_create_organisation,
-		.func = FUNC_1d,
-		.nr_req_args = 1,
-		.args = "<file>"
+		.name		= "create-organisation",
+		.api_ep		= MTD_API_EP_TEST_CU_CREATE_ORGANISATION,
+		.nr_req_args	= 1,
+		.file_data	= true,
+		.args		= "<file>"
 	}, {
-		.name = "create-agent",
-		.func_1d = mtd_test_cu_create_agent,
-		.func = FUNC_1d,
-		.nr_req_args = 1,
-		.args = "<file>"
+		.name		= "create-agent",
+		.api_ep		= MTD_API_EP_TEST_CU_CREATE_AGENT,
+		.nr_req_args	= 1,
+		.file_data	= true,
+		.args		= "<file>"
 	}, {
-		.name = "list-services",
-		.func_0 = mtd_test_cu_list_services,
-		.func = FUNC_0,
-		.nr_req_args = 0,
-		.args = ""
+		.name		= "list-services",
+		.api_ep		= MTD_API_EP_TEST_CU_LIST_SERVICES,
+		.nr_req_args	= 0,
+		.args		= ""
 	},
 
 	{ }

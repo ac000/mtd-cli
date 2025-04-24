@@ -29,53 +29,22 @@
 
 #define MAX_ARGV	7
 
+#define EP_MAP_ENT(ep)	{ .api = #ep, .endpoint = &ep##_endpoint }
+
 static const struct api_ep {
 	const char *api;
 	const struct _endpoint *endpoint;
 } api_ep_map[] = {
-	{
-		.api = "bd",
-		.endpoint = &bd_endpoint
-	}, {
-		.api = "biss",
-		.endpoint = &biss_endpoint
-	}, {
-		.api = "bsas",
-		.endpoint = &bsas_endpoint
-	}, {
-		.api = "ibeops",
-		.endpoint = &ibeops_endpoint
-	}, {
-		.api = "ic",
-		.endpoint = &ic_endpoint
-	}, {
-		.api = "id",
-		.endpoint = &id_endpoint
-	}, {
-		.api = "il",
-		.endpoint = &il_endpoint
-	}, {
-		.api = "isi",
-		.endpoint = &isi_endpoint
-	}, {
-		.api = "ob",
-		.endpoint = &ob_endpoint
-	}, {
-		.api = "sa",
-		.endpoint = &sa_endpoint
-	}, {
-		.api = "saac",
-		.endpoint = &saac_endpoint
-	}, {
-		.api = "vat",
-		.endpoint = &vat_endpoint
-	}, {
-		.api = "test-cu",
-		.endpoint = &test_cu_endpoint
-	}, {
-		.api = "test-fph",
-		.endpoint = &test_fph_endpoint
-	},
+	EP_MAP_ENT(bd),
+	EP_MAP_ENT(ical),
+	EP_MAP_ENT(ilos),
+	EP_MAP_ENT(isi),
+	EP_MAP_ENT(ob),
+	EP_MAP_ENT(pb),
+	EP_MAP_ENT(seb),
+
+	EP_MAP_ENT(test_cu),
+	EP_MAP_ENT(test_fph),
 
 	{ }
 };
@@ -151,7 +120,7 @@ static int do_api_func(const struct endpoint *ep, int argc, char *argv[],
 		       char **buf)
 {
 	int i;
-	const char *args[MAX_ARGV] = { NULL };
+	const char *args[MAX_ARGV] = {};
 	const struct endpoint *eps = ep;
 	char *ptr;
 	char qs[129];
@@ -174,36 +143,13 @@ static int do_api_func(const struct endpoint *ep, int argc, char *argv[],
 		if (strcmp(eps->name, argv[0]) != 0)
 			continue;
 
-		switch (eps->func) {
-		case FUNC_1d:
-		case FUNC_2d:
-		case FUNC_3d:
-		case FUNC_4d:
+		if (eps->file_data) {
 			dsctx.data_src.file = args[0];
 			dsctx.src_type = MTD_DATA_SRC_FILE;
-		default:
-			break;
 		}
 
-		switch (eps->func) {
-		case FUNC_0:
-			return eps->func_0(buf);
-		case FUNC_1:
-			return eps->func_1(args[0], buf);
-		case FUNC_1d:
-			return eps->func_1d(&dsctx, buf);
-		case FUNC_2:
-			return eps->func_2(args[0], args[1], buf);
-		case FUNC_2d:
-			return eps->func_2d(&dsctx, args[1], buf);
-		case FUNC_3:
-			return eps->func_3(args[0], args[1], args[2], buf);
-		case FUNC_3d:
-			return eps->func_3d(&dsctx, args[1], args[2], buf);
-		case FUNC_4d:
-			return eps->func_4d(&dsctx, args[1], args[2], args[3],
-					    buf);
-		}
+		return mtd_ep(eps->api_ep, eps->file_data ? &dsctx : NULL, buf,
+			      args + eps->file_data);
 	}
 
 	/* I don't think we can ever reach here... */
@@ -243,12 +189,12 @@ static int init_creds(void)
 {
 	int err;
 
-	err = mtd_init_creds(MTD_EP_API_ITSA);
+	err = mtd_init_creds(MTD_API_SCOPE_ITSA);
 	if (err)
 		return err;
 
 	printf("\n");
-	err = mtd_init_creds(MTD_EP_API_VAT|MTD_EP_API_ADD);
+	err = mtd_init_creds(MTD_API_SCOPE_VAT|MTD_API_SCOPE_ADD);
 	if (err)
 		return err;
 
@@ -261,12 +207,12 @@ static int init_auth(void)
 {
 	int err;
 
-	err = mtd_init_auth(MTD_EP_API_ITSA, ITSA_SCOPES);
+	err = mtd_init_auth(MTD_API_SCOPE_ITSA, ITSA_SCOPES);
 	if (err)
 		return err;
 
 	printf("\n");
-	err = mtd_init_auth(MTD_EP_API_VAT|MTD_EP_API_ADD, VAT_SCOPES);
+	err = mtd_init_auth(MTD_API_SCOPE_VAT|MTD_API_SCOPE_ADD, VAT_SCOPES);
 	if (err)
 		return err;
 

@@ -8,7 +8,7 @@
 
 #include <stdbool.h>
 
-#include <libmtdac/mtd-isi.h>
+#include <libmtdac/mtd.h>
 
 #include "mtd-cli.h"
 
@@ -24,49 +24,46 @@
 static const struct endpoint endpoints[] = {
 	/* UK Savings Account */
 	{
-		.name = "ua-list",
-		.func_1 = mtd_isi_si_ua_list,
-		.func = FUNC_1,
-		.nr_req_args = 0,
-		.args = "[savingsAccountId=^[A-Za-z0-9]{15}$]"
+		.name		= "ua-list",
+		.api_ep		= MTD_API_EP_ISI_SI_UK_LIST,
+		.nr_req_args	= 0,
+		.args		= "[savingsAccountId=^[A-Za-z0-9]{15}$]"
 	}, {
-		.name = "ua-add",
-		.func_1d = mtd_isi_si_ua_add,
-		.func = FUNC_1d,
-		.nr_req_args = 1,
-		.args = "<file>"
+		.name		= "ua-add",
+		.api_ep		= MTD_API_EP_ISI_SI_UK_ADD,
+		.nr_req_args	= 1,
+		.file_data	= true,
+		.args		= "<file>"
 	}, {
-		.name = "ua-get-annual-summary",
-		.func_2 = mtd_isi_si_ua_get_annual_summary,
-		.func = FUNC_2,
-		.nr_req_args = 2,
-		.args = "taxYear savingsAccountId"
+		.name		= "ua-get-annual-summary",
+		.api_ep		= MTD_API_EP_ISI_SI_UK_GET,
+		.nr_req_args	= 2,
+		.args		= "taxYear savingsAccountId"
 	}, {
-		.name = "ua-update-annual-summary",
-		.func_3d = mtd_isi_si_ua_update_annual_summary,
-		.func = FUNC_3d,
-		.nr_req_args = 3,
-		.args = "<file> taxYear savingsAccountId"
+		.name		= "ua-update-annual-summary",
+		.api_ep		= MTD_API_EP_ISI_SI_UK_UPDATE,
+		.nr_req_args	= 3,
+		.file_data	= true,
+		.args		= "<file> taxYear savingsAccountId"
 	},
+
 	/* Savings Income */
 	{
-		.name = "si-get",
-		.func_1 = mtd_isi_si_o_get,
-		.func = FUNC_1,
-		.nr_req_args = 1,
-		.args = "taxYear"
+		.name		= "si-get",
+		.api_ep		= MTD_API_EP_ISI_SI_O_GET,
+		.nr_req_args	= 1,
+		.args		= "taxYear"
 	}, {
-		.name = "si-update",
-		.func_2d = mtd_isi_si_o_update,
-		.func = FUNC_2d,
-		.nr_req_args = 2,
-		.args = "<file> taxYear"
+		.name		= "si-update",
+		.api_ep		= MTD_API_EP_ISI_SI_O_UPDATE,
+		.nr_req_args	= 2,
+		.file_data	= true,
+		.args		= "<file> taxYear"
 	}, {
-		.name = "si-delete",
-		.func_1 = mtd_isi_si_o_delete,
-		.func = FUNC_1,
-		.nr_req_args = 1,
-		.args = "taxYear"
+		.name		= "si-delete",
+		.api_ep		= MTD_API_EP_ISI_SI_O_DELETE,
+		.nr_req_args	= 1,
+		.args		= "taxYear"
 	},
 
 	{ }

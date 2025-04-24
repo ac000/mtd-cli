@@ -3,32 +3,29 @@
 /*
  * mtd-cli-test-fph.c - Make Tax Digital - Test Fraud Prevention Headers
  *
- * Copyright (C) 2020 - 2022	Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2020 - 2025	Andrew Clayton <ac@sigsegv.uk>
  */
 
-#include <libmtdac/mtd-test-fph.h>
+#include <libmtdac/mtd.h>
 
 #include "mtd-cli.h"
 
 #define API	test_fph
-#define API_CMD	"test-fph"
 
 #define API_NAME "Test Fraud Prevention Headers"
 #define CMDS "validate feedback"
 
 static const struct endpoint endpoints[] = {
 	{
-		.name = "validate",
-		.func_0 = mtd_test_fph_validate,
-		.func = FUNC_0,
-		.nr_req_args = 0,
-		.args = ""
+		.name		= "validate",
+		.api_ep		= MTD_API_EP_TEST_FPH_VALIDATE,
+		.nr_req_args	= 0,
+		.args		= ""
 	}, {
-		.name = "feedback",
-		.func_2 = mtd_test_fph_feedback,
-		.func = FUNC_2,
-		.nr_req_args = 1,
-		.args = "api [connectionMethod=]"
+		.name		= "feedback",
+		.api_ep		= MTD_API_EP_TEST_FPH_FEEDBACK,
+		.nr_req_args	= 1,
+		.args		= "api [connectionMethod=]"
 	},
 
 	{ }

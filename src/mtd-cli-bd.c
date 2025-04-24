@@ -3,31 +3,37 @@
 /*
  * mtd-cli-bd.c - Make Tax Digital - Business Details
  *
- * Copyright (C) 2021 - 2022	Andrew Clayton <andrew@digital-domain.net>
+ * Copyright (C) 2021 - 2025	Andrew Clayton <ac@sigsegv.uk>
  */
 
-#include <libmtdac/mtd-bd.h>
+#include <stdbool.h>
+
+#include <libmtdac/mtd.h>
 
 #include "mtd-cli.h"
 
 #define API	bd
 
 #define API_NAME "Business Details"
-#define CMDS "list get"
+#define CMDS "list get amend-qpt"
 
 static const struct endpoint endpoints[] = {
 	{
-		.name = "list",
-		.func_0 = mtd_bd_list,
-		.func = FUNC_0,
-		.nr_req_args = 0,
-		.args = ""
+		.name		= "list",
+		.api_ep		= MTD_API_EP_BD_LIST,
+		.nr_req_args	= 0,
+		.args		= ""
 	}, {
-		.name = "get",
-		.func_1 = mtd_bd_get,
-		.func = FUNC_1,
-		.nr_req_args = 1,
-		.args = "businessId"
+		.name		= "get",
+		.api_ep		= MTD_API_EP_BD_GET,
+		.nr_req_args	= 1,
+		.args		= "businessId"
+	}, {
+		.name		= "amend-qpt",
+		.api_ep		= MTD_API_EP_BD_AMEND_QPT,
+		.nr_req_args	= 3,
+		.file_data	= true,
+		.args		= "<file> businessId taxYear"
 	},
 
 	{ }
