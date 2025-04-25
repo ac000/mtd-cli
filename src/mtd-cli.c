@@ -107,13 +107,13 @@ static int check_args(int argc, char *argv[], const char *api,
 		printf("Usage: %s %s %s %s\n", MTD_CLI, api, eps[i].name,
 		       eps[i].args);
 
-		return -ERR_IGNORE;
+		return ERR_IGNORE;
 	}
 
 out_help:
 	printf("Available %s endpoints :-\n\n%s\n", ep->api_name, ep->cmds);
 
-	return -ERR_IGNORE;
+	return ERR_IGNORE;
 }
 
 static int do_api_func(const struct endpoint *ep, int argc, char *argv[],
@@ -160,7 +160,7 @@ static int do_mtd_api(const char *name, int argc, char *argv[])
 {
 	char *buf = NULL;
 	const struct api_ep *apis = api_ep_map;
-	int err = -ERR_UNKNOWN_CMD;
+	int err = ERR_UNKNOWN_CMD;
 
 	for ( ; apis->api != NULL; apis++) {
 		const struct _endpoint *ep = apis->endpoint;
@@ -352,11 +352,11 @@ int main(int argc, char *argv[])
 
 	err = dispatcher(argc - 1, argv + 1);
 	if (err) {
-	       if (err == -MTD_ERR_NEEDS_AUTHORISATION)
+	       if (err == MTD_ERR_NEEDS_AUTHORISATION)
 		       fprintf(stderr, "[Error] Please run 'mtd-cli oauth'\n");
-	       else if (err == -ERR_UNKNOWN_CMD)
+	       else if (err == ERR_UNKNOWN_CMD)
 		       print_api_help();
-	       else if (err != -ERR_IGNORE)
+	       else if (err != ERR_IGNORE)
 		       fprintf(stderr, "[Error] %s%s%s: %s\n", argv[1],
 			       argc > 2 ? " " : "", argc > 2 ? argv[2] : "",
 			       mtd_err2str(err));
