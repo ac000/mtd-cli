@@ -36,12 +36,12 @@ static const struct endpoint endpoints[] = {
 		.args		= "<file>"
 	}, {
 		.name		= "ua-get-annual-summary",
-		.api_ep		= MTD_API_EP_ISI_SI_UK_GET,
+		.api_ep		= MTD_API_EP_ISI_SI_UK_GET_AS,
 		.nr_req_args	= 2,
 		.args		= "taxYear savingsAccountId"
 	}, {
 		.name		= "ua-update-annual-summary",
-		.api_ep		= MTD_API_EP_ISI_SI_UK_UPDATE,
+		.api_ep		= MTD_API_EP_ISI_SI_UK_UPDATE_AS,
 		.nr_req_args	= 3,
 		.file_data	= true,
 		.args		= "<file> taxYear savingsAccountId"
