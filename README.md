@@ -43,7 +43,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|init-creds|init-oauth|init-nino|bd|biss|bsas|ic|id|il|ob|sa|saac|vat|test-cu|test-fph [endpoint args ...]
+    mtd-cli init|init-creds|init-oauth|init-nino|bd|ical|ilos|isi|ob|pb|seb|test_cu|test_fph
 
 The first argument specifies the API to interface with
 
