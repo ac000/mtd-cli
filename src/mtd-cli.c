@@ -36,6 +36,7 @@ static const struct api_ep {
 	const struct _endpoint *endpoint;
 } api_ep_map[] = {
 	EP_MAP_ENT(bd),
+	EP_MAP_ENT(biss),
 	EP_MAP_ENT(ical),
 	EP_MAP_ENT(ilos),
 	EP_MAP_ENT(isi),

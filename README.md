@@ -43,7 +43,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|init-creds|init-oauth|init-nino|bd|ical|ilos|isi|ob|pb|said|seb|test_cu|test_fph
+    mtd-cli init|init-creds|init-oauth|init-nino|bd|biss|ical|ilos|isi|ob|pb|said|seb|test_cu|test_fph
 
 The first argument specifies the API to interface with
 
@@ -63,6 +63,7 @@ The first argument specifies the API to interface with
 | API                                | Version | Documentation
 |------------------------------------|---------|---------------|
 | Business Details                   | 1.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/business-details-api/1.0/oas/page> |
+| Business Income Source Summary     | 3.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/self-assessment-biss-api/3.0/oas/page> |
 | Business Source Adjustable Summary | 6.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/self-assessment-bsas-api/6.0/oas/page> |
 | Individual Calculations            | 7.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/individual-calculations-api/7.0/oas/page> |
 | Individual Losses                  | 5.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/individual-losses-api/5.0/oas/page> |
