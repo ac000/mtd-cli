@@ -43,7 +43,7 @@ or just run it in place
 
 It has a fairly straightforward interface, essentially
 
-    mtd-cli init|init-creds|init-oauth|init-nino|bd|ical|ilos|isi|ob|pb|seb|test_cu|test_fph
+    mtd-cli init|init-creds|init-oauth|init-nino|bd|ical|ilos|isi|ob|pb|said|seb|test_cu|test_fph
 
 The first argument specifies the API to interface with
 
@@ -68,7 +68,8 @@ The first argument specifies the API to interface with
 | Individual Losses                  | 5.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/individual-losses-api/5.0/oas/page> |
 | Obligations                        | 3.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/obligations-api/3.0/oas/page> |
 | Property Business                  | 5.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/property-business-api/5.0/oas/page> |
-| Self-Employment Business           | 4.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/self-employment-business-api/4.0/oas/page> |
+| Self Assessment Individual Details | 2.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/self-assessment-individual-details-api/2.0/oas/page> |
+| Self Employment Business           | 4.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/self-employment-business-api/4.0/oas/page> |
 |                                    |         |               |
 | Create Test User                   | 1.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/api-platform-test-user/1.0/oas/page> |
 | Test Fraud Prevention Headers      | 1.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/txm-fph-validator-api/1.0/oas/page> |
