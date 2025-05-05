@@ -314,7 +314,7 @@ int main(int argc, char *argv[])
 	char conf_dir_path[PATH_MAX];
 	const char *snd_fph_hdrs = getenv("MTD_CLI_OPT_NO_FPH_HDRS");
 	const char *log_level = getenv("MTD_CLI_OPT_LOG_LEVEL");
-	const char *hdrs[2] = { NULL };
+	const char *hdrs[2] = {};
 	const struct mtd_fph_ops fph_ops = {
 		.fph_version_cli = set_ver_cli,
 		.fph_prod_name = set_prod_name
