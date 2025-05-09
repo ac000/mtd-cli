@@ -46,6 +46,8 @@ static const struct api_ep {
 	EP_MAP_ENT(said),
 	EP_MAP_ENT(seb),
 
+	EP_MAP_ENT(vat),
+
 	EP_MAP_ENT(test_cu),
 	EP_MAP_ENT(test_fph),
 
