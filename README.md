@@ -57,6 +57,9 @@ The first argument specifies the API to interface with
 
   * **init-nino** is for storing the National Insurance Number in the nino.json file.
 
+Each of the above init functions (except *init-nino*) takes an argument of
+either *itsa* or *vat* depending on which API is to be initialised.
+
 
 # Supported API endpoints
 

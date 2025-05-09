@@ -190,56 +190,89 @@ static int do_mtd_api(const char *name, int argc, char *argv[])
 	return err;
 }
 
-static int init_creds(void)
+static int init_creds(int argc, char *argv[])
 {
 	int err;
+	enum mtd_api_scope api = MTD_API_SCOPE_ADD;
 
-	err = mtd_init_creds(MTD_API_SCOPE_ITSA);
-	if (err)
-		return err;
+	if (argc == 0)
+		goto out_usage;
 
-	printf("\n");
-	err = mtd_init_creds(MTD_API_SCOPE_VAT|MTD_API_SCOPE_ADD);
+	if (strcmp(argv[0], "itsa") == 0)
+		api |= MTD_API_SCOPE_ITSA;
+	else if (strcmp(argv[0], "vat") == 0)
+		api |= MTD_API_SCOPE_VAT;
+	else
+		goto out_usage;
+
+	err = mtd_init_creds(api);
 	if (err)
 		return err;
 
 	return 0;
+
+out_usage:
+	printf("Usage: mtd-cli init-creds itsa|vat\n");
+	return ERR_IGNORE;
 }
 
 #define ITSA_SCOPES	(MTD_SCOPE_RD_SA|MTD_SCOPE_WR_SA)
 #define VAT_SCOPES	(MTD_SCOPE_RD_VAT|MTD_SCOPE_WR_VAT)
-static int init_auth(void)
+static int init_auth(int argc, char *argv[])
 {
 	int err;
+	enum mtd_scope scopes;
+	enum mtd_api_scope api = MTD_API_SCOPE_ADD;
 
-	err = mtd_init_auth(MTD_API_SCOPE_ITSA, ITSA_SCOPES);
-	if (err)
-		return err;
+	if (argc == 0)
+		goto out_usage;
 
-	printf("\n");
-	err = mtd_init_auth(MTD_API_SCOPE_VAT|MTD_API_SCOPE_ADD, VAT_SCOPES);
+	if (strcmp(argv[0], "itsa") == 0) {
+		scopes = ITSA_SCOPES;
+		api |= MTD_API_SCOPE_ITSA;
+	} else if (strcmp(argv[0], "vat") == 0) {
+		scopes = VAT_SCOPES;
+		api |= MTD_API_SCOPE_VAT;
+	} else {
+		goto out_usage;
+	}
+
+	err = mtd_init_auth(api, scopes);
 	if (err)
 		return err;
 
 	return 0;
+
+out_usage:
+	printf("Usage: mtd-cli init-auth itsa|vat\n");
+	return ERR_IGNORE;
 }
 
-static int do_init_all(void)
+static int do_init_all(int argc, char *argv[])
 {
 	int err;
+	char *api = argv[0];
+
+	if (argc == 0)
+		goto out_usage;
+
+	if (strcmp(api, "itsa") != 0 && strcmp(api, "vat") != 0)
+		goto out_usage;
 
 	printf("Initialising...\n\n");
-	err = init_creds();
+	err = init_creds(1, (char *[1]){api});
 	if (err)
 		return err;
 
-	printf("\n");
-	err = mtd_init_nino();
-	if (err)
-		return err;
+	if (strcmp(api, "itsa") == 0) {
+		printf("\n");
+		err = mtd_init_nino();
+		if (err)
+			return err;
+	}
 
 	printf("\n");
-	err = init_auth();
+	err = init_auth(1, (char *[1]){api});
 	if (err)
 		return err;
 
@@ -247,6 +280,10 @@ static int do_init_all(void)
 	       "wrong.\n");
 
 	return 0;
+
+out_usage:
+	printf("Usage: mtd-cli init itsa|vat\n");
+	return ERR_IGNORE;
 }
 
 #define IS_API(api)		(strcmp(api, ep) == 0)
@@ -254,16 +291,19 @@ static int dispatcher(int argc, char *argv[])
 {
 	const char *ep = argv[0];
 
+	argc -= 1;
+	argv++;
+
 	if (IS_API("init"))
-		return do_init_all();
+		return do_init_all(argc, argv);
 	if (IS_API("init-oauth"))
-		return init_auth();
+		return init_auth(argc, argv);
 	if (IS_API("init-creds"))
-		return init_creds();
+		return init_creds(argc, argv);
 	if (IS_API("init-nino"))
 		return mtd_init_nino();
 
-	return do_mtd_api(ep, argc - 2, argv + 1);
+	return do_mtd_api(ep, argc - 1, argv);
 }
 
 static char *set_ver_cli(void *user_data __attribute__((unused)))
