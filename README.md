@@ -60,21 +60,7 @@ The first argument specifies the API to interface with
 
 # Supported API endpoints
 
-| API                                | Version | Documentation
-|------------------------------------|---------|---------------|
-| Business Details                   | 1.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/business-details-api/1.0/oas/page> |
-| Business Income Source Summary     | 3.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/self-assessment-biss-api/3.0/oas/page> |
-| Business Source Adjustable Summary | 6.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/self-assessment-bsas-api/6.0/oas/page> |
-| Individual Calculations            | 7.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/individual-calculations-api/7.0/oas/page> |
-| Individual Losses                  | 5.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/individual-losses-api/5.0/oas/page> |
-| Obligations                        | 3.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/obligations-api/3.0/oas/page> |
-| Property Business                  | 5.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/property-business-api/5.0/oas/page> |
-| Self Assessment Individual Details | 2.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/self-assessment-individual-details-api/2.0/oas/page> |
-| Self Employment Business           | 4.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/self-employment-business-api/4.0/oas/page> |
-|                                    |         |               |
-| Create Test User                   | 1.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/api-platform-test-user/1.0/oas/page> |
-| Test Fraud Prevention Headers      | 1.0     | <https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/txm-fph-validator-api/1.0/oas/page> |
-
+See [libmtdac](https://github.com/ac000/libmtdac/blob/master/README.rst#overview)
 
 ## Environment variables
 
