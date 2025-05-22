@@ -14,6 +14,7 @@ extern const struct _endpoint biss_endpoint;
 extern const struct _endpoint bsas_endpoint;
 extern const struct _endpoint ical_endpoint;
 extern const struct _endpoint ilos_endpoint;
+extern const struct _endpoint ipi_endpoint;
 extern const struct _endpoint isi_endpoint;
 extern const struct _endpoint ob_endpoint;
 extern const struct _endpoint pb_endpoint;
