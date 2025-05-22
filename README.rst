@@ -71,7 +71,8 @@ The first argument specifies the API to interface with
    nino.json file.
 
 Each of the above init functions (except *init-nino*) takes an argument
-of either *itsa* or *vat* depending on which API is to be initialised.
+of *itsa* or *itsa-assist* or *vat* depending on which API is to be
+initialised.
 
 Supported API endpoints
 =======================

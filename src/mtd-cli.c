@@ -200,7 +200,9 @@ static int init_creds(int argc, char *argv[])
 		goto out_usage;
 
 	if (strcmp(argv[0], "itsa") == 0)
-		api |= MTD_API_SCOPE_ITSA;
+		api |= MTD_API_SCOPE_SA;
+	else if (strcmp(argv[0], "itsa-assist") == 0)
+		api |= MTD_API_SCOPE_SAASS;
 	else if (strcmp(argv[0], "vat") == 0)
 		api |= MTD_API_SCOPE_VAT;
 	else
@@ -213,12 +215,13 @@ static int init_creds(int argc, char *argv[])
 	return 0;
 
 out_usage:
-	printf("Usage: mtd-cli init-creds itsa|vat\n");
+	printf("Usage: mtd-cli init-creds itsa|itsa-assist|vat\n");
 	return ERR_IGNORE;
 }
 
-#define ITSA_SCOPES	(MTD_SCOPE_RD_SA|MTD_SCOPE_WR_SA)
-#define VAT_SCOPES	(MTD_SCOPE_RD_VAT|MTD_SCOPE_WR_VAT)
+#define ITSA_SCOPES		(MTD_SCOPE_RD_SA|MTD_SCOPE_WR_SA)
+#define ITSA_ASSIST_SCOPES	(MTD_SCOPE_RD_SAASS|MTD_SCOPE_WR_SAASS)
+#define VAT_SCOPES		(MTD_SCOPE_RD_VAT|MTD_SCOPE_WR_VAT)
 static int init_auth(int argc, char *argv[])
 {
 	int err;
@@ -230,7 +233,10 @@ static int init_auth(int argc, char *argv[])
 
 	if (strcmp(argv[0], "itsa") == 0) {
 		scopes = ITSA_SCOPES;
-		api |= MTD_API_SCOPE_ITSA;
+		api |= MTD_API_SCOPE_SA;
+	} else if (strcmp(argv[0], "itsa-assist") == 0) {
+		scopes = ITSA_ASSIST_SCOPES;
+		api |= MTD_API_SCOPE_SAASS;
 	} else if (strcmp(argv[0], "vat") == 0) {
 		scopes = VAT_SCOPES;
 		api |= MTD_API_SCOPE_VAT;
@@ -245,7 +251,7 @@ static int init_auth(int argc, char *argv[])
 	return 0;
 
 out_usage:
-	printf("Usage: mtd-cli init-auth itsa|vat\n");
+	printf("Usage: mtd-cli init-auth itsa|itsa-assist|vat\n");
 	return ERR_IGNORE;
 }
 
@@ -257,7 +263,8 @@ static int do_init_all(int argc, char *argv[])
 	if (argc == 0)
 		goto out_usage;
 
-	if (strcmp(api, "itsa") != 0 && strcmp(api, "vat") != 0)
+	if (strcmp(api, "itsa") != 0 && strcmp(api, "itsa-assist") != 0 &&
+	    strcmp(api, "vat") != 0)
 		goto out_usage;
 
 	printf("Initialising...\n\n");
@@ -283,7 +290,7 @@ static int do_init_all(int argc, char *argv[])
 	return 0;
 
 out_usage:
-	printf("Usage: mtd-cli init itsa|vat\n");
+	printf("Usage: mtd-cli init itsa|itsa-assist|vat\n");
 	return ERR_IGNORE;
 }
 
