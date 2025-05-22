@@ -117,7 +117,7 @@ License
 
 This is licensed under the GNU General Public License (GPL) version 2
 
-See *COPYING* in the repository root for details.
+See `COPYING </COPYING>`__ in the repository root for details.
 
 Contributing
 ------------
