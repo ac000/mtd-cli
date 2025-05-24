@@ -26,5 +26,6 @@ extern const struct _endpoint vat_endpoint;
 
 extern const struct _endpoint test_cu_endpoint;
 extern const struct _endpoint test_fph_endpoint;
+extern const struct _endpoint test_sa_endpoint;
 
 #endif /* _ENDPOINTS_H_ */

@@ -52,6 +52,7 @@ static const struct api_ep {
 
 	EP_MAP_ENT(test_cu),
 	EP_MAP_ENT(test_fph),
+	EP_MAP_ENT(test_sa),
 
 	{ }
 };
