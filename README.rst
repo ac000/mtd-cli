@@ -93,6 +93,30 @@ This can be used to override the default log level (MTD_OPT_LOG_ERR).
 
 Currently recognised values are; *debug* & *info*
 
+This can take two extra optional parameters; a file path and an *fopen(2)*
+mode.
+
+E.g.
+
+::
+
+    $ MTD_CLI_OPT_LOG_LEVEL=debug:/tmp/mtd-cli.log mtd-cli ...``
+
+and
+
+::
+
+    $ MTD_CLI_OPT_LOG_LEVEL=debug:/tmp/mtd-cli.log+a mtd-cli ...``
+
+The first will cause all log messages (except *MTD_LOG_ERROR*) to be written
+to the file */tmp/mtd-cli.log*.
+
+The second will do the above but will *append* messages to the file (creating
+it if it doesn't exist).
+
+This of course does mean that the file name should not contain either a
+``:`` or a ``+``.
+
 **MTD_CLI_OPT_NO_FPH_HDRS**
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

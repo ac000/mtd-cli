@@ -374,6 +374,31 @@ static const char *conf_dir(char *path)
 	return path;
 }
 
+static const FILE *set_log_fp(const char *log_level)
+{
+	char *ptr;
+	char *ptrm;
+	const char *mode = "we";
+
+	if (!log_level || !strchr(log_level, ':'))
+		return NULL;
+
+	ptr = strchr(log_level, ':');
+	ptr++;
+
+	ptrm = strchr(log_level, '+');
+	if (!ptrm)
+		goto out;
+
+	*(ptrm++) = '\0';
+
+	if (*ptrm != '\0' && *ptrm == 'a')
+		mode = "ae";
+
+out:
+	return fopen(ptr, mode);
+}
+
 int main(int argc, char *argv[])
 {
 	int err;
@@ -390,7 +415,8 @@ int main(int argc, char *argv[])
 	const struct mtd_cfg cfg = {
 		.config_dir = conf_dir(conf_dir_path),
 		.fph_ops = &fph_ops,
-		.extra_hdrs = hdrs
+		.extra_hdrs = hdrs,
+		.log_fp = set_log_fp(log_level)
 	};
 
 	if (argc == 1) {
