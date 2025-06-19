@@ -100,13 +100,13 @@ E.g.
 
 ::
 
-    $ MTD_CLI_OPT_LOG_LEVEL=debug:/tmp/mtd-cli.log mtd-cli ...``
+    $ MTD_CLI_OPT_LOG_LEVEL=debug:/tmp/mtd-cli.log mtd-cli ...
 
 and
 
 ::
 
-    $ MTD_CLI_OPT_LOG_LEVEL=debug:/tmp/mtd-cli.log+a mtd-cli ...``
+    $ MTD_CLI_OPT_LOG_LEVEL=debug:/tmp/mtd-cli.log+a mtd-cli ...
 
 The first will cause all log messages (except *MTD_LOG_ERROR*) to be written
 to the file */tmp/mtd-cli.log*.
