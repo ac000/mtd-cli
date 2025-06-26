@@ -31,9 +31,9 @@ static const struct endpoint endpoints[] = {
 	}, {
 		.name		= "bf-create",
 		.api_ep		= MTD_API_EP_ILOS_BF_CREATE,
-		.nr_req_args	= 1,
+		.nr_req_args	= 2,
 		.file_data	= true,
-		.args		= "<file>"
+		.args		= "<file> taxYear"
 	}, {
 		.name		= "bf-get",
 		.api_ep		= MTD_API_EP_ILOS_BF_GET,
@@ -42,14 +42,14 @@ static const struct endpoint endpoints[] = {
 	}, {
 		.name		= "bf-delete",
 		.api_ep		= MTD_API_EP_ILOS_BF_DELETE,
-		.nr_req_args	= 1,
-		.args		= "lossId"
+		.nr_req_args	= 2,
+		.args		= "lossId taxYear"
 	}, {
 		.name		= "bf-update-amnt",
 		.api_ep		= MTD_API_EP_ILOS_BF_AMEND_AMNT,
-		.nr_req_args	= 2,
+		.nr_req_args	= 3,
 		.file_data	= true,
-		.args		= "<file> lossId"
+		.args		= "<file> lossId taxYear"
 	},
 	/* Loss Claims */
 	{
@@ -71,14 +71,14 @@ static const struct endpoint endpoints[] = {
 	}, {
 		.name		= "lc-delete",
 		.api_ep		= MTD_API_EP_ILOS_LC_DELETE,
-		.nr_req_args	= 1,
-		.args		= "claimId"
+		.nr_req_args	= 2,
+		.args		= "claimId taxYearClaimedFor"
 	}, {
 		.name		= "lc-update-type",
 		.api_ep		= MTD_API_EP_ILOS_LC_AMEND_TYPE,
-		.nr_req_args	= 2,
+		.nr_req_args	= 3,
 		.file_data	= true,
-		.args		= "<file> claimId"
+		.args		= "<file> claimId taxYearClaimedFor"
 	},
 	{
 		.name		= "lc-update-order",
