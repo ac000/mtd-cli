@@ -38,6 +38,7 @@ static const struct api_ep {
 	EP_MAP_ENT(bd),
 	EP_MAP_ENT(biss),
 	EP_MAP_ENT(bsas),
+	EP_MAP_ENT(cisd),
 	EP_MAP_ENT(ical),
 	EP_MAP_ENT(id),
 	EP_MAP_ENT(ie),
