@@ -42,6 +42,7 @@ static const struct api_ep {
 	EP_MAP_ENT(id),
 	EP_MAP_ENT(ie),
 	EP_MAP_ENT(iei),
+	EP_MAP_ENT(ifi),
 	EP_MAP_ENT(ilos),
 	EP_MAP_ENT(ioi),
 	EP_MAP_ENT(ipi),
