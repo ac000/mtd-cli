@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: GPL-2.0 */
 
 /*
- * mtd-cli-ie.c - Make Tax Digital - Individuals Disclosures
+ * mtd-cli-id.c - Make Tax Digital - Individuals Disclosures
  *
  * Copyright (C) 2025		Andrew Clayton <ac@sigsegv.uk>
  */
