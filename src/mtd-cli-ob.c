@@ -14,8 +14,7 @@
 
 #define API_NAME "Obligations"
 #define CMDS \
-"list-inc-and-exp-obligations list-final-decl-obligations\n"\
-"list-end-of-period-obligations"
+"list-inc-and-exp-obligations list-final-decl-obligations"
 
 static const struct endpoint endpoints[] = {
 	{
@@ -28,11 +27,6 @@ static const struct endpoint endpoints[] = {
 		.api_ep		= MTD_API_EP_OB_GET_FDO,
 		.nr_req_args	= 0,
 		.args		= "[[taxYear=YYYY-MM],[status={open,fulfilled}]]"
-	}, {
-		.name		= "list-end-of-period-obligations",
-		.api_ep		= MTD_API_EP_OB_GET_EPSO,
-		.nr_req_args	= 0,
-		.args		= "[[[typeOfBusiness={self-employment,uk-property,foreign-property}][,businessId=]][,[fromDate=YYYY-MM-DD,toDate=YYYY-MM-DD]][,[status={open,fulfilled}]]]"
 	},
 
 	{ }
