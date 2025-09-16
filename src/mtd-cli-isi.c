@@ -17,7 +17,8 @@
 #define API_NAME "Individuals Savings Income"
 #define CMDS \
 "UK Savings Account\n\n"\
-"ua-list ua-add ua-get-annual-summary ua-update-annual-summary\n\n"\
+"ua-list ua-add ua-update-sa-name ua-get-annual-summary\n"\
+"ua-update-annual-summary\n\n"\
 "Savings Income\n\n"\
 "si-get si-update si-delete"
 
@@ -34,6 +35,12 @@ static const struct endpoint endpoints[] = {
 		.nr_req_args	= 1,
 		.file_data	= true,
 		.args		= "<file>"
+	}, {
+		.name		= "ua-update-sa-name",
+		.api_ep		= MTD_API_EP_ISI_SI_UK_UPDATE_SA_NAME,
+		.nr_req_args	= 2,
+		.file_data	= true,
+		.args		= "<file> savingsAccountId"
 	}, {
 		.name		= "ua-get-annual-summary",
 		.api_ep		= MTD_API_EP_ISI_SI_UK_GET_AS,
