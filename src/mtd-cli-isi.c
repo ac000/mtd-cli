@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: GPL-2.0 */
 
 /*
- * mtd-cli-isi.c - Make Tax Digital - Individual Savings Income
+ * mtd-cli-isi.c - Make Tax Digital - Individuals Savings Income
  *
  * Copyright (C) 2025		Andrew Clayton <ac@sigsegv.uk>
  */
@@ -14,7 +14,7 @@
 
 #define API	isi
 
-#define API_NAME "Individual Savings Income"
+#define API_NAME "Individuals Savings Income"
 #define CMDS \
 "UK Savings Account\n\n"\
 "ua-list ua-add ua-get-annual-summary ua-update-annual-summary\n\n"\
