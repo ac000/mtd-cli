@@ -15,18 +15,12 @@
 #define API_NAME "Individual Calculations"
 #define CMDS \
 "TAX Calculations\n\n"\
-"list-calculations-old list-calculations trigger-calculation\n"\
-"get-calculation\n\n"\
+"list-calculations trigger-calculation get-calculation\n\n"\
 "Final Declaration\n\n"\
 "final-declaration"
 
 static const struct endpoint endpoints[] = {
 	{
-		.name		= "list-calculations-old",
-		.api_ep		= MTD_API_EP_ICAL_LIST_OLD,
-		.nr_req_args	= 1,
-		.args		= "taxYear=YYYY-YY"
-	}, {
 		.name		= "list-calculations",
 		.api_ep		= MTD_API_EP_ICAL_LIST,
 		.nr_req_args	= 1,
