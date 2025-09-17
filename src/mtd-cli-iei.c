@@ -21,7 +21,9 @@
 "Non-PAYE Employment Income\n\n"\
 "npe-get npe-amend npe-delete\n\n"\
 "Other Employment Income\n\n"\
-"oe-get oe-amend oe-delete"
+"oe-get oe-amend oe-delete\n\n"\
+"Student Loan Benefits in Kind\n\n"\
+"slb-get slb-amend slb-delete"
 
 static const struct endpoint endpoints[] = {
 	/* Employments */
@@ -113,6 +115,24 @@ static const struct endpoint endpoints[] = {
 		.api_ep		= MTD_API_EP_IEI_OE_DELETE,
 		.nr_req_args	= 1,
 		.args		= "taxYear"
+	},
+	/* Student Loan Benefits in Kind */
+	{
+		.name		= "slb-get",
+		.api_ep		= MTD_API_EP_IEI_SLB_GET,
+		.nr_req_args	= 2,
+		.args		= "taxYear employmentId"
+	}, {
+		.name		= "slb-amend",
+		.api_ep		= MTD_API_EP_IEI_SLB_AMEND,
+		.nr_req_args	= 3,
+		.file_data	= true,
+		.args		= "<file> taxYear employmentId"
+	}, {
+		.name		= "slb-delete",
+		.api_ep		= MTD_API_EP_IEI_SLB_DELETE,
+		.nr_req_args	= 2,
+		.args		= "taxYear employmentId"
 	},
 
 	{ }
