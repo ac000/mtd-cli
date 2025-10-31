@@ -23,7 +23,7 @@ static const struct endpoint endpoints[] = {
 		.nr_req_args	= 0,
 		.args		= "[[[typeOfBusiness={self-employment,uk-property,foreign-property}][,businessId=]][,[fromDate=YYYY-MM-DD,toDate=YYYY-MM-DD]][,[status={Oopen,fulfilled}]]]"
 	}, {
-		.name		= "list-crystallisation-obligations",
+		.name		= "list-final-decl-obligations",
 		.api_ep		= MTD_API_EP_OB_GET_FDO,
 		.nr_req_args	= 0,
 		.args		= "[[taxYear=YYYY-MM],[status={open,fulfilled}]]"
