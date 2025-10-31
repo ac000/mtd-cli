@@ -78,6 +78,8 @@ static int print_api_help(void)
 {
 	const struct api_ep *ep = api_ep_map;
 
+	printf("Version: %s\n\n", MTD_CLI_VER);
+
 	printf("Available APIs :-\n\n");
 	printf("init init-creds init-oauth init-nino");
 
@@ -336,7 +338,7 @@ static char *set_ver_cli(void *user_data __attribute__((unused)))
 	int len;
 
 	encname = mtd_percent_encode("mtd-cli", -1);
-	encver = mtd_percent_encode(GIT_VERSION, -1);
+	encver = mtd_percent_encode(MTD_CLI_VER, -1);
 
 	len = asprintf(&buf, "%s=%s", encname, encver);
 	if (len == -1) {
