@@ -58,9 +58,9 @@ struct _endpoint {
 
 struct endpoint {
 	const char *name;
-	enum mtd_api_endpoint api_ep;
+	const enum mtd_api_endpoint api_ep;
 	const int nr_req_args;
-	bool file_data;
+	const bool file_data;
 	const char *args;
 };
 
