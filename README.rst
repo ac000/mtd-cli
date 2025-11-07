@@ -55,7 +55,7 @@ It has a fairly straightforward interface, essentially
 
 ::
 
-   mtd-cli init|init-creds|init-oauth|init-nino|bd|biss|bsas|cisd|ic|ical|icgi|id|idi|ie|iei|ifi|iipi|ilos|ioi|ipi|isb|isi|ob|od|pb|saa|saass|said|seb|vat|test_cu|test_fph|test_sa
+   mtd-cli init|init-creds|init-oauth|init-nino|bd|biss|bsas|cisd|ic|ical|icgi|id|idi|ie|iei|ifi|iipi|ilos|ioi|ipi|ir|isb|isi|ob|od|pb|saa|saass|said|seb|vat|test_cu|test_fph|test_sa
 
 The first argument specifies the API to interface with
 
