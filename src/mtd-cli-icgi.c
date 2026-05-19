@@ -3,7 +3,7 @@
 /*
  * mtd-cli-icgi.c - Make Tax Digital - Individuals Capital Gains Income
  *
- * Copyright (C) 2025		Andrew Clayton <ac@sigsegv.uk>
+ * Copyright (C) 2025 - 2026		Andrew Clayton <ac@sigsegv.uk>
  */
 
 #include <stdbool.h>
@@ -17,17 +17,17 @@
 #define API_NAME "Individuals Capital Gains Income"
 #define CMDS \
 "Residential Property Disposals\n\n"\
-"rpd-get non-ppd-amend non-ppd-delete ppd-amend ppd-delete\n\n"\
+"non-ppd-get non-ppd-amend non-ppd-delete ppd-get ppd-amend ppd-delete\n\n"\
 "Other Capital Gains and Disposals\n\n"\
 "o-get o-amend o-delete"
 
 static const struct endpoint endpoints[] = {
 	/* Residential Property Disposals */
 	{
-		.name		= "rpd-get",
-		.api_ep		= MTD_API_EP_ICGI_RPD_GET,
+		.name		= "non-ppd-get",
+		.api_ep		= MTD_API_EP_ICGI_RPD_N_PPD_GET,
 		.nr_req_args	= 1,
-		.args		= "taxYear [source={user,hmrc-held,latest}]"
+		.args		= "taxYear"
 	}, {
 		.name		= "non-ppd-amend",
 		.api_ep		= MTD_API_EP_ICGI_RPD_N_PPD_AMEND,
@@ -39,6 +39,11 @@ static const struct endpoint endpoints[] = {
 		.api_ep		= MTD_API_EP_ICGI_RPD_N_PPD_DELETE,
 		.nr_req_args	= 1,
 		.args		= "taxYear"
+	}, {
+		.name		= "ppd-get",
+		.api_ep		= MTD_API_EP_ICGI_RPD_PPD_GET,
+		.nr_req_args	= 1,
+		.args		= "taxYear [source={user,hmrc-held,latest}]"
 	}, {
 		.name		= "ppd-amend",
 		.api_ep		= MTD_API_EP_ICGI_RPD_PPD_AMEND,
