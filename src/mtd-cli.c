@@ -387,6 +387,8 @@ static const char *conf_dir(char *path)
 
 static const FILE *set_log_fp(const char *log_level)
 {
+	FILE *fp;
+	char *ll;
 	char *ptr;
 	char *ptrm;
 	const char *mode = "we";
@@ -394,10 +396,14 @@ static const FILE *set_log_fp(const char *log_level)
 	if (!log_level || !strchr(log_level, ':'))
 		return NULL;
 
-	ptr = strchr(log_level, ':');
+	ll = strdup(log_level);
+	if (!ll)
+		return NULL;
+
+	ptr = strchr(ll, ':');
 	ptr++;
 
-	ptrm = strchr(log_level, '+');
+	ptrm = strchr(ll, '+');
 	if (!ptrm)
 		goto out;
 
@@ -407,7 +413,10 @@ static const FILE *set_log_fp(const char *log_level)
 		mode = "ae";
 
 out:
-	return fopen(ptr, mode);
+	fp = fopen(ptr, mode);
+	free(ll);
+
+	return fp;
 }
 
 int main(int argc, char *argv[])
