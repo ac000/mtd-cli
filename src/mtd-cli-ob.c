@@ -3,7 +3,7 @@
 /*
  * mtd-cli-ob.c - Make Tax Digital - Obligations
  *
- * Copyright (C) 2021 - 2025	Andrew Clayton <ac@sigsegv.uk>
+ * Copyright (C) 2021 - 2026	Andrew Clayton <ac@sigsegv.uk>
  */
 
 #include <libmtdac/mtd.h>
@@ -21,7 +21,7 @@ static const struct endpoint endpoints[] = {
 		.name		= "list-inc-and-exp-obligations",
 		.api_ep		= MTD_API_EP_OB_GET_IEO,
 		.nr_req_args	= 0,
-		.args		= "[[[typeOfBusiness={self-employment,uk-property,foreign-property}][,businessId=]][,[fromDate=YYYY-MM-DD,toDate=YYYY-MM-DD]][,[status={Oopen,fulfilled}]]]"
+		.args		= "[[[typeOfBusiness={self-employment,uk-property,foreign-property}][,businessId=]][,[fromDate=YYYY-MM-DD,toDate=YYYY-MM-DD]][,[status={open,fulfilled}]]]"
 	}, {
 		.name		= "list-final-decl-obligations",
 		.api_ep		= MTD_API_EP_OB_GET_FDO,

@@ -3,7 +3,7 @@
 /*
  * mtd-cli-ical.c - Make Tax Digital - Individual Calculations
  *
- * Copyright (C) 2020 - 2025	Andrew Clayton <ac@sigsegv.uk>
+ * Copyright (C) 2020 - 2026	Andrew Clayton <ac@sigsegv.uk>
  */
 
 #include <libmtdac/mtd.h>
@@ -24,7 +24,7 @@ static const struct endpoint endpoints[] = {
 		.name		= "list-calculations",
 		.api_ep		= MTD_API_EP_ICAL_LIST,
 		.nr_req_args	= 1,
-		.args		= "taxYear [calculationType=in-year|intent-to-finalise|intent-to-amend|final-declaration|confirm-amendment]",
+		.args		= "taxYear [calculationType=in-year|intent-to-finalise|intent-to-amend|final-declaration|confirm-amendment]"
 	}, {
 		.name		= "trigger-calculation",
 		.api_ep		= MTD_API_EP_ICAL_TRIGGER,

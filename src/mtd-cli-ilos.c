@@ -3,7 +3,7 @@
 /*
  * mtd-cli-ilos.c - Make Tax Digital - Individual Loses
  *
- * Copyright (C) 2020 - 2025	Andrew Clayton <ac@sigsegv.uk>
+ * Copyright (C) 2020 - 2026	Andrew Clayton <ac@sigsegv.uk>
  */
 
 #include <stdbool.h>
@@ -56,7 +56,7 @@ static const struct endpoint endpoints[] = {
 		.name		= "lc-list",
 		.api_ep		= MTD_API_EP_ILOS_LC_LIST,
 		.nr_req_args	= 1,
-		.args		= "taxYearClaimedFor [[businessId=][,[typeOfLoss={self-employment,uk-property,foreign-property}][,[typeOfClaim={carry_forward,carry-sideways}]]]]"
+		.args		= "taxYearClaimedFor [[businessId=][,[typeOfLoss={self-employment,uk-property,foreign-property}][,[typeOfClaim={carry-forward,carry-sideways}]]]]"
 	}, {
 		.name		= "lc-create",
 		.api_ep		= MTD_API_EP_ILOS_LC_CREATE,
