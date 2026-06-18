@@ -130,12 +130,18 @@ set it to
 
 This can be used to set extra HTTP headers to be sent.
 
-Currently only one header is supported which should be sufficient for
-setting the *Gov-Test-Scenario* Test API header. e.g
+Currently up to 10 extra headers can be specified. Separate them with ``\``'s.
+E.g
 
 ::
 
    $ MTD_CLI_HDRS="Gov-Test-Scenario: NO_SUBMISSIONS_EXIST" mtd-cli sa cr-intent-to-crystallise 2018-19
+
+Or
+
+::
+
+   $ MTD_CLI_HDRS="Gov-Test-Scenario: STATEFUL\suspend-temporal-validations: true" mtd-cli itla update /path/to/json 2026-27
 
 License
 -------

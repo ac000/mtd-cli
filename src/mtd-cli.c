@@ -29,7 +29,12 @@
 
 #define MAX_ARGV	7
 
+#define MAX_EXTRA_HDRS	10
+
 #define EP_MAP_ENT(ep)	{ .api = #ep, .endpoint = &ep##_endpoint }
+
+static char *extra_headers;
+static const char *extra_mtd_cli_hdrs[MAX_EXTRA_HDRS + 1];
 
 static const struct api_ep {
 	const char *api;
@@ -420,15 +425,51 @@ out:
 	return fp;
 }
 
+static int set_extra_hdrs(void)
+{
+	char *hdrs = getenv("MTD_CLI_HDRS");
+	char *p;
+	char *s;
+
+	if (!hdrs)
+		return 0;
+
+	extra_headers = strdup(hdrs);
+	if (!extra_headers) {
+		perror("strdup");
+		return 1;
+	}
+
+	p = extra_headers;
+	s = p;
+
+	for (int i = 0; ; p++) {
+		if (*p != '\\' && *p != '\0')
+			continue;
+
+		if (i == MAX_EXTRA_HDRS) {
+			fprintf(stderr, "MAX_EXTRA_HDRS reached\n");
+			return 1;
+		}
+
+		extra_mtd_cli_hdrs[i++] = s;
+
+		if (*p == '\0')
+			return 0;
+
+		*p = '\0';
+		s = p + 1;
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	int err;
-	int ret = EXIT_SUCCESS;
+	int ret = EXIT_FAILURE;
 	unsigned int flags = MTD_OPT_GLOBAL_INIT;
 	char conf_dir_path[PATH_MAX];
 	const char *snd_fph_hdrs = getenv("MTD_CLI_OPT_NO_FPH_HDRS");
 	const char *log_level = getenv("MTD_CLI_OPT_LOG_LEVEL");
-	const char *hdrs[2] = {};
 	const struct mtd_fph_ops fph_ops = {
 		.fph_version_cli = set_ver_cli,
 		.fph_prod_name = set_prod_name
@@ -436,7 +477,7 @@ int main(int argc, char *argv[])
 	const struct mtd_cfg cfg = {
 		.config_dir = conf_dir(conf_dir_path),
 		.fph_ops = &fph_ops,
-		.extra_hdrs = hdrs,
+		.extra_hdrs = extra_mtd_cli_hdrs,
 		.log_fp = set_log_fp(log_level)
 	};
 
@@ -452,21 +493,16 @@ int main(int argc, char *argv[])
 	else if (log_level && *log_level == 'i')
 		flags |= MTD_OPT_LOG_INFO;
 
-	/*
-	 * Set any extra user supplied http headers.
-	 *
-	 * Currently just one header is supported which should be
-	 * enough for adding a Gov-Test-Scenario header in the
-	 * Test API.
-	 *
-	 * The underlying libmtdac supports however many you set
-	 * in the array.
-	 */
-	hdrs[0] = getenv("MTD_CLI_HDRS");
+	/* Set any extra user supplied http headers */
+	err = set_extra_hdrs();
+	if (err)
+		goto out_free;
 
 	err = mtd_init(flags, &cfg);
 	if (err)
-		exit(EXIT_FAILURE);
+		goto out_free;
+
+	ret = EXIT_SUCCESS;
 
 	err = dispatcher(argc - 1, argv + 1);
 	if (err) {
@@ -483,6 +519,9 @@ int main(int argc, char *argv[])
 	}
 
 	mtd_deinit();
+
+out_free:
+	free(extra_headers);
 
 	exit(ret);
 }
