@@ -54,6 +54,7 @@ static const struct api_ep {
 	EP_MAP_ENT(ir),
 	EP_MAP_ENT(isb),
 	EP_MAP_ENT(isi),
+	EP_MAP_ENT(itla),
 	EP_MAP_ENT(ob),
 	EP_MAP_ENT(od),
 	EP_MAP_ENT(pb),
