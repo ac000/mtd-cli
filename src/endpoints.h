@@ -22,7 +22,7 @@ extern const struct _endpoint ie_endpoint;
 extern const struct _endpoint iei_endpoint;
 extern const struct _endpoint ifi_endpoint;
 extern const struct _endpoint iipi_endpoint;
-extern const struct _endpoint ilos_endpoint;
+extern const struct _endpoint il_endpoint;
 extern const struct _endpoint ioi_endpoint;
 extern const struct _endpoint ipi_endpoint;
 extern const struct _endpoint ir_endpoint;
